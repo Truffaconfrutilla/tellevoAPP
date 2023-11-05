@@ -1,0 +1,103 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header >    
+    <ion-toolbar color="azulduoc">   
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>   
+      <ion-text>       
+        <div class="ion-text-center style-h-text">
+          Te<ion-text color="amarilloduoc" style="font-weight: bolder;" >Llevo</ion-text>App
+        </div>
+      </ion-text>         
+    </ion-toolbar>
+  </ion-header>
+    
+  <ion-card >    
+    <ion-card-header >       
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> 
+        <ion-icon name="person-add-outline" style="padding-right: 5%;"></ion-icon>
+        Registro
+      </ion-text>      
+    </ion-card-header> 
+  
+    <ion-card-content>
+      <form [formGroup]="formularioRegister">
+        <ion-item >
+          <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
+            <div slot="label">Nombre <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
+            <div slot="label">Email <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
+            <div slot="label">Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>   
+
+        <ion-item>
+          <ion-input formControlName="confpassword" type="password" labelPlacement="floating" placeholder="********">
+            <div slot="label">Confirme Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="formularioRegister.hasError('passwordMismatch', 'confpassword')">
+          ¡Las contraseñas no coinciden!
+        </ion-text>
+
+        <ion-list>
+          <ion-item>
+            <ion-select formControlName="direccionSede" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
+              <div slot="label">Selecciona tu sede <ion-text color="danger">(Obligatorio)</ion-text></div>
+              <ion-select-option value="Alameda">Alameda</ion-select-option>
+              <ion-select-option value="Padre Alonso de Ovalle">Padre Alonso de Ovalle</ion-select-option>
+              <ion-select-option value="Antonio Varas">Antonio Varas</ion-select-option>
+              <ion-select-option value="Maipú">Maipú</ion-select-option>
+              <ion-select-option value="Melipilla">Melipilla</ion-select-option>
+              <ion-select-option value="Plaza Norte">Plaza Norte</ion-select-option>
+              <ion-select-option value="Plaza Oeste">Plaza Oeste</ion-select-option>
+              <ion-select-option value="Plaza Vespucio">Plaza Vespucio</ion-select-option>
+              <ion-select-option value="Puente Alto">Puente Alto</ion-select-option>
+              <ion-select-option value="San Bernardo">San Bernardo</ion-select-option>
+              <ion-select-option value="San Carlos de Apoquindo">San Carlos de Apoquindo</ion-select-option>
+              <ion-select-option value="San Joaquín">San Joaquín</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        
+        <ion-item>
+          <ion-radio-group formControlName="conductor" [allowEmptySelection]="true" value="false">
+            <ion-radio value="true">SocioConductor</ion-radio><br />
+          </ion-radio-group>
+        </ion-item>
+        
+        <ng-container *ngIf="formularioRegister.get('conductor')?.value === 'true'; then con; else sin"></ng-container>
+
+          <ng-template #con>
+            <div>
+              <ion-item>
+                <ion-input formControlName="licenciaConductor" #licenciaConductor type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="patenteVehiculo" #patenteVehiculo type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+              </ion-item>
+              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+            </div>
+          </ng-template>
+          
+          <ng-template #sin>
+            <div>
+              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+            </div>
+          </ng-template>
+          
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+  
