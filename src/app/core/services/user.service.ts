@@ -21,10 +21,10 @@ constructor() {
     this.firestoreDB = getFirestore(app);
 }
 
-async registerUser(userData: User, collectionName: "user") {
+async registerUser(userData: User) {
     try {
     // Reference the collection you want to add the document to
-    const docRef = collection(this.firestoreDB, collectionName);
+    const docRef = collection(this.firestoreDB, "user");
 
     // Add the JSON data as a new document
     const doc = await addDoc(docRef, userData);
