@@ -2,17 +2,17 @@
   <ion-split-pane contentId="main">
     <!--side menu-->
     
-    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu" *ngIf="showMenu()">
       <ion-header>
         <ion-toolbar color="azulduoc">
-          <ion-title color="amarilloduoc">Menu Content</ion-title>
+          <ion-title color="amarilloduoc">*Mensajito personalizado*</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content>This is the menu content.
+      <ion-content>
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
           <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-            <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" class="iconmenu"></ion-icon>
+            <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
