@@ -22,37 +22,37 @@
     </ion-card-header> 
   
     <ion-card-content>
-      <form [formGroup]="formularioRegister">
+      <form >
         <ion-item >
-          <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
+          <ion-input  labelPlacement="floating" placeholder="Carlitos Lechuga">
             <div slot="label">Nombre <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input formControlName="email" labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
+          <ion-input  labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
             <div slot="label">Email <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
+          <ion-input  type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>   
 
         <ion-item>
-          <ion-input formControlName="confpassword" type="password" labelPlacement="floating" placeholder="********">
+          <ion-input type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Confirme Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
-        <ion-text color="danger" *ngIf="formularioRegister.hasError('passwordMismatch', 'confpassword')">
+        <ion-text color="danger" >
           ¡Las contraseñas no coinciden!
         </ion-text>
 
         <ion-list>
           <ion-item>
-            <ion-select formControlName="direccionSede" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
+            <ion-select labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
               <div slot="label">Selecciona tu sede <ion-text color="danger">(Obligatorio)</ion-text></div>
               <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
             </ion-select>
@@ -60,31 +60,29 @@
         </ion-list>
         
         <ion-item>
-          <ion-radio-group formControlName="conductor" [allowEmptySelection]="true" value="false">
+          <ion-radio-group [allowEmptySelection]="true" value="false">
             <ion-radio value="true">SocioConductor</ion-radio><br />
           </ion-radio-group>
         </ion-item>
-        
-        <ng-container *ngIf="formularioRegister.get('conductor')?.value === 'true'; then con; else sin"></ng-container>
+        <ng-container></ng-container>
 
           <ng-template #con>
             <div>
               <ion-item>
-                <ion-input formControlName="licenciaConductor" #licenciaConductor type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+                <ion-input  type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input formControlName="patenteVehiculo" #patenteVehiculo type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+                <ion-input type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
               </ion-item>
-              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button color="azulduoc" >Registrarse</ion-button>
             </div>
           </ng-template>
           
           <ng-template #sin>
             <div>
-              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button color="azulduoc">Registrarse</ion-button>
             </div>
           </ng-template>
-          
       </form>
     </ion-card-content>
   </ion-card>

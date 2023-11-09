@@ -16,9 +16,10 @@
     </ion-card-header> 
           
         <ion-item>
-          <ion-input labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
+          <ion-input label="Ingrese email:" type="email" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
         </ion-item>
-        <ion-text>
+        <ion-text pasition="stacked" color="danger" >
+
           El correo es obligatorio.
         </ion-text>
         <ion-text pasition="stacked" color="danger" >
@@ -31,12 +32,12 @@
         <ion-text pasition="stacked" color="danger" >
           La contraseña es obligatoria.
         </ion-text>
-        <ion-text pasition="stacked" color="danger">
+        <ion-text pasition="stacked" color="danger" >
           La contraseña debe tener almenos 6 caracteres.
         </ion-text>
-
-        <ion-button color="azulduoc" >Ingresar</ion-button>
-        <ion-button color="azulduoc" >Registrarse</ion-button>
+       
+        <ion-button color="azulduoc"  >Ingresar</ion-button>
+        <ion-button color="azulduoc" (click)="register()" >Registrarse</ion-button>
         <br>
         <ion-text color="amarilloduoc" style="font-size: 12px;font-weight: bolder;" >Recuperar contraseña</ion-text>
     </ion-card>
