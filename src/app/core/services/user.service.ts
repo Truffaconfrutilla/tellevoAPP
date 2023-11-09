@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, Firestore } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, Firestore, DocumentData } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { FirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
 import { Router } from '@angular/router';
 
 
@@ -18,12 +17,10 @@ const app = initializeApp(firebaseConfig);
     providedIn: 'root',
 })
 
-export class FirebaseService {
+export class UserService {
 private firestoreDB;
 
 constructor(
-    public database: Firestore,
-    private auth: AngularFireAuth,
     public router: Router,
 ) {
     // Initialize Firebase with your configuration
@@ -33,10 +30,7 @@ constructor(
 
 async registerUser(userData: User) {
     try {
-    // Reference the collection you want to add the document to
     const docRef = collection(this.firestoreDB, "user");
-
-    // Add the JSON data as a new document
     const doc = await addDoc(docRef, userData);
 
     console.log('Document added with ID: ', doc.id);
@@ -45,37 +39,25 @@ async registerUser(userData: User) {
     }
 }
 
-async login(email: string , pass: string){
-    try{
-        const user = await this.auth.signInWithEmailAndPassword(email,pass);
-        console.log("Se inició sesión de:" + user);
-        if (user){
-            this.router.navigate(['/home']);
-        }
-    };
-}
-
-
-checkLogin() {
-    return new Promise((resolve, reject)=> {
-        this.auth.onAuthStateChanged((user)=> {
-            resolve(user);
-        }, (error)=> {
-            reject(error)
+login(email: string, password: string) {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          this.router.navigate(['home']);
+        })
+        .catch((error) => {
+            console.error(error);
         });
-    });
 }
 
-async logout() {
+logout() {
     try {
-        await this.auth.signOut();
+        const auth = getAuth();
+        auth.signOut();
         console.log("SESION CERRADA:");
         } catch(error) {
             console.error("Error al cerrar sesion: ", error);
             }
         }
-        
-
-
-
 }
