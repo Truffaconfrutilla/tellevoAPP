@@ -3,8 +3,8 @@ import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, Valid
 import { Router } from '@angular/router';
 import { MenuController, NavController, ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { LocationService } from '../../core/services/location.service'
-import { Location } from '../../core/models/location.model'
+import { LocationService } from '../../../core/services/location.service'
+import { Location } from '../../../core/models/location.model'
 import Swal from 'sweetalert2';
 
 // Función independiente para validar contraseñas
@@ -102,4 +102,4 @@ export class RegisterPage implements OnInit {
       // Manejo de errores si el usuario ya existe
       console.error(error.message);
     }
-}  
+}
