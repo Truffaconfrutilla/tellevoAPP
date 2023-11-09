@@ -54,18 +54,7 @@
           <ion-item>
             <ion-select formControlName="direccionSede" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
               <div slot="label">Selecciona tu sede <ion-text color="danger">(Obligatorio)</ion-text></div>
-              <ion-select-option value="Alameda">Alameda</ion-select-option>
-              <ion-select-option value="Padre Alonso de Ovalle">Padre Alonso de Ovalle</ion-select-option>
-              <ion-select-option value="Antonio Varas">Antonio Varas</ion-select-option>
-              <ion-select-option value="Maipú">Maipú</ion-select-option>
-              <ion-select-option value="Melipilla">Melipilla</ion-select-option>
-              <ion-select-option value="Plaza Norte">Plaza Norte</ion-select-option>
-              <ion-select-option value="Plaza Oeste">Plaza Oeste</ion-select-option>
-              <ion-select-option value="Plaza Vespucio">Plaza Vespucio</ion-select-option>
-              <ion-select-option value="Puente Alto">Puente Alto</ion-select-option>
-              <ion-select-option value="San Bernardo">San Bernardo</ion-select-option>
-              <ion-select-option value="San Carlos de Apoquindo">San Carlos de Apoquindo</ion-select-option>
-              <ion-select-option value="San Joaquín">San Joaquín</ion-select-option>
+              <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
