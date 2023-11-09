@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, Valid
 import { Router } from '@angular/router';
 import { MenuController, NavController, ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { LocationService } from '../../../core/services/location.service'
+import { Location } from '../../../core/models/location.model'
 import Swal from 'sweetalert2';
 
 // Función independiente para validar contraseñas
@@ -24,6 +26,7 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
 })
 export class RegisterPage implements OnInit {
   formularioRegister: FormGroup;
+  locations: Location[] = [];
 
   constructor(
     public fb: FormBuilder,
@@ -31,6 +34,7 @@ export class RegisterPage implements OnInit {
     private alertController: AlertController,
     private toastController: ToastController,
     private navCtrl: NavController,
+    private locationService: LocationService
   ) {
     this.formularioRegister = this.fb.group(
       {
@@ -49,7 +53,17 @@ export class RegisterPage implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  async loadLocations() {
+    try {
+      this.locations = await this.locationService.getAllLocations();
+    } catch (error) {
+      console.error('Error loading locations: ', error);
+    }
+  }
+
+  ngOnInit() {
+    this.loadLocations();
+  }
 
   async register() {
     const passwordControl = this.formularioRegister.get('password');
@@ -88,4 +102,4 @@ export class RegisterPage implements OnInit {
       // Manejo de errores si el usuario ya existe
       console.error(error.message);
     }
-}  
+}
