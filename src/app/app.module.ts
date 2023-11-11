@@ -10,7 +10,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { firebaseConfig } from './config/firebase.config';
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -19,8 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    FirestoreModule,  
-    ReactiveFormsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

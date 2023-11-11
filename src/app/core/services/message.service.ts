@@ -25,5 +25,4 @@ messageToast(icon: SweetAlertIcon, msj: string, time: number, position: SweetAle
   })
 }
 
-
 }
