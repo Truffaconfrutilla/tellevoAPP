@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+
 import { User } from 'firebase/auth';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -13,9 +14,9 @@ import { UserService } from 'src/app/core/services/user.service';
 export class LoginPage implements OnInit {
   userList: User[] = [];
   loginForm: FormGroup;
-  user: any;
   emailValue?: string;
-  passValue?: string;
+  passwordValue?: string;
+  user : any;
 
   constructor(
     private router: Router,
@@ -31,30 +32,27 @@ export class LoginPage implements OnInit {
     }
 
   ngOnInit() {
-//aqui va el checklogin
-  }
-/*
-  login(){
-    this.userService.login("ro.sanhueza@duocuc.cl","Hola123")
-  }
- */
-
-  async mesaggeToast(screenMessage: string) {
-    const toast = await this.toastController.create({
-      message: screenMessage,
-      duration: 2000,
-      position: 'bottom'
-    });
-    toast.present()
+    
+    /*this.userService.checkLogin()
+    .then((user) => {
+      if(user){
+        this.router.navigate(['/home']);
+      }
+    }).catch((error)=> {
+      console.error('Error en la autenticació:',error);
+    })*/
   }
 
-  login() {
-    if(this.emailValue && this.passValue){
-      this.userService.login(this.emailValue, this.passValue);
-      this.mesaggeToast("Bienvenido a TellevoAPP ଘ(੭˃ᴗ˂)੭")
-    }
-  }
+  /*login(){
+    this.userService.login("ro.sanhueza@duocuc.cl","Hola123");   
+  }*/
 
+
+login() {     
+  if (this.emailValue && this.passwordValue) {
+      this.userService.login(this.emailValue, this.passwordValue);         
+  }
+}
 
   goToRegister() {
     this.router.navigate(['register']);

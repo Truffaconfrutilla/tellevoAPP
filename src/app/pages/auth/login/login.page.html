@@ -12,11 +12,11 @@
   
   <ion-card >    
     <ion-card-header >       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon name="enter-outline"></ion-icon> Login</ion-text>
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline"></ion-icon> Login</ion-text>
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
-          <ion-input #user formControlName="email" type="text" color="azulduoc" label="Ingrese email de Usuario:" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
+          <ion-input #user [(ngModel)]="emailValue" formControlName="email" color="azulduoc" label="Ingrese email de Usuario:" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
           El correo es obligatorio.
@@ -26,7 +26,7 @@
         </ion-text>
 
         <ion-item>
-          <ion-input #password formControlName="password" type="password" color="azulduoc" label="Ingrese Contraseña:" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
+          <ion-input #password [(ngModel)]="passwordValue" formControlName="password" type="password" color="azulduoc" label="Ingrese Contraseña:" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
           La contraseña es obligatoria.
@@ -34,11 +34,13 @@
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
           La contraseña debe tener almenos 6 caracteres.
         </ion-text>
-
-        <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">Ingresar</ion-button>
-        <ion-button color="azulduoc" (click)="goToRegister()">Registrarse</ion-button>
-        <br>
-        <ion-text color="amarilloduoc" style="font-size: 12px;font-weight: bolder;" >Recuperar contraseña</ion-text>
+        <ion-item>
+          <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">Ingresar</ion-button>
+          <ion-button color="azulduoc" (click)="goToRegister()">Registrarse</ion-button>
+        </ion-item>        
+        <ion-text>
+          Recuperar contraseña
+        </ion-text>
       </form>    
     </ion-card>
 
