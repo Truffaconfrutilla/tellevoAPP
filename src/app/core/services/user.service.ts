@@ -84,7 +84,7 @@ async checkLogin() {
         if (user) {
             const uid = user.uid;            
         }else{
-            console.error("aaaaaaaaaaaaaaaaaaaaaaa");
+            this.router.navigate(['login']);
         }
     })
 }

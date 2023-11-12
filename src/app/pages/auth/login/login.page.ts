@@ -33,20 +33,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     
-    /*this.userService.checkLogin()
-    .then((user) => {
-      if(user){
-        this.router.navigate(['/home']);
-      }
-    }).catch((error)=> {
-      console.error('Error en la autenticació:',error);
-    })*/
   }
-
-  /*login(){
-    this.userService.login("ro.sanhueza@duocuc.cl","Hola123");   
-  }*/
-
 
 login() {     
   if (this.emailValue && this.passwordValue) {
