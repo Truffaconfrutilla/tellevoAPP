@@ -22,7 +22,7 @@
     </ion-card-header> 
   
     <ion-card-content>
-      <form [formGroup]="formRegister">
+      <form [formGroup]="registerForm">
         <ion-item >
           <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
             <div slot="label">Nombre <ion-text color="danger">(Obligatorio)</ion-text></div>
@@ -39,20 +39,26 @@
           <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
-        </ion-item>   
+        </ion-item>
+        <ion-text color="danger" *ngIf="registerForm.get('password')?.hasError('minlength')">
+          La contraseña debe tener almenos 6 caracteres.
+        </ion-text>
 
         <ion-item>
           <ion-input formControlName="password2" type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Confirme Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
-        <ion-text color="danger" *ngIf="formRegister.hasError('passwordMismatch', 'confpassword')">
-          ¡Las contraseñas no coinciden!
+        <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('minlength')">
+          La contraseña debe tener almenos 6 caracteres.
+        </ion-text>
+        <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('passwordMatchValidator')">
+          La contraseña debe caracteres.
         </ion-text>
 
         <ion-list>
           <ion-item>
-            <ion-select labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
+            <ion-select formControlName="location" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
               <div slot="label">Selecciona tu sede <ion-text color="danger">(Obligatorio)</ion-text></div>
               <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
             </ion-select>
@@ -60,20 +66,20 @@
         </ion-list>
 
         <ion-item>
-          <ion-radio-group formControlName="conductor" [allowEmptySelection]="true" value="false">
+          <ion-radio-group formControlName="partner" [allowEmptySelection]="true" value="false">
             <ion-radio value="true">SocioConductor</ion-radio><br />
           </ion-radio-group>
         </ion-item>
         
-        <ng-container *ngIf="formRegister.get('conductor')?.value === 'true'; then con; else sin"></ng-container>
+        <ng-container *ngIf="registerForm.get('partner')?.value === 'true'; then con; else sin"></ng-container>
 
           <ng-template #con>
             <div>
               <ion-item>
-                <ion-input formControlName="licenciaConductor" #licenciaConductor type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+                <ion-input formControlName="licence" required="false" type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input formControlName="patenteVehiculo" #patenteVehiculo type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+                <ion-input formControlName="plate" required="false" type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
               </ion-item>
               <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
             </div>

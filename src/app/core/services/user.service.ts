@@ -40,6 +40,7 @@ async registerUser(userData: User, password: string) {
     try {
         const docRef = collection(this.firestoreDB, "user");
         const doc = addDoc(docRef, userData);
+        this.router.navigate(['home']);
         } catch (error) {
         console.error('Error adding document: ', error);
         }
