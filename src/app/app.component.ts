@@ -13,16 +13,12 @@ export class AppComponent {
     { title: 'Inicio', url: '/home', icon: 'home' },
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
     { title: 'Ajustes', url: '', icon: 'build' },    
-    { title: 'Cerrar Sesión',  url: '', icon: 'log-out',  },
+    { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
-
-
-
-
 
   constructor(
     public router: Router,
-    private service: UserService
+    private userService: UserService
   ) {}
 
   showMenu() {
@@ -30,12 +26,7 @@ export class AppComponent {
   }
 
   logout() {
-    this.service.logout();
-    this.router.navigate(['/login']);
+    this.userService.logout();
   }
-
-
-
-
 
 }
