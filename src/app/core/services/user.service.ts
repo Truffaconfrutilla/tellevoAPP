@@ -3,7 +3,7 @@ import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, Firestore, DocumentData } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword  } from "firebase/auth";
+import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword   } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
@@ -32,15 +32,23 @@ constructor(
     this.firestoreDB = getFirestore(app);
 }
 
-async registerUser(userData: User) {
+async registerUser(userData: User, password: string) {
+    const auth = getAuth();
+    await createUserWithEmailAndPassword(auth, userData.email, password)
+    .then((userCredential) => {
+    const user = userCredential.user;
     try {
-    const docRef = collection(this.firestoreDB, "user");
-    const doc = await addDoc(docRef, userData);
-
-    console.log('Document added with ID: ', doc.id);
-    } catch (error) {
-    console.error('Error adding document: ', error);
-    }
+        const docRef = collection(this.firestoreDB, "user");
+        const doc = addDoc(docRef, userData);
+        } catch (error) {
+        console.error('Error adding document: ', error);
+        }
+    })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
+    });
 }
 
 async messageToast(screenMessage: string) {
@@ -56,7 +64,6 @@ async login(email: string, password: string) {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        //Login ok
         const user = userCredential.user;
         this.router.navigate(['home']);
         this.messageToast("Bienvenido a TellevoAPP ଘ(੭˃ᴗ˂)੭");
@@ -93,7 +100,7 @@ async logout() {
     try {
         const auth = getAuth();
         auth.signOut();
-        console.log("SESION CERRADA:");
+        console.log("SESION CERRADA");
         } catch(error) {
             console.error("Error al cerrar sesion: ", error);
             }
