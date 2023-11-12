@@ -129,7 +129,7 @@ async getUserData(){
         const email = user.email;
         if (email !== null){
             try {
-            const q = query(collection(this.firestoreDB, "user"), where("email", "==", "ro.sanhueza@duocuc.cl"));
+            const q = query(collection(this.firestoreDB, "user"), where("email", "==", user.email));
             const querySnapshot = await getDocs(q);
             const snapshot = querySnapshot.docs[0];
             const data = <User>snapshot.data();
