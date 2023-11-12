@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
-  constructor() { }
+  
+  constructor(
+    private userService: UserService,
+    private menuCtrl: MenuController,
+    private appComponent: AppComponent
+  ) { }
 
   ngOnInit() {
+  }
+
+  openSettingsMenu() {
+    this.menuCtrl.enable(true, 'menuSettings');
+    this.menuCtrl.open('menuSettings');
+  }
+
+  ionViewWillEnter() {
+    this.appComponent.toggleSettingsMenu(true);
+  }
+
+  ionViewWillLeave() {
+    this.appComponent.toggleSettingsMenu(false);
   }
 
 }

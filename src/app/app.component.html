@@ -2,7 +2,7 @@
   <ion-split-pane contentId="main">
     <!--side menu-->
     
-    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu" *ngIf="showMenu()">
+    <ion-menu side="start" menuId="generalMenu" contentId="main" class="generalMenu" *ngIf="showMenu()">
       <ion-header>
         <ion-toolbar color="azulduoc">
           <ion-title color="amarilloduoc">*Mensajito personalizado*</ion-title>
@@ -19,6 +19,26 @@
       </ion-list>
     </ion-content>
     </ion-menu>
+
+    <ion-menu side="end" menuId="menuSettings" contentId="main"  *ngIf="showMenu() && showSettingsMenu" >
+      <ion-header>
+        <ion-toolbar color="azulduoc">
+          <ion-title color="amarilloduoc">Ajustes</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let s of profileSettings; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[s.url]" lines="none" detail="false" routerLinkActive="selected" >
+            <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="s.icon " [md]="s.icon" class="iconmenu"></ion-icon>
+            <ion-label>{{ s.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+    </ion-menu>
+
+
 
     <!--main content-->
     <ion-router-outlet id="main">     
