@@ -36,6 +36,8 @@ export class AppComponent {
     this.showSettingsMenu = show;
   }
 
+  
+
   logout() {
     this.userService.logout();
   }
