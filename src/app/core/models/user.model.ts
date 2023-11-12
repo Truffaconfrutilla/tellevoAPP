@@ -1,8 +1,7 @@
 export interface User {
-    id:string, // ID del Usuario
+    id?:string, // ID del Usuario
     name:string, // Nombre del Usuario
     email:string, // Correo del Usuario
-    password:string, // Contraseña del Usuario
     location:string, // Sede del Usuario, se autocompleta
     partner:boolean, // Índica si el Usuario es Socio Conductor
     plate:string, // Índica la Patente del vehículo del Socio, solo si partner es verdadero

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './core/services/user.service';
 
 
 @Component({
@@ -12,24 +13,20 @@ export class AppComponent {
     { title: 'Inicio', url: '/home', icon: 'home' },
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
     { title: 'Ajustes', url: '', icon: 'build' },    
-    { title: 'Cerrar Sesión', url: '/login', icon: 'log-out' },
+    { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
 
-
-
-
-
   constructor(
-    public router: Router
+    public router: Router,
+    private userService: UserService
   ) {}
 
   showMenu() {
     return this.router.url !== '/login' && this.router.url !== '/register';
   }
 
-
-
-
-
+  logout() {
+    this.userService.logout();
+  }
 
 }

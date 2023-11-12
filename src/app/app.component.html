@@ -11,7 +11,7 @@
       <ion-content>
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" (click)="p.title === 'Cerrar Sesión' ? logout() : null">
             <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
