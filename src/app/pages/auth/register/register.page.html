@@ -6,7 +6,7 @@
         <ion-back-button defaultHref="/login"></ion-back-button>
       </ion-buttons>   
       <ion-text>       
-        <div class="ion-text-center style-h-text">
+        <div style="padding-left: 40px;">
           Te<ion-text color="amarilloduoc" style="font-weight: bolder;" >Llevo</ion-text>App
         </div>
       </ion-text>         
@@ -22,31 +22,31 @@
     </ion-card-header> 
   
     <ion-card-content>
-      <form >
+      <form [formGroup]="formRegister">
         <ion-item >
-          <ion-input  labelPlacement="floating" placeholder="Carlitos Lechuga">
+          <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
             <div slot="label">Nombre <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input  labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
             <div slot="label">Email <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input  type="password" labelPlacement="floating" placeholder="********">
+          <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>   
 
         <ion-item>
-          <ion-input type="password" labelPlacement="floating" placeholder="********">
+          <ion-input formControlName="password2" type="password" labelPlacement="floating" placeholder="********">
             <div slot="label">Confirme Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
           </ion-input>
         </ion-item>
-        <ion-text color="danger" >
+        <ion-text color="danger" *ngIf="formRegister.hasError('passwordMismatch', 'confpassword')">
           ¡Las contraseñas no coinciden!
         </ion-text>
 
@@ -58,33 +58,34 @@
             </ion-select>
           </ion-item>
         </ion-list>
-        
+
         <ion-item>
-          <ion-radio-group [allowEmptySelection]="true" value="false">
+          <ion-radio-group formControlName="conductor" [allowEmptySelection]="true" value="false">
             <ion-radio value="true">SocioConductor</ion-radio><br />
           </ion-radio-group>
         </ion-item>
-        <ng-container></ng-container>
+        
+        <ng-container *ngIf="formRegister.get('conductor')?.value === 'true'; then con; else sin"></ng-container>
 
           <ng-template #con>
             <div>
               <ion-item>
-                <ion-input  type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+                <ion-input formControlName="licenciaConductor" #licenciaConductor type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+                <ion-input formControlName="patenteVehiculo" #patenteVehiculo type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
               </ion-item>
-              <ion-button color="azulduoc" >Registrarse</ion-button>
+              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
             </div>
           </ng-template>
           
           <ng-template #sin>
             <div>
-              <ion-button color="azulduoc">Registrarse</ion-button>
+              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
             </div>
           </ng-template>
+          
       </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
-  
