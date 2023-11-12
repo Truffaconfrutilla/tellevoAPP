@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, Firestore, DocumentData } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, getDocsFromCache  } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword   } from "firebase/auth";
+import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, reauthenticateWithCredential  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
@@ -90,7 +90,6 @@ async checkLogin() {
     const auth = getAuth();
     onAuthStateChanged(auth,(user)=> {
         if (user) {
-            const uid = user.uid;            
         }else{
             this.router.navigate(['login']);
         }
@@ -101,10 +100,46 @@ async logout() {
     try {
         const auth = getAuth();
         auth.signOut();
-        console.log("SESION CERRADA");
-        } catch(error) {
-            console.error("Error al cerrar sesion: ", error);
-            }
-        }
+        this.messageToast("Sesión cerrada");
+    } catch(error) {
+        console.error("Error al cerrar sesión: ", error);
+    }
 }
 
+async changePassword(password: string){
+    const auth = getAuth();
+    onAuthStateChanged(auth,(user)=> {
+        if (user) {
+            updatePassword(user, password).then(() => {
+                this.router.navigate(['login']);
+            }).catch((error) => {
+                console.error("Error al actualizar contraseña: ", error);
+            });
+        }else{
+            this.router.navigate(['login']);
+            console.error("Error al actualizar contraseña: el usuario no está autenticado");
+        }
+    })
+}
+
+async getUserData(){
+    const auth = getAuth();
+    const user = auth.currentUser
+    if (user !== null) {
+        const email = user.email;
+        if (email !== null){
+            try {
+            const q = query(collection(this.firestoreDB, "user"), where("email", "==", "ro.sanhueza@duocuc.cl"));
+            const querySnapshot = await getDocs(q);
+            const snapshot = querySnapshot.docs[0];
+            const data = <User>snapshot.data();
+            return data
+            } catch (error) {
+                return null
+            }
+        }
+    }
+    return null
+}
+
+}
