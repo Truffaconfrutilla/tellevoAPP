@@ -15,6 +15,13 @@ export class AppComponent{
     { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
 
+  public profileSettings = [    
+    { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },        
+  ];
+
+  public showSettingsMenu = false;
+
+
   constructor(
     public router: Router,
     private userService: UserService
@@ -23,6 +30,12 @@ export class AppComponent{
   showMenu() {
     return this.router.url !== '/login' && this.router.url !== '/register';
   }
+
+  toggleSettingsMenu(show: boolean) {
+    this.showSettingsMenu = show;
+  }
+
+  
 
   logout() {
     this.userService.logout();
