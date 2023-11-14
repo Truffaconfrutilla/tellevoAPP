@@ -10,9 +10,9 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-card >    
+  <ion-card class="adjustCard">    
     <ion-card-header >       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline"></ion-icon> Login</ion-text>
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline" ></ion-icon> Login</ion-text>
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
@@ -34,12 +34,14 @@
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
           La contraseña debe tener almenos 6 caracteres.
         </ion-text>
-        <ion-item>
+        <ion-item class="space">
           <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">Ingresar</ion-button>
           <ion-button color="azulduoc" (click)="goToRegister()">Registrarse</ion-button>
-        </ion-item>        
-        <ion-text>
-          Recuperar contraseña
+        </ion-item>  
+        
+        <ion-text class="extra-options" style="padding-left: 20px;">
+          Olvidaste la contraseña?
+          <a [routerLink]="['/forgot-password']" >Recuperar contraseña</a>
         </ion-text>
       </form>    
     </ion-card>

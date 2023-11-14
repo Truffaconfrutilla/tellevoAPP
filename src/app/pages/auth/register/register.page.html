@@ -87,10 +87,18 @@
           
           <ng-template #sin>
             <div>
-              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button style="padding-left: 80px ; padding-top: 15px; padding-bottom: 15px;" color="azulduoc" (click)="register()">
+                <ion-text color="amarilloduoc">
+                  Registrarme
+                </ion-text>
+              </ion-button>
             </div>
           </ng-template>
-          
+
+          <ion-text class="extra-options" style="padding-left: 40px;">
+            Ya tienes una cuenta?
+            <a [routerLink]="['/login']" >Inicia sesión</a>
+          </ion-text>
       </form>
     </ion-card-content>
   </ion-card>
