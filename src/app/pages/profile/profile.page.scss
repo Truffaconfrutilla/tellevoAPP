@@ -1,5 +1,6 @@
 .profile-item {
     text-align: center;
+    padding-left: 25%;
 }
 
 .profile-picture {
@@ -11,7 +12,7 @@
     box-sizing: content-box;
     width: 128px;
     height: 128px;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .profile-picture img {
@@ -22,7 +23,8 @@
 
 .profile-name {
     padding-top: 20px;
-    font-size: x-large !important;
+    font-size: medium !important;
     font-weight: bold !important;
     text-transform: capitalize;
+    color:black;
 }
