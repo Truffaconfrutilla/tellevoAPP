@@ -11,8 +11,8 @@
   </ion-header>
   
   <ion-card class="adjustCard">    
-    <ion-card-header >       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline" ></ion-icon> Login</ion-text>
+    <ion-card-header style="padding-left: 100px; transform: scale(150%);">       
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline" style="transform: scale(150%); " ></ion-icon> Login</ion-text>
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
@@ -34,9 +34,17 @@
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
           La contraseña debe tener almenos 6 caracteres.
         </ion-text>
-        <ion-item class="space">
-          <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">Ingresar</ion-button>
-          <ion-button color="azulduoc" (click)="goToRegister()">Registrarse</ion-button>
+        <ion-item class="space"> 
+          <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">
+            <ion-text color="amarilloduoc">
+              Ingresar
+            </ion-text>
+          </ion-button>
+          <ion-button color="azulduoc" (click)="goToRegister()">
+            <ion-text color="amarilloduoc">
+              Registrarse
+            </ion-text>
+          </ion-button>
         </ion-item>  
         
         <ion-text class="extra-options" style="padding-left: 20px;">

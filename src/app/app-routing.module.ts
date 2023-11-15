@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./pages/auth/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
+  {
+    path: 'change-profile-pic',
+    loadChildren: () => import('./pages/userSettings/change-profile-pic/change-profile-pic.module').then( m => m.ChangeProfilePicPageModule)
+  },
 
 
 ];
