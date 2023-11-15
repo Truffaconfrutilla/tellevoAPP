@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
@@ -26,13 +26,22 @@ export class LoginPage implements OnInit {
     
     ) {
       this.loginForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-      })
+        email:['',[Validators.required,Validators.email,this.customEmailValidator],
+      ],
+      password: ['',[Validators.required, Validators.minLength(6)]],
+      });
     }
 
   ngOnInit() {
     
+  }
+
+  customEmailValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const email: string = control.value;
+    if (email && !email.endsWith('.com') && !email.endsWith('.cl')) {
+      return { invalidEmail: true };
+    }
+    return null; 
   }
 
 login() {     

@@ -22,8 +22,6 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
 }
 
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',

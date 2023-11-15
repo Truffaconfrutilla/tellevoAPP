@@ -3,7 +3,7 @@ import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, getDocsFromCache  } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, reauthenticateWithCredential  } from "firebase/auth";
+import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
@@ -21,7 +21,6 @@ const app = initializeApp(firebaseConfig);
 
 export class UserService {
 private firestoreDB;
-
 
 constructor(
     public router: Router,
@@ -73,8 +72,10 @@ async login(email: string, password: string) {
     .catch((error) => {
         if(
             error.code === AuthErrorCodes.INVALID_PASSWORD ||
-            error.code === AuthErrorCodes.USER_DELETED                
-        ){
+            error.code === AuthErrorCodes.USER_DELETED                            
+            )    
+        console.error("")    
+        {
             Swal.fire({
                 icon: 'question',        
                 title: 'Oops...',
@@ -82,7 +83,7 @@ async login(email: string, password: string) {
                 heightAuto: false
             });
         }
-        console.error("Error en el login", error, error.code);
+        console.error("Usuario o correo invalido", error)
     });
 }
 
