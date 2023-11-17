@@ -71,26 +71,20 @@ async login(email: string, password: string) {
     .then(async (userCredential) => {
         const user = userCredential.user;
         if (user) {
-            await this.getUserName(); // Obtener el nombre del usuario
+            await this.getUserName(); 
             this.router.navigate(['home']);
             this.messageToast(`Bienvenido a TellevoAPP, ${this.userName} ଘ(੭˃ᴗ˂)੭`);
         }
     })
-    .catch((error) => {
-        if (
-            error.code === AuthErrorCodes.INVALID_PASSWORD ||
-            error.code === AuthErrorCodes.USER_DELETED                            
-            ) 
-        console.error("")
-        {
+    .catch((error) => {        
+        console.error("Usuario o correo inválido", error);{
             Swal.fire({
                 icon: 'question',        
                 title: 'Oops...',
                 text: 'Segur@ que los datos están bien?',
-                heightAuto :false
+                heightAuto: false
             });
-        } 
-        console.error("Usuario o correo invalido",error)
+        }
     });
 }
 
