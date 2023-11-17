@@ -80,16 +80,17 @@ async login(email: string, password: string) {
         if (
             error.code === AuthErrorCodes.INVALID_PASSWORD ||
             error.code === AuthErrorCodes.USER_DELETED                            
-            ) {
+            ) 
+        console.error("")
+        {
             Swal.fire({
                 icon: 'question',        
                 title: 'Oops...',
                 text: 'Segur@ que los datos están bien?',
-                heightAuto: false
+                heightAuto :false
             });
-        } else {
-            console.error("Usuario o correo inválido", error);
-        }
+        } 
+        console.error("Usuario o correo invalido",error)
     });
 }
 
