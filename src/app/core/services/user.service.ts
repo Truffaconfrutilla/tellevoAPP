@@ -3,10 +3,11 @@ import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, getDocsFromCache  } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, reauthenticateWithCredential  } from "firebase/auth";
+import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
+
 
 
 
@@ -21,6 +22,8 @@ const app = initializeApp(firebaseConfig);
 
 export class UserService {
 private firestoreDB;
+public userName: String = "";
+public userEmail: String = "";
 
 
 constructor(
@@ -31,6 +34,7 @@ constructor(
     const app = initializeApp(firebaseConfig);
     this.firestoreDB = getFirestore(app);
 }
+
 
 async registerUser(userData: User, password: string) {
     const auth = getAuth();
@@ -64,27 +68,31 @@ async messageToast(screenMessage: string) {
 async login(email: string, password: string) {    
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
         const user = userCredential.user;
-        this.router.navigate(['home']);
-        this.messageToast("Bienvenido a TellevoAPP ଘ(੭˃ᴗ˂)੭");
-        
+        if (user) {
+            await this.getUserName(); // Obtener el nombre del usuario
+            this.router.navigate(['home']);
+            this.messageToast(`Bienvenido a TellevoAPP, ${this.userName} ଘ(੭˃ᴗ˂)੭`);
+        }
     })
     .catch((error) => {
-        if(
+        if (
             error.code === AuthErrorCodes.INVALID_PASSWORD ||
-            error.code === AuthErrorCodes.USER_DELETED                
-        ){
+            error.code === AuthErrorCodes.USER_DELETED                            
+            ) {
             Swal.fire({
                 icon: 'question',        
                 title: 'Oops...',
-                text: 'Segur@ que los datos estan bien?',
+                text: 'Segur@ que los datos están bien?',
                 heightAuto: false
             });
+        } else {
+            console.error("Usuario o correo inválido", error);
         }
-        console.error("Error en el login", error, error.code);
     });
 }
+
 
 async checkLogin() {
     const auth = getAuth();
@@ -100,7 +108,7 @@ async logout() {
     try {
         const auth = getAuth();
         auth.signOut();
-        this.messageToast("Sesión cerrada");
+        this.messageToast("Sesión cerrada (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ");
     } catch(error) {
         console.error("Error al cerrar sesión: ", error);
     }
@@ -122,6 +130,31 @@ async changePassword(password: string){
     })
 }
 
+resetPassword() {
+    const auth = getAuth();
+    this.getUserEmail().then((email: string | null) => {
+        if (email) {
+            sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..PENDIENTE !!!!!!!
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+        } else {
+            // Manejar el caso cuando el correo electrónico no está disponible
+            console.error("No se pudo obtener el correo electrónico del usuario");
+        }
+    }).catch((error) => {
+        // Manejar errores al obtener el correo electrónico del usuario
+        console.error("Error al obtener el correo electrónico del usuario", error);
+    });
+}
+
+
+
 async getUserData(){
     const auth = getAuth();
     const user = auth.currentUser
@@ -140,6 +173,21 @@ async getUserData(){
         }
     }
     return null
+}
+
+async getUserName(){
+    const user = await this.getUserData()
+    if (user){
+        this.userName = user?.name
+    }
+} 
+
+async getUserEmail(){
+    const user = await this.getUserData()
+    if (user){
+        return user.email || null
+    };
+    return null;
 }
 
 }

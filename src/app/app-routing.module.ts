@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: () => import('./pages/auth/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/auth/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'change-profile-pic',
+    loadChildren: () => import('./pages/userSettings/change-profile-pic/change-profile-pic.module').then( m => m.ChangeProfilePicPageModule)
+  },
 
 
 ];

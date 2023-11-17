@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './core/services/user.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
+
+
 export class AppComponent{
   public appPages = [
     { title: 'Inicio', url: '/home', icon: 'home' },
@@ -15,8 +18,15 @@ export class AppComponent{
     { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
 
+  public partnerPages = [
+    { title: 'Iniciar viaje', url: '', icon: 'car-sport' },
+    { title: 'Ver ganancia', url: '', icon: 'analytics' },
+  ];
+
   public profileSettings = [    
     { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },        
+    { title: 'Cambiar mi foto de perfil', url: '/change-profile-pic', icon: 'image' },        
+    { title: 'Dosis de serotonina', url: "" , icon: 'balloon' },        
   ];
 
   public showSettingsMenu = false;
@@ -28,14 +38,13 @@ export class AppComponent{
   ) {}
 
   showMenu() {
-    return this.router.url !== '/login' && this.router.url !== '/register';
+    return this.router.url !== '/login' && this.router.url !== '/register' && this.router.url !== '/change-profile-pic';
   }
 
   toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
 
-  
 
   logout() {
     this.userService.logout();

@@ -13,12 +13,9 @@
     </ion-toolbar>
   </ion-header>
     
-  <ion-card >    
-    <ion-card-header >       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> 
-        <ion-icon name="person-add-outline" style="padding-right: 5%;"></ion-icon>
-        Registro
-      </ion-text>      
+  <ion-card >          
+    <ion-card-header style="padding-left: 65px; transform: scale(100%);">       
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="person-add-outline" style="transform: scale(150%); " ></ion-icon> Resgistrate!</ion-text>
     </ion-card-header> 
   
     <ion-card-content>
@@ -87,10 +84,18 @@
           
           <ng-template #sin>
             <div>
-              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button style="padding-left: 80px ; padding-top: 15px; padding-bottom: 15px;" color="azulduoc" (click)="register()">
+                <ion-text color="amarilloduoc">
+                  Registrarme
+                </ion-text>
+              </ion-button>
             </div>
           </ng-template>
-          
+
+          <ion-text class="extra-options" style="padding-left: 40px;">
+            Ya tienes una cuenta?
+            <a [routerLink]="['/login']" >Inicia sesión</a>
+          </ion-text>
       </form>
     </ion-card-content>
   </ion-card>
