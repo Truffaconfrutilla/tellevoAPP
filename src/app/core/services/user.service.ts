@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, getDocsFromCache  } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
@@ -109,14 +109,30 @@ async logout() {
     }
 }
 
-async changePassword(password: string){
+async changePassword(currentPassword: string, newPassword: string){
     const auth = getAuth();
     onAuthStateChanged(auth,(user)=> {
-        if (user) {
-            updatePassword(user, password).then(() => {
-                this.router.navigate(['login']);
-            }).catch((error) => {
-                console.error("Error al actualizar contraseña: ", error);
+        if (user?.email) {
+            signInWithEmailAndPassword(auth, user.email, currentPassword)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                if (user) {
+                    updatePassword(user, newPassword).then(() => {
+                        this.router.navigate(['login']);
+                    }).catch((error) => {
+                        console.error("Error al actualizar contraseña: ", error);
+                    });
+                }
+            })
+            .catch((error) => {        
+                console.error("Usuario o correo inválido", error);{
+                    Swal.fire({
+                        icon: 'question',        
+                        title: 'Oops...',
+                        text: 'Contraseña actúal no es correcta.',
+                        heightAuto: false
+                    });
+                }
             });
         }else{
             this.router.navigate(['login']);
