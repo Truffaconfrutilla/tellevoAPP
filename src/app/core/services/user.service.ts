@@ -141,16 +141,31 @@ async changePassword(currentPassword: string, newPassword: string){
     })
 }
 
-resetPassword(email: string) {
+async resetPassword(email: string) {
     const auth = getAuth();
-    sendPasswordResetEmail(auth, email)
-    .then(() => {
-        this.router.navigate(['login']);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
+
+    const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.docs.length > 0){
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            this.router.navigate(['login']);
+            this.messageToast(`Correo enviado a ${email} ଘ(੭˃ᴗ˂)੭`);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+    } else {
+        Swal.fire({
+            icon: 'question',        
+            title: 'Oops...',
+            text: 'Correo no existe en nuestra APP.',
+            heightAuto: false
+        });
+    }
+
+    
 }
 
 
