@@ -27,7 +27,7 @@ export class ChangePasswordPage implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.passwordForm = this.formBuilder.group({
-      actualPassword: ['',[Validators.required, Validators.email]],
+      actualPassword: ['',[Validators.required, Validators.minLength(6)]],
       newPassword: ['',[Validators.required , Validators.minLength(6)]],
       newPassword2: ['',[Validators.required , Validators.minLength(6)]],
     },

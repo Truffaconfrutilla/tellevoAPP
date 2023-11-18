@@ -141,26 +141,15 @@ async changePassword(currentPassword: string, newPassword: string){
     })
 }
 
-resetPassword() {
+resetPassword(email: string) {
     const auth = getAuth();
-    this.getUserEmail().then((email: string | null) => {
-        if (email) {
-            sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                // ..PENDIENTE !!!!!!!
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
-        } else {
-            // Manejar el caso cuando el correo electrónico no está disponible
-            console.error("No se pudo obtener el correo electrónico del usuario");
-        }
-    }).catch((error) => {
-        // Manejar errores al obtener el correo electrónico del usuario
-        console.error("Error al obtener el correo electrónico del usuario", error);
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+        this.router.navigate(['login']);
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
     });
 }
 
