@@ -3,6 +3,7 @@
     "Seleccione un idioma" : "Seleccione un idioma",
     "Lenguaje": "Lenguaje",
     "login": {
+        "label.header": "Login",
         "button.singIn": "Ingresar",
         "button.singUp": "Registrarse",
         "label.email": "Ingrese email de Usuario",
@@ -12,9 +13,29 @@
         "label.requiredEmail": "El correo es obligatorio",
         "label.invalidEmail": "El correo es inválido",
         "label.requiredPassword": "La contraseña es obligatoria",
-        "label.minLengthPassword":"La contraseña debe tener almenos 6 caracteres"
+        "label.minLengthPassword":"La contraseña debe tener almenos 6 caracteres",
+        "placeholder.email": "Ej: jefeyapague@porfavor@porfis.aaa",
+        "placeholder.password": "Ej: Quierodormir123"
     },
     "register": {
-        "label.required": "Requerido"
+        "label.header": "Registrate!",
+        "label.required": "Requerido",
+        "label.name": "Nombre",
+        "label.email": "Email",
+        "label.password": "Contraseña",
+        "label.password2": "Confirme Contraseña",
+        "label.minLengthPassword": "La contraseña debe tener almenos 6 caracteres.",
+        "label.matchPassword": "La contraseñas deben coincidir.",
+        "label.location": "Selecciona tu Sede",
+        "label.partner": "Socio Conductor",
+        "label.licence": "Ingrese Licencia",
+        "label.plate": "Ingrese Patente",
+        "button.singUp": "Registrarse",
+        "label.alreadySingedUp": "Ya tienes una cuenta?",
+        "link.singIn": "Inicia sesión",
+        "placeholder.name": "Ej: Carlitos Lechuga",
+        "placeholder.email": "Ej: nosequehago@ayuda.cl",
+        "placeholder.password": "Ej: Quierodormir123",
+        "placeholder.location": "Sede"
     }
 }

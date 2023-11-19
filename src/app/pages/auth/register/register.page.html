@@ -15,48 +15,48 @@
     
   <ion-card >          
     <ion-card-header style="padding-left: 65px; transform: scale(100%);">       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="person-add-outline" style="transform: scale(150%); " ></ion-icon> Resgistrate!</ion-text>
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="person-add-outline" style="transform: scale(150%); " ></ion-icon> {{"register.label.header" | translate}}</ion-text>
     </ion-card-header> 
   
     <ion-card-content>
       <form [formGroup]="registerForm">
         <ion-item >
-          <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
-            <div slot="label">Nombre <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
+          <ion-input formControlName="name" labelPlacement="floating" placeholder="{{'register.placeholder.name' | translate}}">
+            <div slot="label">{{"register.label.name" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input formControlName="email" labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
-            <div slot="label">Email <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="{{'register.placeholder.email' | translate}}">
+            <div slot="label">{{"register.label.email" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
           <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
-            <div slot="label">Contraseña <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
+            <div slot="label">{{"register.label.password" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
         <ion-text color="danger" *ngIf="registerForm.get('password')?.hasError('minlength')">
-          La contraseña debe tener almenos 6 caracteres.
+          {{"register.label.minLengthPassword" | translate}}
         </ion-text>
 
         <ion-item>
           <ion-input formControlName="password2" type="password" labelPlacement="floating" placeholder="********">
-            <div slot="label">Confirme Contraseña <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
+            <div slot="label">{{"register.label.password2" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
         <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('minlength')">
-          La contraseña debe tener almenos 6 caracteres.
+          {{"register.label.minLengthPassword" | translate}}
         </ion-text>
         <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('passwordMatchValidator')">
-          La contraseña debe caracteres.
+          
         </ion-text>
 
         <ion-list>
           <ion-item>
-            <ion-select formControlName="location" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
-              <div slot="label">Selecciona tu sede <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
+            <ion-select formControlName="location" labelPlacement="floating" placeholder="{{'register.placeholder.location' | translate}}" cancel-text="Cancelar">
+              <div slot="label">{{"register.label.location" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
               <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -64,7 +64,7 @@
 
         <ion-item>
           <ion-radio-group formControlName="partner" [allowEmptySelection]=true value=false>
-            <ion-radio value=true>SocioConductor</ion-radio><br />
+            <ion-radio value=true>{{"register.label.partner" | translate}}</ion-radio><br />
           </ion-radio-group>
         </ion-item>
         
@@ -73,12 +73,12 @@
           <ng-template #con>
             <div>
               <ion-item>
-                <ion-input formControlName="licence" required="false" type="text" color="azulduoc" label="Ingrese Licencia:" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+                <ion-input formControlName="licence" required="false" type="text" color="azulduoc" label="{{'register.label.licence' | translate}}" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input formControlName="plate" required="false" type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+                <ion-input formControlName="plate" required="false" type="text" color="azulduoc" label="{{'register.label.plate' | translate}}" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
               </ion-item>
-              <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button color="azulduoc" (click)="register()">{{"register.button.singUp" | translate}}</ion-button>
             </div>
           </ng-template>
           
@@ -86,15 +86,15 @@
             <div>
               <ion-button style="padding-left: 80px ; padding-top: 15px; padding-bottom: 15px;" color="azulduoc" (click)="register()">
                 <ion-text color="amarilloduoc">
-                  Registrarme
+                  {{"register.button.singUp" | translate}}
                 </ion-text>
               </ion-button>
             </div>
           </ng-template>
 
           <ion-text class="extra-options" style="padding-left: 40px;">
-            Ya tienes una cuenta?
-            <a [routerLink]="['/login']" >Inicia sesión</a>
+            {{"register.label.alreadySingedUp" | translate}}
+            <a [routerLink]="['/login']" >{{"register.link.singIn" | translate}}</a>
           </ion-text>
       </form>
     </ion-card-content>
