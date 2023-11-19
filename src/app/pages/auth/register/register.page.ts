@@ -3,11 +3,9 @@ import { LocationService } from '../../../core/services/location.service'
 import { Location } from '../../../core/models/location.model'
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/core/services/user.service';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from 'src/app/core/models/user.model';
-import { Router } from '@angular/router';
-
+import { TranslateService } from '@ngx-translate/core';
 
 
 function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
@@ -30,12 +28,13 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
 export class RegisterPage implements OnInit {
   locations: Location[] = [];
   registerForm: FormGroup;
+  langs: string[] = [];
 
   constructor(   
     private locationService: LocationService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    
+    private translateService: TranslateService,
     
   ) {
     this.registerForm = this.formBuilder.group({
@@ -50,6 +49,7 @@ export class RegisterPage implements OnInit {
     },
     {validators: passwordMatchValidator}
     );
+    this.langs = this.translateService.getLangs();
   }
 
   async loadLocations() {

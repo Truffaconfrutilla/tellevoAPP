@@ -1,15 +1,20 @@
 {
     "bienvenido" : "Welcome",
     "Seleccione un idioma" : "Select a language",
-    "Ingresar": "Sign in",
-    "Registrarse": "Sign up",
-    "Ingrese email de Usuario": "Enter User Email",
-    "Ingrese contraseña": "Enter password",
-    "Olvidaste la contraseña": "Forgot your password",
-    "Recuperar contraseña": "Recover password",
-    "El correo es obligatorio": "Email is mandatory",
-    "El correo es inválido": "The email is invalid",
-    "La contraseña es obligatoria": "Password is required",
-    "La contraseña debe tener almenos 6 caracteres":"The password must be at least 6 characters",
-    "Lenguaje": "Language"
+    "Lenguaje": "Language",
+    "login": {
+        "button.singIn": "Sign in",
+        "button.singUp": "Sign up",
+        "label.email": "Enter User Email",
+        "label.password": "Enter password",
+        "label.forgotPassword": "Forgot your password",
+        "link.recoverPassword": "Recover password",
+        "label.requiredEmail":  "Email is mandatory",
+        "label.invalidEmail": "The email is invalid",
+        "label.requiredPassword": "Password is required",
+        "label.minLengthPassword":"The password must be at least 6 characters"
+    },
+    "register": {
+        "label.required": "Required"
+    }
 }

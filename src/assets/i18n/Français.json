@@ -1,15 +1,20 @@
 {
     "bienvenido" : "Accueillir",
     "Seleccione un idioma" : "Sélectionnez une langue",
-    "Ingresar": "Entrer dans",
-    "Registrarse": "Enregistrement",
-    "Ingrese email de Usuario": "Entrez l'e-mail de l'utilisateur",
-    "Ingrese contraseña": "Entrer le mot de passe",
-    "Olvidaste la contraseña": "Vous avez oublié votre mot de passe",
-    "Recuperar contraseña": "Récupérer le mot de passe",
-    "El correo es obligatorio": "L'e-mail est obligatoire",
-    "El correo es inválido": "L'e-mail n'est pas valide",
-    "La contraseña es obligatoria": "Mot de passe requis",
-    "La contraseña debe tener almenos 6 caracteres":"Le mot de passe doit comporter au moins 6 caractères",
-    "Lenguaje": "Langue"
+    "Lenguaje": "Langue",
+    "login": {
+        "button.singIn": "Entrer dans",
+        "button.singUp": "Enregistrement",
+        "label.email": "Entrez l'e-mail de l'utilisateur",
+        "label.password": "Entrer le mot de passe",
+        "label.forgotPassword": "Vous avez oublié votre mot de passe",
+        "link.recoverPassword": "Récupérer le mot de passe",
+        "label.requiredEmail": "L'e-mail est obligatoire",
+        "label.invalidEmail": "L'e-mail n'est pas valide",
+        "label.requiredPassword": "Mot de passe requis",
+        "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères"
+    },
+    "register": {
+        "label.required": "Required"
+    }
 }
