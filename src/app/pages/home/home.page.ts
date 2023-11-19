@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-home',
@@ -7,19 +9,24 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public userName: String = "";
+  langs: string[] = [];
+  language!: string;
 
-  constructor(private userService: UserService,) {}
+  constructor(
+    private userService: UserService,
+    private translateService: TranslateService)
+    {
+      this.langs = this.translateService.getLangs();
+    }
 
   ngOnInit() {
     this.userService.checkLogin()
-    this.getUserName()
   }
 
-  async getUserName(){
-    const user = await this.userService.getUserData()
-    if (user){
-      this.userName = user?.name
-    }
+
+changeLang(event:any) {
+    this.translateService.use(event.detail.value);
   }
+
+
 }

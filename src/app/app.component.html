@@ -7,7 +7,7 @@
         <ion-toolbar color="azulduoc">
         </ion-toolbar>
       </ion-header>
-      <ion-content>
+      <ion-content >
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
           <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" (click)="p.title === 'Cerrar Sesión' ? logout() : null">
@@ -18,7 +18,8 @@
       </ion-list>
     </ion-content>
     </ion-menu>
-
+    
+    
     <ion-menu side="end" menuId="menuSettings" contentId="main"  *ngIf="showMenu() && showSettingsMenu" >
       <ion-header>
         <ion-toolbar color="azulduoc">
@@ -36,7 +37,6 @@
       </ion-list>    
     </ion-content>
     </ion-menu>
-
 
 
     <!--main content-->
