@@ -62,5 +62,9 @@ login() {
   goToRegister() {
     this.router.navigate(['register']);
   }
+
+  generateRandomUsers(){
+    this.userService.generateRandomUsers()
+  }
 }
 

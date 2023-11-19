@@ -35,8 +35,6 @@ export class RegisterPage implements OnInit {
     private locationService: LocationService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private toastController: ToastController,
-    private router: Router,
     
     
   ) {
@@ -110,10 +108,6 @@ validateData(){
       return false; // Detener el registro si el formulario es inválido.
     }
     return true
-}
-
-randomUser(){
-  this.userService.randomUser()
 }
 
 }

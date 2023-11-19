@@ -3,6 +3,7 @@ import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
 import { User } from '../models/user.model';
+import { Location } from '../models/location.model';
 import { RandomUserResponse } from '../models/randomUser.model';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
 import { Router } from '@angular/router';
@@ -206,26 +207,50 @@ async getUserEmail(){
     return null;
 }
 
-async randomUser(){
-    const apiUrl = 'https://randomuser.me/api/';
-    const locations = await this.locationService.getAllLocations()
-    if (locations){
-        this.http.get<RandomUserResponse>(apiUrl).subscribe((data) => {
-            if (data) {
-                const randomUserData = data.results[0];
-                const location = this.locationService.getRandomLocation(locations)
-                const userData: User = {
-                    name: randomUserData.name.first + " " + randomUserData.name.last,
-                    email: randomUserData.email,
-                    administrator: false,
-                    partner: false,
-                    location: location.name,
-                }
-                console.log(userData)
-                console.log(randomUserData.login.password)
-                this.registerUser(userData, randomUserData.login.password)
+async randomUser(locations: Location[]){
+    const apiUrl = 'https://randomuser.me/api/?password=upper,lower,number,6-12';
+    this.http.get<RandomUserResponse>(apiUrl).subscribe((data) => {
+        if (data) {
+            const randomUserData = data.results[0];
+            const location = this.locationService.getRandomLocation(locations)
+            const userData: User = {
+                name: randomUserData.name.first + " " + randomUserData.name.last,
+                email: randomUserData.email,
+                administrator: false,
+                partner: false,
+                location: location.name,
             }
-        });
+            console.log(userData)
+            console.log("email:", userData.email)
+            console.log("password:",randomUserData.login.password)
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, userData.email, randomUserData.login.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                try {
+                    const docRef = collection(this.firestoreDB, "user");
+                    const doc =  addDoc(docRef, userData);
+                }catch (error) {
+                    console.error('Error adding document: ', error);
+                }
+            })
+            .catch((error) => {
+                console.log(error.code);
+                console.log(error.message);
+            });
+        }
+    });
+}
+
+async generateRandomUsers(){
+    const locations = await this.locationService.getAllLocations()
+    for (let i = 0; i < 20; i++) {
+        await this.randomUser(locations)
+        await this.delay(2000);
     }
 }
+
+delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }

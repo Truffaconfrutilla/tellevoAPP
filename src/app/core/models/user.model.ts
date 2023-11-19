@@ -8,3 +8,8 @@ export interface User {
     licence?:string, // Índica la Licencia de conducción del Socio, solo si partner es verdadero
     administrator:boolean // Índica si el Usuario es administador del Sistema
 }
+
+export interface UserWithPassword{
+    user: User,
+    password: string,
+}
