@@ -9,13 +9,6 @@
       </ion-text>         
     </ion-toolbar>
   </ion-header>
-
-  <ion-item>
-    <ion-label>{{ "selecciona" | translate }}</ion-label>
-    <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="Seleciona" (ionChange)="changeLang($event)">
-      <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
-    </ion-select>
-  </ion-item>
   
   <ion-card class="adjustCard">    
     <ion-card-header style="padding-left: 100px; transform: scale(150%);">       
@@ -23,40 +16,40 @@
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
-          <ion-input #user [(ngModel)]="emailValue" formControlName="email" color="azulduoc" label="Ingrese email de Usuario:" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
+          <ion-input #user [(ngModel)]="emailValue" formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          El correo es obligatorio.
+          {{"El correo es obligatorio" | translate}}  
         </ion-text>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          El correo es inválido.
+          {{"El correo es inválido"| translate}}
         </ion-text>
 
         <ion-item>
-          <ion-input #password [(ngModel)]="passwordValue" formControlName="password" type="password" color="azulduoc" label="Ingrese Contraseña:" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
+          <ion-input #password [(ngModel)]="passwordValue" formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          La contraseña es obligatoria.
+          {{ "La contraseña es obligatoria" | translate }}
         </ion-text>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-          La contraseña debe tener almenos 6 caracteres.
+          {{"La contraseña debe tener almenos 6 caracteres" | translate}}.
         </ion-text>
         <ion-item class="space"> 
           <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">
             <ion-text color="amarilloduoc">
-              Ingresar
+              {{ "Ingresar" | translate }}
             </ion-text>
           </ion-button>
           <ion-button color="azulduoc" (click)="goToRegister()">
             <ion-text color="amarilloduoc">
-              Registrarse
+              {{"Registrarse" | translate}}
             </ion-text>
           </ion-button>
         </ion-item>  
         
         <ion-text class="extra-options" style="padding-left: 20px;">
-          Olvidaste la contraseña?
-          <a [routerLink]="['/forgot-password']" >Recuperar contraseña</a>
+          {{"Olvidaste la contraseña" | translate}}?
+          <a [routerLink]="['/forgot-password']" >{{"Recuperar contraseña" | translate}}</a>
         </ion-text>
       </form>    
     </ion-card>
@@ -65,5 +58,13 @@
       <iframe src="https://giphy.com/embed/MLMzVYlQ7z5sVOd1aH" width="300" height="250" frameBorder="0" class="giphy-embed" 
       allowFullScreen style="pointer-events: none;"></iframe>
     </div>
+
+    <ion-item>
+      <ion-note> {{"Lenguaje" | translate}} </ion-note>
+      
+      <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="Seleccione un idioma" (ionChange)="changeLang($event)">
+        <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
+      </ion-select>
+    </ion-item>
 
 </ion-content>
