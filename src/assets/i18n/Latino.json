@@ -1,0 +1,16 @@
+{
+    "bienvenido" : "Bienvenido",
+    "Seleccione un idioma" : "Seleccione un idioma",
+    "Ingresar": "Ingresar",
+    "Registrarse": "Registrarse",
+    "Ingrese email de Usuario": "Ingrese email de Usuario",
+    "Ingrese contraseña": "Ingrese contraseña",
+    "Olvidaste la contraseña": "Olvidaste la contraseña",
+    "Recuperar contraseña": "Recuperar contraseña",
+    "El correo es obligatorio": "El correo es obligatorio",
+    "El correo es inválido": "El correo es inválido",
+    "La contraseña es obligatoria": "La contraseña es obligatoria",
+    "La contraseña debe tener almenos 6 caracteres":"La contraseña debe tener almenos 6 caracteres",
+    "Lenguaje": "Lenguaje"
+    
+}

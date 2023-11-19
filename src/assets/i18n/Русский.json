@@ -1,0 +1,15 @@
+{
+    "bienvenido" : "Добро пожаловать",
+    "Seleccione un idioma" : "Выберите язык",
+    "Ingresar" : "Попасть в",
+    "Registrarse": "регистрироваться",
+    "Ingrese email de Usuario": "электронная почта",
+    "Ingrese contraseña": "пароль",
+    "Olvidaste la contraseña": "Вы забыли свой пароль",
+    "Recuperar contraseña": "Восстановить пароль",
+    "El correo es obligatorio": "Электронная почта обязательна",
+    "El correo es inválido": "Электронная почта недействительна",
+    "La contraseña es obligatoria": "Необходим пароль",
+    "La contraseña debe tener almenos 6 caracteres":"Пароль должен быть не менее 6 символов",
+    "Lenguaje": "Язык"
+}

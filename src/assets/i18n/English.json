@@ -1,0 +1,15 @@
+{
+    "bienvenido" : "Welcome",
+    "Seleccione un idioma" : "Select a language",
+    "Ingresar": "Sign in",
+    "Registrarse": "Sign up",
+    "Ingrese email de Usuario": "Enter User Email",
+    "Ingrese contraseña": "Enter password",
+    "Olvidaste la contraseña": "Forgot your password",
+    "Recuperar contraseña": "Recover password",
+    "El correo es obligatorio": "Email is mandatory",
+    "El correo es inválido": "The email is invalid",
+    "La contraseña es obligatoria": "Password is required",
+    "La contraseña debe tener almenos 6 caracteres":"The password must be at least 6 characters",
+    "Lenguaje": "Language"
+}
