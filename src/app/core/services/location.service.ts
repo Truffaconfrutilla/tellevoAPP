@@ -39,4 +39,10 @@ async getAllLocations(): Promise<Location[]> {
       return locations;
     }
   }
+
+  getRandomLocation(locations: Location[]) {
+    const randomIndex = Math.floor(Math.random() * (locations.length - 1))
+    return locations[randomIndex]
+  }
 }
+

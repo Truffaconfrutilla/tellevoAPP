@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FirestoreModule } from '@angular/fire/firestore';
 import { firebaseConfig } from './config/firebase.config';
 import { TermsModalModule } from './shared/components/terms-modal/terms-modal.module';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 
 
