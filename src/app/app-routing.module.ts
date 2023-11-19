@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'terms',
     pathMatch: 'full'
   },
   {
@@ -35,6 +35,15 @@ const routes: Routes = [
     path: 'change-profile-pic',
     loadChildren: () => import('./pages/userSettings/change-profile-pic/change-profile-pic.module').then( m => m.ChangeProfilePicPageModule)
   },
+  {
+    path: 'terms',
+    loadChildren: () => import('./pages/auth/terms/terms.module').then( m => m.TermsPageModule)
+  },
+  {
+    path: 'loading',
+    loadChildren: () => import('./pages/auth/loading/loading.module').then( m => m.LoadingPageModule)
+  },
+
 
 
 

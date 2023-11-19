@@ -3,23 +3,23 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-terms-modal',
-  templateUrl: 'terms-modal.component.html',
-  styleUrls: ['terms-modal.component.scss'],
+  selector: 'app-terms',
+  templateUrl: './terms.page.html',
+  styleUrls: ['./terms.page.scss'],
 })
-export class TermsModalComponent {
+export class TermsPage  {
   termsAccepted = false;
 
   constructor(
     private modalController: ModalController,
     private router: Router,
-    
-    ) {}
+  ) { }
+
 
   acceptTerms() {
     this.termsAccepted = true;
     this.dismiss();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/loading'])
   }
 
   dismiss() {
@@ -27,5 +27,7 @@ export class TermsModalComponent {
       accepted: this.termsAccepted
     });
   }
+
   
+
 }
