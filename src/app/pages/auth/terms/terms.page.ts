@@ -1,33 +1,35 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terms',
   templateUrl: './terms.page.html',
   styleUrls: ['./terms.page.scss'],
 })
-export class TermsPage  {
+
+
+export class TermsPage {
   termsAccepted = false;
 
-  constructor(
-    private modalController: ModalController,
-    private router: Router,
-  ) { }
-
+  constructor(private router: Router) {}
 
   acceptTerms() {
     this.termsAccepted = true;
-    this.dismiss();
-    this.router.navigate(['/loading'])
+  this.router.navigate(['/loading'], { replaceUrl: true });  
   }
 
   dismiss() {
-    this.modalController.dismiss({
-      accepted: this.termsAccepted
+    Swal.fire({
+      title: '¡Quiet@ ahí!',
+      text: 'Debes aceptar los términos y condiciones para continuar.',
+      footer: 'Esta escrito en la constitución ┐(￣∀￣)┌',
+      icon: 'warning',
+      confirmButtonText: 'Aceptar',
+      heightAuto: false
     });
   }
-
-  
-
 }
+
+
