@@ -68,18 +68,22 @@ export class RegisterPage implements OnInit {
 
   async register() {
     if (this.validateData()){
+      var partner = false
+      if (this.registerForm.get('partner')?.value){
+        partner = true
+      }
       const user: User = {
         name: this.registerForm.get('name')?.value,
         email: this.registerForm.get('email')?.value,
         administrator: false,
         licence: this.registerForm.get('licence')?.value,
         location: this.registerForm.get('location')?.value,
-        partner: this.registerForm.get('partner')?.value,
+        partner: partner,
         plate: this.registerForm.get('plate')?.value,
       }
       this.userService.registerUser(user, this.registerForm.get('password')?.value,)
     }
-  }  
+  }
 
 validateData(){
   const passwordControl = this.registerForm.get('password');
@@ -108,5 +112,8 @@ validateData(){
     return true
 }
 
+randomUser(){
+  this.userService.randomUser()
+}
 
 }

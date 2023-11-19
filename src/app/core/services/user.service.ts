@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, getDocsFromCache  } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
 import { User } from '../models/user.model';
-import { AuthErrorCodes, getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
+import { RandomUserResponse } from '../models/randomUser.model';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
-
-
+import { HttpClient } from '@angular/common/http';
+import { LocationService } from './location.service';
 
 
 //guia ---> https://www.youtube.com/watch?v=HsQGfaY6LBc&list=PL9cZqOuuzAWln7QsiQhpPW7DN2K04MHrL&index=26 
@@ -29,6 +30,8 @@ public userEmail: String = "";
 constructor(
     public router: Router,
     private toastController: ToastController,
+    private http: HttpClient,
+    private locationService:LocationService
 ) {
     // Initialize Firebase with your configuration
     const app = initializeApp(firebaseConfig);
@@ -109,14 +112,30 @@ async logout() {
     }
 }
 
-async changePassword(password: string){
+async changePassword(currentPassword: string, newPassword: string){
     const auth = getAuth();
     onAuthStateChanged(auth,(user)=> {
-        if (user) {
-            updatePassword(user, password).then(() => {
-                this.router.navigate(['login']);
-            }).catch((error) => {
-                console.error("Error al actualizar contraseña: ", error);
+        if (user?.email) {
+            signInWithEmailAndPassword(auth, user.email, currentPassword)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                if (user) {
+                    updatePassword(user, newPassword).then(() => {
+                        this.router.navigate(['login']);
+                    }).catch((error) => {
+                        console.error("Error al actualizar contraseña: ", error);
+                    });
+                }
+            })
+            .catch((error) => {        
+                console.error("Usuario o correo inválido", error);{
+                    Swal.fire({
+                        icon: 'question',        
+                        title: 'Oops...',
+                        text: 'Contraseña actúal no es correcta.',
+                        heightAuto: false
+                    });
+                }
             });
         }else{
             this.router.navigate(['login']);
@@ -125,30 +144,32 @@ async changePassword(password: string){
     })
 }
 
-resetPassword() {
+async resetPassword(email: string) {
     const auth = getAuth();
-    this.getUserEmail().then((email: string | null) => {
-        if (email) {
-            sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                // ..PENDIENTE !!!!!!!
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
-        } else {
-            // Manejar el caso cuando el correo electrónico no está disponible
-            console.error("No se pudo obtener el correo electrónico del usuario");
-        }
-    }).catch((error) => {
-        // Manejar errores al obtener el correo electrónico del usuario
-        console.error("Error al obtener el correo electrónico del usuario", error);
-    });
+
+    const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.docs.length > 0){
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            this.router.navigate(['login']);
+            this.messageToast(`Correo enviado a ${email} ଘ(੭˃ᴗ˂)੭`);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+    } else {
+        Swal.fire({
+            icon: 'question',        
+            title: 'Oops...',
+            text: 'Correo no existe en nuestra APP.',
+            heightAuto: false
+        });
+    }
+
+    
 }
-
-
 
 async getUserData(){
     const auth = getAuth();
@@ -185,4 +206,26 @@ async getUserEmail(){
     return null;
 }
 
+async randomUser(){
+    const apiUrl = 'https://randomuser.me/api/';
+    const locations = await this.locationService.getAllLocations()
+    if (locations){
+        this.http.get<RandomUserResponse>(apiUrl).subscribe((data) => {
+            if (data) {
+                const randomUserData = data.results[0];
+                const location = this.locationService.getRandomLocation(locations)
+                const userData: User = {
+                    name: randomUserData.name.first + " " + randomUserData.name.last,
+                    email: randomUserData.email,
+                    administrator: false,
+                    partner: false,
+                    location: location.name,
+                }
+                console.log(userData)
+                console.log(randomUserData.login.password)
+                this.registerUser(userData, randomUserData.login.password)
+            }
+        });
+    }
+}
 }
