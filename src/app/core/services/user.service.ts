@@ -3,12 +3,13 @@ import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
 import { User } from '../models/user.model';
+import { RandomUserResponse } from '../models/randomUser.model';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
-
-
+import { HttpClient } from '@angular/common/http';
+import { LocationService } from './location.service';
 
 
 //guia ---> https://www.youtube.com/watch?v=HsQGfaY6LBc&list=PL9cZqOuuzAWln7QsiQhpPW7DN2K04MHrL&index=26 
@@ -29,6 +30,8 @@ public userEmail: String = "";
 constructor(
     public router: Router,
     private toastController: ToastController,
+    private http: HttpClient,
+    private locationService:LocationService
 ) {
     // Initialize Firebase with your configuration
     const app = initializeApp(firebaseConfig);
@@ -168,8 +171,6 @@ async resetPassword(email: string) {
     
 }
 
-
-
 async getUserData(){
     const auth = getAuth();
     const user = auth.currentUser
@@ -205,4 +206,26 @@ async getUserEmail(){
     return null;
 }
 
+async randomUser(){
+    const apiUrl = 'https://randomuser.me/api/';
+    const locations = await this.locationService.getAllLocations()
+    if (locations){
+        this.http.get<RandomUserResponse>(apiUrl).subscribe((data) => {
+            if (data) {
+                const randomUserData = data.results[0];
+                const location = this.locationService.getRandomLocation(locations)
+                const userData: User = {
+                    name: randomUserData.name.first + " " + randomUserData.name.last,
+                    email: randomUserData.email,
+                    administrator: false,
+                    partner: false,
+                    location: location.name,
+                }
+                console.log(userData)
+                console.log(randomUserData.login.password)
+                this.registerUser(userData, randomUserData.login.password)
+            }
+        });
+    }
+}
 }

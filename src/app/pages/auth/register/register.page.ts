@@ -112,5 +112,8 @@ validateData(){
     return true
 }
 
+randomUser(){
+  this.userService.randomUser()
+}
 
 }

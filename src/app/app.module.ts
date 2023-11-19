@@ -8,10 +8,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FirestoreModule } from '@angular/fire/firestore';
 import { firebaseConfig } from './config/firebase.config';
 import { TermsModalModule } from './shared/components/terms-modal/terms-modal.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,7 +21,8 @@ import { TermsModalModule } from './shared/components/terms-modal/terms-modal.mo
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    TermsModalModule
+    TermsModalModule,
+    HttpClientModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

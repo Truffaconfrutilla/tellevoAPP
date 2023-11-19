@@ -79,6 +79,7 @@
                 <ion-input formControlName="plate" required="false" type="text" color="azulduoc" label="Ingrese Patente:" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
               </ion-item>
               <ion-button color="azulduoc" (click)="register()">Registrarse</ion-button>
+              <ion-button color="azulduoc" (click)="randomUser()">Aleatorizar</ion-button>
             </div>
           </ng-template>
           
@@ -87,6 +88,11 @@
               <ion-button style="padding-left: 80px ; padding-top: 15px; padding-bottom: 15px;" color="azulduoc" (click)="register()">
                 <ion-text color="amarilloduoc">
                   Registrarme
+                </ion-text>
+              </ion-button>
+              <ion-button style="padding-left: 80px ; padding-top: 15px; padding-bottom: 15px;" color="azulduoc" (click)="randomUser()">
+                <ion-text color="amarilloduoc">
+                  Aleatorizar
                 </ion-text>
               </ion-button>
             </div>
