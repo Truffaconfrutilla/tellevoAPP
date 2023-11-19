@@ -28,8 +28,8 @@ export class AppComponent{
     private userService: UserService,
     private translateService: TranslateService,
   ) {
-    this.translateService.setDefaultLang('Español');
-    this.translateService.addLangs(['English','Français','Русский','Español']);
+    this.translateService.setDefaultLang('Latino');
+    this.translateService.addLangs(['English','Français','Русский','Latino']);
     const browserLang = this.translateService.getBrowserLang();
 
   }
