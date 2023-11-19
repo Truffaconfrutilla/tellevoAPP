@@ -14,7 +14,6 @@ export class AppComponent{
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
     { title: 'Ajustes', url: '', icon: 'build' },    
     { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
-    { title: 'Random User', url: '/multiusergenerator',  icon: 'key'},
   ];
 
   public profileSettings = [    
