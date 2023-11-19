@@ -46,11 +46,8 @@
             <div slot="label">{{"register.label.password2" | translate}}<ion-text color="danger"> ({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
-        <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('minlength')">
-          {{"register.label.minLengthPassword" | translate}}
-        </ion-text>
-        <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('passwordMatchValidator')">
-          
+        <ion-text color="danger" *ngIf="registerForm.get('password')?.value !== registerForm.get('password2')?.value">
+          {{"register.label.matchPassword" | translate}}
         </ion-text>
 
         <ion-list>

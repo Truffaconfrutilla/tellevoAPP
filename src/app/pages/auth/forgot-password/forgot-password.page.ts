@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,14 +10,17 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class ForgotPasswordPage implements OnInit {
   resetForm: FormGroup;
+  langs: string[] = [];
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private translateService: TranslateService,
   ) {
     this.resetForm = this.formBuilder.group({
       email: ['',[Validators.required, Validators.email]],
     });
+    this.langs = this.translateService.getLangs();
   }
 
   ngOnInit() {

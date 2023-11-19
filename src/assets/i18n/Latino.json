@@ -10,7 +10,7 @@
         "label.password": "Ingrese contraseña",
         "label.forgotPassword": "Olvidaste la contraseña",
         "link.recoverPassword": "Recuperar contraseña",
-        "label.requiredEmail": "El correo es obligatorio",
+        "label.requiredEmail": "El correo es requerido",
         "label.invalidEmail": "El correo es inválido",
         "label.requiredPassword": "La contraseña es obligatoria",
         "label.minLengthPassword":"La contraseña debe tener almenos 6 caracteres",
@@ -37,5 +37,27 @@
         "placeholder.email": "Ej: nosequehago@ayuda.cl",
         "placeholder.password": "Ej: Quierodormir123",
         "placeholder.location": "Sede"
+    },
+    "profile": {
+        "label.myProfile": "Mi Perfil",
+        "label.name": "Nombre:",
+        "label.location": "Sede:"
+    },
+    "changePassword":{
+        "button.submit": "Cambiar mi contraseña",
+        "label.header": "Recuperar",
+        "label.currentPassword": "Ingresa tu contraseña actual",
+        "label.newPassword": "Ingresa tu nueva contraseña",
+        "label.newPassword2": "Confirma la nueva contraseña",
+        "label.minLengthPassword":"La contraseña debe tener almenos 6 caracteres",
+        "label.matchPassword": "Las contraseñas no coinciden."
+    },
+    "forgotPassword": {
+        "button.submit": "Cambiar Contraseña",
+        "label.header": "Recuperar",
+        "label.header2": "mi Contraseña",
+        "label.email": "Ingresa el Email de tu cuenta",
+        "label.requiredEmail": "La contraseña es requerida"
+        
     }
 }

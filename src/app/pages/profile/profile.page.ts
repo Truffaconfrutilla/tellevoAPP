@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AppComponent } from 'src/app/app.component';
 import { UserService } from 'src/app/core/services/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -11,12 +12,16 @@ import { UserService } from 'src/app/core/services/user.service';
 export class ProfilePage implements OnInit {  
   public userName: String = "";
   public userLocation: String = "";
+  langs: string[] = [];
   
   constructor(
     private userService: UserService,
     private menuCtrl: MenuController,
-    private appComponent: AppComponent
-  ) { }
+    private appComponent: AppComponent,
+    private translateService: TranslateService,
+  ) {
+    this.langs = this.translateService.getLangs();
+  }
 
   ngOnInit() {
     this.getUserName()
