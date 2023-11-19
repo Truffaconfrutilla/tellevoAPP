@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-multiusergenerator',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MultiusergeneratorPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
+  }
+
+  generateRandomUsers(){
+    this.userService.generateRandomUsers()
   }
 
 }
