@@ -22,19 +22,19 @@
       <form [formGroup]="registerForm">
         <ion-item >
           <ion-input formControlName="name" labelPlacement="floating" placeholder="Carlitos Lechuga">
-            <div slot="label">Nombre <ion-text color="danger">(Obligatorio)</ion-text></div>
+            <div slot="label">Nombre <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
           <ion-input formControlName="email" labelPlacement="floating" placeholder="nosequehago@ayuda.cl">
-            <div slot="label">Email <ion-text color="danger">(Obligatorio)</ion-text></div>
+            <div slot="label">Email <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
 
         <ion-item>
           <ion-input formControlName="password" type="password" labelPlacement="floating" placeholder="********">
-            <div slot="label">Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
+            <div slot="label">Contraseña <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
         <ion-text color="danger" *ngIf="registerForm.get('password')?.hasError('minlength')">
@@ -43,7 +43,7 @@
 
         <ion-item>
           <ion-input formControlName="password2" type="password" labelPlacement="floating" placeholder="********">
-            <div slot="label">Confirme Contraseña <ion-text color="danger">(Obligatorio)</ion-text></div>
+            <div slot="label">Confirme Contraseña <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
           </ion-input>
         </ion-item>
         <ion-text color="danger" *ngIf="registerForm.get('password2')?.hasError('minlength')">
@@ -56,7 +56,7 @@
         <ion-list>
           <ion-item>
             <ion-select formControlName="location" labelPlacement="floating" placeholder="Sede" cancel-text="Cancelar">
-              <div slot="label">Selecciona tu sede <ion-text color="danger">(Obligatorio)</ion-text></div>
+              <div slot="label">Selecciona tu sede <ion-text color="danger">({{"register.label.required" | translate}})</ion-text></div>
               <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
             </ion-select>
           </ion-item>

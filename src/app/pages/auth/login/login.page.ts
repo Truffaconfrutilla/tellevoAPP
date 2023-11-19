@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
-
-import { User } from 'firebase/auth';
 import { UserService } from 'src/app/core/services/user.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -13,11 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  userList: User[] = [];
   loginForm: FormGroup;
-  emailValue?: string;
-  passwordValue?: string;
-  user : any;
   langs: string[] = [];
   language!: string;
 
@@ -25,7 +18,6 @@ export class LoginPage implements OnInit {
     private router: Router,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private toastController: ToastController,
     private translateService: TranslateService,
     
     ) {
@@ -54,8 +46,8 @@ export class LoginPage implements OnInit {
   }
 
 login() {     
-  if (this.emailValue && this.passwordValue) {
-      this.userService.login(this.emailValue, this.passwordValue);         
+  if (this.loginForm.get('email')?.value && this.loginForm.get('password')?.value) {
+      this.userService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);         
   }
 }
 

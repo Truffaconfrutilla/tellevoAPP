@@ -16,40 +16,40 @@
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
-          <ion-input #user [(ngModel)]="emailValue" formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
+          <ion-input formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          {{"El correo es obligatorio" | translate}}  
+          {{"login.label.requiredEmail" | translate}}
         </ion-text>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          {{"El correo es inválido"| translate}}
+          {{"login.label.invalidEmail" | translate}}
         </ion-text>
 
         <ion-item>
-          <ion-input #password [(ngModel)]="passwordValue" formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
+          <ion-input formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          {{ "La contraseña es obligatoria" | translate }}
+          {{"login.label.requiredPassword" | translate }}
         </ion-text>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-          {{"La contraseña debe tener almenos 6 caracteres" | translate}}.
+          {{"login.label.minLengthPassword" | translate}}.
         </ion-text>
         <ion-item class="space"> 
           <ion-button color="azulduoc" (click)="login()" [disabled]="!loginForm.valid">
             <ion-text color="amarilloduoc">
-              {{ "Ingresar" | translate }}
+              {{"login.button.singIn" | translate }}
             </ion-text>
           </ion-button>
           <ion-button color="azulduoc" (click)="goToRegister()">
             <ion-text color="amarilloduoc">
-              {{"Registrarse" | translate}}
+              {{"login.button.singUp" | translate}}
             </ion-text>
           </ion-button>
         </ion-item>  
         
         <ion-text class="extra-options" style="padding-left: 20px;">
-          {{"Olvidaste la contraseña" | translate}}?
-          <a [routerLink]="['/forgot-password']" >{{"Recuperar contraseña" | translate}}</a>
+          {{"login.label.forgotPassword" | translate}}?
+          <a [routerLink]="['/forgot-password']" >{{"login.link.recoverPassword" | translate}}</a>
         </ion-text>
       </form>    
     </ion-card>
