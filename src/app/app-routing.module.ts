@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'change-profile-pic',
     loadChildren: () => import('./pages/userSettings/change-profile-pic/change-profile-pic.module').then( m => m.ChangeProfilePicPageModule)
+  },  {
+    path: 'multiusergenerator',
+    loadChildren: () => import('./pages/admin/multiusergenerator/multiusergenerator.module').then( m => m.MultiusergeneratorPageModule)
   },
+
 
 
 ];
