@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password');
-  const password2 = control.get('confpassword');
+  const password2 = control.get('password2');
 
   if (!password || !password2 || password.value === password2.value) {
     return null; 

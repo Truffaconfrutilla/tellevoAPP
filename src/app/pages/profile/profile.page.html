@@ -4,7 +4,7 @@
     <ion-toolbar color="azulduoc">  
       <ion-menu-button  slot="start"> </ion-menu-button>   
       <div style="margin-left: 100px;  font-size: 20px;;"> 
-        <ion-text> Mi Perfil </ion-text>            
+        <ion-text> {{"profile.label.myProfile" | translate}} </ion-text>            
       </div>
       <ion-button color="azulduoc" slot="end" (click)="openSettingsMenu()">
         <ion-icon name="options"></ion-icon>
@@ -25,11 +25,11 @@
     
     <ion-card style="margin: 10%;">
       <div>
-        <ion-text class="profile-name dark">Nombre: {{userName}}</ion-text>
+        <ion-text class="profile-name dark">{{"profile.label.name" | translate}} {{userName}}</ion-text>
       </div>
       <br>
       <div>
-        <ion-text class="profile-name dark">Sede: {{userLocation}} </ion-text>
+        <ion-text class="profile-name dark">{{"profile.label.location" | translate}} {{userLocation}} </ion-text>
       </div>
     </ion-card>
   

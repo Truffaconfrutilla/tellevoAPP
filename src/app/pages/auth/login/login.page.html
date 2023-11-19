@@ -12,11 +12,11 @@
   
   <ion-card class="adjustCard">    
     <ion-card-header style="padding-left: 100px; transform: scale(150%);">       
-      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline" style="transform: scale(150%); " ></ion-icon> Login</ion-text>
+      <ion-text color="azulduoc" style="font-weight: bold; font-size: 30px;"> <ion-icon color="amarilloduoc" name="enter-outline" style="transform: scale(150%); " ></ion-icon> {{"login.label.header" | translate}}</ion-text>
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
-          <ion-input formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="Ej: jefeyapague@porfavor@porfis.aaa"></ion-input>
+          <ion-input formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.email' | translate}}"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
           {{"login.label.requiredEmail" | translate}}
@@ -26,7 +26,7 @@
         </ion-text>
 
         <ion-item>
-          <ion-input formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="Ej: Quierodormir123"></ion-input>
+          <ion-input formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.password' | translate}}"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
           {{"login.label.requiredPassword" | translate }}
