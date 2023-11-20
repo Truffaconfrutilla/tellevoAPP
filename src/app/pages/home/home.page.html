@@ -8,14 +8,6 @@
         </div>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-item>
-    <ion-label>{{ "selecciona" | translate }}</ion-label>
-    <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="Seleciona" (ionChange)="changeLang($event)">
-      <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-
 
   <ion-card>
       <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />

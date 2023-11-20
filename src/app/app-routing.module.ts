@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'loading',
     loadChildren: () => import('./pages/auth/loading/loading.module').then( m => m.LoadingPageModule)
+  },  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   },
+
 
 
 

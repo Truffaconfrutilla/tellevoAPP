@@ -17,12 +17,13 @@ export class AppComponent implements OnInit{
   public appPages = [
     { title: 'Inicio', url: '/home', icon: 'home' },
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
-    { title: 'Ajustes', url: '', icon: 'build' },    
+    { title: 'Ajustes', url: '/settings', icon: 'build' },    
     { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
 
   public profileSettings = [    
     { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },        
+    { title: 'Cambiar mi foto', url: '/change-profile-pic', icon: 'image' },        
   ];
 
   public showSettingsMenu = false;
@@ -66,6 +67,7 @@ export class AppComponent implements OnInit{
     return this.router.url !== '/login' 
     && this.router.url !== '/register'
     && this.router.url !== '/change-password'
+    && this.router.url !== '/change-profile-pic'
     && this.router.url !== '/forgot-password';
   }
 
