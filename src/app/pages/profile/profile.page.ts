@@ -10,8 +10,11 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {  
-  public userName: String = "";
-  public userLocation: String = "";
+  public userName: string = "";
+  public userLocation: string = "";
+  public isPartner: boolean | null = null;
+  public userPlate: string = "";
+  public userLicence: string = "";
   langs: string[] = [];
   
   constructor(
@@ -23,22 +26,19 @@ export class ProfilePage implements OnInit {
     this.langs = this.translateService.getLangs();
   }
 
-  ngOnInit() {
-    this.getUserName()
-    this.getUserLocation()
+  async ngOnInit() {
+    await this.getUserData();
   }
 
-  async getUserName(){
-    const user = await this.userService.getUserData()
-    if (user){
-      this.userName = user?.name
-    }
-  }
 
-  async getUserLocation(){
-    const user = await this.userService.getUserData()
-    if (user){
-      this.userLocation = user?.location
+  async getUserData() {
+    const user = await this.userService.getUserData();
+    if (user) {
+      this.userName = user.name || "";
+      this.userLocation = user.location || "";
+      this.isPartner = user.partner || null;
+      this.userPlate = user.plate || "";
+      this.userLicence = user.licence || "";
     }
   }
   

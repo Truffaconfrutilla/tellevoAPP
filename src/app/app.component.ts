@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 
 
 export class AppComponent implements OnInit{
+  public userName: string = "";
+  public isPartner: boolean | null = null;
 
   public appPages = [
     { title: 'Inicio', url: '/home', icon: 'home' },
@@ -40,8 +42,9 @@ export class AppComponent implements OnInit{
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     const termsAccepted = localStorage.getItem('termsAccepted');
+    await this.getUserData();
 
     if (termsAccepted === 'true') {
       this.router.navigate(['/terms']); 
@@ -50,6 +53,15 @@ export class AppComponent implements OnInit{
     }
 
   }
+
+  async getUserData() {
+    const user = await this.userService.getUserData();
+    if (user) {
+      this.userName = user.name || "";     
+      this.isPartner = user.partner || null;     
+    }
+  }
+
 
   showTermsAlert() {
     Swal.fire({
@@ -74,8 +86,6 @@ export class AppComponent implements OnInit{
   toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
-
-  
 
   logout() {
     this.userService.logout();

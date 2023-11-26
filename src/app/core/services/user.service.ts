@@ -26,6 +26,8 @@ export class UserService {
 private firestoreDB;
 public userName: String = "";
 public userEmail: String = "";
+public userPlate: String = "";
+public userLicence: String = "";
 
 
 constructor(
@@ -203,6 +205,30 @@ async getUserEmail(){
     const user = await this.getUserData()
     if (user){
         return user.email || null
+    };
+    return null;
+}
+
+async isPartnerDriver(): Promise<boolean | null> {
+    const userData = await this.getUserData();
+    if (userData) {
+        return userData.partner;
+    }
+    return null;
+}
+
+async getUserPlate(){
+    const user = await this.getUserData()
+    if (user){
+        return user.plate;
+    };
+    return null;
+}
+
+async getUserLicence(){
+    const user = await this.getUserData()
+    if (user){
+        return user.licence;
     };
     return null;
 }

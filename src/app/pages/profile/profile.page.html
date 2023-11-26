@@ -31,6 +31,23 @@
       <div>
         <ion-text class="profile-name dark">{{"profile.label.location" | translate}} {{userLocation}} </ion-text>
       </div>
+      <br>
+      <div>
+        <ion-text class="profile-name dark" *ngIf="isPartner !== null"> 
+          Socio Conductor: {{ isPartner ? 'Si' : 'No' }}
+        </ion-text>     
+      <br>   
+      <div *ngIf="isPartner">
+        <br>
+        <div>
+          <ion-text class="profile-name dark">Patente: {{userPlate}} </ion-text>
+        </div>
+        <br>
+        <div>
+          <ion-text class="profile-name dark">Licencia: {{userLicence}} </ion-text>
+        </div>
+      </div>
+      </div>
     </ion-card>
   
 
