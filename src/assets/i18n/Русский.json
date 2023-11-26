@@ -3,18 +3,61 @@
     "Seleccione un idioma" : "Выберите язык",
     "Lenguaje": "Язык",
     "login": {
-        "button.singIn" : "Попасть в",
-        "button.singUp": "регистрироваться",
-        "label.email": "электронная почта",
-        "label.password": "пароль",
-        "label.forgotPassword": "Вы забыли свой пароль",
+        "label.header": "Login",
+        "button.singIn": "Войти",
+        "button.singUp": "Пойте",
+        "label.email": "Введите адрес электронной почты",
+        "label.password": "Введите пароль",
+        "label.forgotPassword": "Забыли пароль",
         "link.recoverPassword": "Восстановить пароль",
-        "label.requiredEmail": "Электронная почта обязательна",
+        "label.requiredEmail": "Требуется электронная почта",
         "label.invalidEmail": "Электронная почта недействительна",
         "label.requiredPassword": "Необходим пароль",
-        "label.minLengthPassword":"Пароль должен быть не менее 6 символов"
+        "label.minLengthPassword":"Пароль должен быть не менее 6 символов",
+        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
+        "placeholder.password": "Ex: Quierodormir123"
     },
     "register": {
-        "label.required": "Requerido"
+        "label.header": "Sing Up!",
+        "label.required": "Необходимый",
+        "label.name": "имя",
+        "label.email": "Электронная почта",
+        "label.password": "Пароль",
+        "label.password2": "Подтвердите пароль",
+        "label.minLengthPassword": "Пароль должен быть не менее 6 символов.",
+        "label.matchPassword": "Пароли должны совпадать.",
+        "label.location": "Выберите свой кампус",
+        "label.partner": "Водитель-партнер",
+        "label.licence": "Введите лицензию",
+        "label.plate": "Введите номер",
+        "button.singUp": "Пойте",
+        "label.alreadySingedUp": "У вас уже есть аккаунт?",
+        "link.singIn": "Войти",
+        "placeholder.name": "Ex: Carlitos Lechuga",
+        "placeholder.email": "Ex: nosequehago@ayuda.cl",
+        "placeholder.password": "Ex: Quierodormir123",
+        "placeholder.location": "Кампус"
+    },
+    "profile": {
+        "label.myProfile": "Мой профайл",
+        "label.name": "Имя:",
+        "label.location": "Кампус:"
+    },
+    "changePassword":{
+        "button.submit": "Изменить пароль",
+        "label.header": "Восстанавливаться",
+        "label.currentPassword": "Введите ваш текущий пароль",
+        "label.newPassword": "Введите новый пароль",
+        "label.newPassword2": "Подтвердите новый пароль",
+        "label.minLengthPassword":"Пароль должен быть не менее 6 символов",
+        "label.matchPassword": "Пароли не совпадают."
+    },
+    "forgotPassword": {
+        "button.submit": "Изменить пароль",
+        "label.header": "Recover",
+        "label.header2": "my Password",
+        "label.email": "Адрес электронной почты",
+        "label.requiredEmail": "Необходим пароль"
+        
     }
 }

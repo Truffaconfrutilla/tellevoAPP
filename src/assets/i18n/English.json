@@ -3,18 +3,61 @@
     "Seleccione un idioma" : "Select a language",
     "Lenguaje": "Language",
     "login": {
-        "button.singIn": "Sign in",
-        "button.singUp": "Sign up",
-        "label.email": "Enter User Email",
+        "label.header": "Login",
+        "button.singIn": "Sing In",
+        "button.singUp": "Sing Up",
+        "label.email": "Enter user email",
         "label.password": "Enter password",
         "label.forgotPassword": "Forgot your password",
         "link.recoverPassword": "Recover password",
-        "label.requiredEmail":  "Email is mandatory",
+        "label.requiredEmail": "Email is required",
         "label.invalidEmail": "The email is invalid",
         "label.requiredPassword": "Password is required",
-        "label.minLengthPassword":"The password must be at least 6 characters"
+        "label.minLengthPassword":"The password must be at least 6 characters",
+        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
+        "placeholder.password": "Ex: Quierodormir123"
     },
     "register": {
-        "label.required": "Required"
+        "label.header": "Sing Up!",
+        "label.required": "Required",
+        "label.name": "Name",
+        "label.email": "Email",
+        "label.password": "Password",
+        "label.password2": "Confirm Password",
+        "label.minLengthPassword": "The password must be at least 6 characters.",
+        "label.matchPassword": "Passwords must match.",
+        "label.location": "Select your Campus",
+        "label.partner": "Driver Partner",
+        "label.licence": "Enter License",
+        "label.plate": "Enter Plate",
+        "button.singUp": "Sing Up",
+        "label.alreadySingedUp": "Do you already have an account?",
+        "link.singIn": "Sign In",
+        "placeholder.name": "Ex: Carlitos Lechuga",
+        "placeholder.email": "Ex: nosequehago@ayuda.cl",
+        "placeholder.password": "Ex: Quierodormir123",
+        "placeholder.location": "Campus"
+    },
+    "profile": {
+        "label.myProfile": "My Profile",
+        "label.name": "Name:",
+        "label.location": "Campus:"
+    },
+    "changePassword":{
+        "button.submit": "Change my password",
+        "label.header": "Recover",
+        "label.currentPassword": "Enter your current password",
+        "label.newPassword": "Enter your new password",
+        "label.newPassword2": "Confirm the new password",
+        "label.minLengthPassword":"The password must be at least 6 characters",
+        "label.matchPassword": "Passwords do not match."
+    },
+    "forgotPassword": {
+        "button.submit": "Change Password",
+        "label.header": "Recover",
+        "label.header2": "my Password",
+        "label.email": "Enter your account email",
+        "label.requiredEmail": "Password is required"
+        
     }
 }

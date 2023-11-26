@@ -1,20 +1,63 @@
 {
-    "bienvenido" : "Accueillir",
+    "bienvenido" : "Bienvenue",
     "Seleccione un idioma" : "Sélectionnez une langue",
     "Lenguaje": "Langue",
     "login": {
-        "button.singIn": "Entrer dans",
-        "button.singUp": "Enregistrement",
-        "label.email": "Entrez l'e-mail de l'utilisateur",
+        "label.header": "Login",
+        "button.singIn": "Se connecter",
+        "button.singUp": "Chantez",
+        "label.email": "Entrez l'adresse e-mail de l'utilisateur",
         "label.password": "Entrer le mot de passe",
-        "label.forgotPassword": "Vous avez oublié votre mot de passe",
-        "link.recoverPassword": "Récupérer le mot de passe",
-        "label.requiredEmail": "L'e-mail est obligatoire",
+        "label.forgotPassword": "Mot de passe oublié",
+        "link.recoverPassword": "Récupérer mot de passe",
+        "label.requiredEmail": "L'e-mail est requis",
         "label.invalidEmail": "L'e-mail n'est pas valide",
         "label.requiredPassword": "Mot de passe requis",
-        "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères"
+        "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères",
+        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
+        "placeholder.password": "Ex: Quierodormir123"
     },
     "register": {
-        "label.required": "Required"
+        "label.header": "Chanter!",
+        "label.required": "Requis",
+        "label.name": "Nom",
+        "label.email": "E-mail",
+        "label.password": "Mot de passe",
+        "label.password2": "Confirmez le mot de passe",
+        "label.minLengthPassword": "Le mot de passe doit comporter au moins 6 caractères.",
+        "label.matchPassword": "Les mots de passe doivent correspondre.",
+        "label.location": "Sélectionnez votre campus",
+        "label.partner": "Partenaire Chauffeur",
+        "label.licence": "Entrez la licence",
+        "label.plate": "Entrez dans la plaque",
+        "button.singUp": "Chanter",
+        "label.alreadySingedUp": "Avez-vous déjà un compte?",
+        "link.singIn": "Se connecter",
+        "placeholder.name": "Ex: Carlitos Lechuga",
+        "placeholder.email": "Ex: nosequehago@ayuda.cl",
+        "placeholder.password": "Ex: Quierodormir123",
+        "placeholder.location": "Campus"
+    },
+    "profile": {
+        "label.myProfile": "Mon profil",
+        "label.name": "Nom:",
+        "label.location": "Campus:"
+    },
+    "changePassword":{
+        "button.submit": "Changer mon mot de passe",
+        "label.header": "Récupérer",
+        "label.currentPassword": "Entrer votre mot de passe actuel",
+        "label.newPassword": "Entrez votre nouveau mot de passe",
+        "label.newPassword2": "Confirmez le nouveau mot de passe",
+        "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères",
+        "label.matchPassword": "Les mots de passe ne correspondent pas."
+    },
+    "forgotPassword": {
+        "button.submit": "Changer le mot de passe",
+        "label.header": "Récupérer",
+        "label.header2": "mon mot de passe",
+        "label.email": "Entrez l'e-mail de votre compte",
+        "label.requiredEmail": "Mot de passe requis"
+        
     }
 }
