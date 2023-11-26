@@ -17,13 +17,26 @@ export class AppComponent implements OnInit{
   public appPages = [
     { title: 'Inicio', url: '/home', icon: 'home' },
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
-    { title: 'Ajustes', url: '/settings', icon: 'build' },    
-    { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
+    { title: 'Ajustes', url: '/settings', icon: 'build' },        
+  ];
+
+  public partnerMenu = [    
+    { title: 'Iniciar Viaje', url: '', icon: 'speedometer' },        
+    { title: 'Registro Viajes', url: '', icon: 'reader' },        
+  ];
+
+  public noPartnerMenu = [    
+    { title: 'Pedir Viaje', url: '', icon: 'location' },        
+    { title: 'Ver mis viajes', url: '', icon: 'document-text' },        
   ];
 
   public profileSettings = [    
     { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },        
     { title: 'Cambiar mi foto', url: '/change-profile-pic', icon: 'image' },        
+  ];
+
+  public logoutMenu = [    
+    { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
   ];
 
   public showSettingsMenu = false;
@@ -40,9 +53,9 @@ export class AppComponent implements OnInit{
 
   }
 
-  ngOnInit() {
+  ngOnInit(){
     const termsAccepted = localStorage.getItem('termsAccepted');
-
+    
     if (termsAccepted === 'true') {
       this.router.navigate(['/terms']); 
     } else {
@@ -50,7 +63,7 @@ export class AppComponent implements OnInit{
     }
 
   }
-
+  
   showTermsAlert() {
     Swal.fire({
       title: '¡Quiet@ ahí!',
@@ -62,20 +75,18 @@ export class AppComponent implements OnInit{
     });
   }
 
-
   showMenu() {
     return this.router.url !== '/login' 
     && this.router.url !== '/register'
     && this.router.url !== '/change-password'
     && this.router.url !== '/change-profile-pic'
-    && this.router.url !== '/forgot-password';
+    && this.router.url !== '/forgot-password'
+    && this.router.url !== '/terms';
   }
 
   toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
-
-  
 
   logout() {
     this.userService.logout();

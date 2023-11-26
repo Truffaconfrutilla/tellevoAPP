@@ -16,10 +16,46 @@
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
+
+      <div>
+        Menu conductores
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of partnerMenu">
+            <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
+              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>      
+      </div>
+
+      <div>
+        Menu estudiantes
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of noPartnerMenu">
+            <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
+              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>      
+      </div>
+
+      <div>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of logoutMenu; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" (click)="p.title === 'Cerrar Sesión' ? logout() : null">
+              <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </div>
+
     </ion-content>
     </ion-menu>
-    
-    
+
+
     <ion-menu side="end" menuId="menuSettings" contentId="main"  *ngIf="showMenu() && showSettingsMenu" >
       <ion-header>
         <ion-toolbar color="azulduoc">

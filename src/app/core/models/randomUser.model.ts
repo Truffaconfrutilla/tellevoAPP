@@ -13,9 +13,9 @@ export interface RandomUser {
 export interface RandomUserResponse {
     results: RandomUser[];
     info: {
-      seed: string,
-      results: number,
-      page: number,
-      version: string,
+        seed: string,
+        results: number,
+        page: number,
+        version: string,
     };
-  }
+}

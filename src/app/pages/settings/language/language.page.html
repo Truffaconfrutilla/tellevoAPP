@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  
+  <ion-header >
+    <ion-toolbar color="azulduoc">  
+        <ion-menu-button slot="start"> </ion-menu-button>   
+        <div style="margin-left: 90px;"> 
+          <ion-text ><div>Te<ion-text color="amarilloduoc">Llevo</ion-text>App</div></ion-text>  
+        </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="center">
+    <ion-label class="centertext">Selecciona un idioma</ion-label>
+    <ion-card >    
+      <ion-item>      
+        <ion-radio-group [(ngModel)]="language" (ionChange)="changeLang($event.detail.value)">
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://flagicons.lipis.dev/flags/4x3/us.svg"></ion-img>
+            </ion-avatar>
+            <ion-label>English</ion-label>
+            <ion-radio value="English"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://flagicons.lipis.dev/flags/4x3/fr.svg"></ion-img>
+            </ion-avatar>
+            <ion-label>Français</ion-label>
+            <ion-radio value="Français"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://flagicons.lipis.dev/flags/4x3/ru.svg"></ion-img>
+            </ion-avatar>
+            <ion-label>Русский</ion-label>
+            <ion-radio value="Русский"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://flagicons.lipis.dev/flags/4x3/mx.svg"></ion-img>
+            </ion-avatar>
+            <ion-label>Latino</ion-label>
+            <ion-radio value="Latino"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-item>  
+    </ion-card>
+  </div>
+
+</ion-content>
