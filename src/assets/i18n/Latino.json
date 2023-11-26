@@ -25,7 +25,7 @@
         "label.password": "Contraseña",
         "label.password2": "Confirme Contraseña",
         "label.minLengthPassword": "La contraseña debe tener almenos 6 caracteres.",
-        "label.matchPassword": "La contraseñas deben coincidir.",
+        "label.matchPassword": "Las contraseñas deben coincidir.",
         "label.location": "Selecciona tu Sede",
         "label.partner": "Socio Conductor",
         "label.licence": "Ingrese Licencia",

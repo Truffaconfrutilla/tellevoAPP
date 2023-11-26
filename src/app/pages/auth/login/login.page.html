@@ -16,7 +16,7 @@
     </ion-card-header> 
       <form [formGroup]="loginForm">
         <ion-item>
-          <ion-input formControlName="email" color="azulduoc" label="{{ 'Ingrese email de Usuario' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.email' | translate}}"></ion-input>
+          <ion-input formControlName="email" color="azulduoc" label="{{ 'login.label.email' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.email' | translate}}"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
           {{"login.label.requiredEmail" | translate}}
@@ -26,7 +26,7 @@
         </ion-text>
 
         <ion-item>
-          <ion-input formControlName="password" type="password" color="azulduoc" label="{{ 'Ingrese contraseña' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.password' | translate}}"></ion-input>
+          <ion-input formControlName="password" type="password" color="azulduoc" label="{{ 'login.label.password' | translate }}" labelPlacement="floating" placeholder="{{'login.placeholder.password' | translate}}"></ion-input>
         </ion-item>
         <ion-text pasition="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
           {{"login.label.requiredPassword" | translate }}
@@ -62,7 +62,7 @@
     <ion-item>
       <ion-note> {{"Lenguaje" | translate}} </ion-note>
       
-      <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="Seleccione un idioma" (ionChange)="changeLang($event)">
+      <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="{{ 'Seleccione un idioma' | translate }}" (ionChange)="changeLang($event)">
         <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
       </ion-select>
     </ion-item>
