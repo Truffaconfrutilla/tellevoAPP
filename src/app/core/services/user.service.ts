@@ -28,6 +28,7 @@ public userName: String = "";
 public userEmail: String = "";
 public userPlate: String = "";
 public userLicence: String = "";
+public isPartner: String = "";
 
 
 constructor(
@@ -210,9 +211,9 @@ async getUserEmail(){
 }
 
 async isPartnerDriver(): Promise<boolean | null> {
-    const userData = await this.getUserData();
-    if (userData) {
-        return userData.partner;
+    const user = await this.getUserData();
+    if (user) {
+        return user.partner;
     }
     return null;
 }
