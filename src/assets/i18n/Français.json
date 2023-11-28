@@ -57,7 +57,9 @@
         "label.header": "Récupérer",
         "label.header2": "mon mot de passe",
         "label.email": "Entrez l'e-mail de votre compte",
-        "label.requiredEmail": "Mot de passe requis"
-        
+        "label.requiredEmail": "Mot de passe requis"        
+    },
+    "language": {
+        "label.header":"sélectionnez une langue"
     }
 }

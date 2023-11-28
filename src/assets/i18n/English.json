@@ -57,7 +57,9 @@
         "label.header": "Recover",
         "label.header2": "my Password",
         "label.email": "Enter your account email",
-        "label.requiredEmail": "Password is required"
-        
+        "label.requiredEmail": "Password is required"        
+    },
+    "language": {
+        "label.header":"Select a language"
     }
 }

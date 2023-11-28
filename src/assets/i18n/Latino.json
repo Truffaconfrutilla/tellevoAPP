@@ -59,5 +59,8 @@
         "label.email": "Ingresa el Email de tu cuenta",
         "label.requiredEmail": "La contraseña es requerida"
         
+    },
+    "language": {
+        "label.header":"Selecciona un idioma"
     }
 }

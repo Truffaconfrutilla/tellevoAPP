@@ -57,7 +57,9 @@
         "label.header": "Recover",
         "label.header2": "my Password",
         "label.email": "Адрес электронной почты",
-        "label.requiredEmail": "Необходим пароль"
-        
+        "label.requiredEmail": "Необходим пароль"        
+    },
+    "language": {
+        "label.header":"выберите язык"
     }
 }
