@@ -17,8 +17,7 @@ export class LanguagePage implements OnInit {
     private translateService: TranslateService,
     private router: Router,
   ) { 
-    this.langs = this.translateService.getLangs();
-    
+    this.langs = this.translateService.getLangs();    
   }
 
   ngOnInit() {
@@ -27,6 +26,5 @@ export class LanguagePage implements OnInit {
   changeLang(event:any) {
     this.translateService.use(event.detail.value);
   }
-
 
 }

@@ -10,10 +10,10 @@
   </ion-header>
 
   <div class="center">
-    <ion-label class="centertext">Selecciona un idioma</ion-label>
+    <ion-label class="centertext"> {{ "settingsLanguage.label.header" | translate}} </ion-label>
     <ion-card >    
       <ion-item>      
-        <ion-radio-group [(ngModel)]="language" (ionChange)="changeLang($event.detail.value)">
+        <ion-radio-group [(ngModel)]="language" (ionChange)="changeLang($event)">
           <ion-item>
             <ion-avatar slot="start">
               <ion-img src="https://flagicons.lipis.dev/flags/4x3/us.svg"></ion-img>
