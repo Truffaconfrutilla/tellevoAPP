@@ -59,7 +59,7 @@
         "label.email": "Адрес электронной почты",
         "label.requiredEmail": "Необходим пароль"        
     },
-    "language": {
+    "settingsLanguage": {
         "label.header":"выберите язык"
     }
 }

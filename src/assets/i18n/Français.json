@@ -59,7 +59,7 @@
         "label.email": "Entrez l'e-mail de votre compte",
         "label.requiredEmail": "Mot de passe requis"        
     },
-    "language": {
+    "settingsLanguage": {
         "label.header":"sélectionnez une langue"
     }
 }

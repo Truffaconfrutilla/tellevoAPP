@@ -60,7 +60,7 @@
         "label.requiredEmail": "La contraseña es requerida"
         
     },
-    "language": {
+    "settingsLanguage": {
         "label.header":"Selecciona un idioma"
     }
 }
