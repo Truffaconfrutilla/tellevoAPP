@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
     { title: 'Inicio', url: '/home', icon: 'home' },
     { title: 'Perfil', url: '/profile', icon: 'person' }, 
     { title: 'Ajustes', url: '/settings', icon: 'build' },        
+    { title: 'mapa', url: '/google-maps', icon: 'build' },        
   ];
 
   public partnerMenu = [    

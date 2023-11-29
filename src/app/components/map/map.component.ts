@@ -18,7 +18,6 @@ export class MapComponent  implements OnInit {
   directionsDisplay: any;
   source_marker: any;
   destination_marker: any;
-  
 
   constructor(
     private maps: GmapService,
@@ -120,10 +119,4 @@ export class MapComponent  implements OnInit {
       }
     });
   }
-
-
-
-
-
-
 }
