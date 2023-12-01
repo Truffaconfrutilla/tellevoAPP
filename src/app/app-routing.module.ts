@@ -50,7 +50,13 @@ const routes: Routes = [
   {
     path: 'language',
     loadChildren: () => import('./pages/settings/language/language.module').then( m => m.LanguagePageModule)
-  }   
+  },  {
+    path: 'google-maps',
+    loadChildren: () => import('./pages/google-maps/google-maps.module').then( m => m.GoogleMapsPageModule)
+  },
+
+  
+  
 
 
 

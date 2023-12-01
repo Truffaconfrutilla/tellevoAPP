@@ -14,8 +14,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 
+
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
