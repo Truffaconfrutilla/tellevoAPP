@@ -34,6 +34,7 @@ export class AddPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadLocations();
   }
 
   async loadLocations() {
@@ -46,19 +47,17 @@ export class AddPage implements OnInit {
 
   async addUser() {
     const { name, email, location, partner, licence, plate, administrator } = this.user;
-  
-    //URGENTE ARREGLAR LOCATION if (!name || !email || !location || !administrator || (partner && (!licence || !plate))) {
-    if (!name || !email || !administrator || (partner && (!licence || !plate))) {
+    if (!name || !email || !location || (partner && (!licence || !plate))) {
       this.presentMissingFieldsAlert();
       return; 
     }
-  
-    if (this.user.administrator === true) {
-      await this.confirmAdministrator();
-    } else {
+    if (!this.user.administrator) {
       await this.createUserAndNavigate();
+      return;
     }
+    await this.confirmAdministrator();
   }
+  
   
   async confirmAdministrator() {
     const alert = await this.alertController.create({
@@ -70,14 +69,14 @@ export class AddPage implements OnInit {
           role: 'cancel',
           handler: () => {
             this.user.administrator = false;
-            this.createUserAndNavigate();
+            this.createUserAndNavigate(); 
           }
         },
         {
           text: 'Sí',
           handler: () => {
             this.user.administrator = true;
-            this.createUserAndNavigate();
+            this.createUserAndNavigate(); 
           }
         }
       ]
@@ -86,10 +85,11 @@ export class AddPage implements OnInit {
     await alert.present();
   }
   
+  
   async createUserAndNavigate() {
     await this.fireservices.createUser('pruebacrudadmin', this.user);
     this.message.messageToast('success', 'Usuario ' + this.user.name + ' agregado correctamente!', 2000, 'bottom');
-    this.router.navigate(['/apilist']);
+    this.router.navigate(['/list']);
   }
   
   async presentMissingFieldsAlert() {

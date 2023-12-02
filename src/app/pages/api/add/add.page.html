@@ -22,14 +22,11 @@
         <ion-input #email [(ngModel)]="user.email" type="text" label="Email" labelPlacement="floating" placeholder="Ej: ayudameviejito@pascuero.cl"></ion-input>
       </ion-item>
 
-      <ion-list>
-        <ion-item>
-          <ion-select [(ngModel)]="user.location" labelPlacement="floating" placeholder="sede" cancel-text="Cancelar">
-            <div slot="label">Sede<ion-text color="danger"> Obligatorio </ion-text></div>
-            <ion-select-option *ngFor="let location of locations" [value]="location.name">sede3</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+      <ion-select [(ngModel)]="user.location" labelPlacement="floating" placeholder="sede" cancel-text="Cancelar">
+        <div slot="label">Sede<ion-text color="danger"> Obligatorio </ion-text></div>
+        <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
+      </ion-select>
+      
       
       <ion-card >
         <ion-item >

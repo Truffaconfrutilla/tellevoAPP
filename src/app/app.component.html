@@ -10,7 +10,7 @@
       <ion-content >
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" (click)="p.title === 'Cerrar Sesión' ? logout() : null">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" >
             <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
@@ -18,9 +18,21 @@
       </ion-list>
 
       <div>
+        Admin options
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let a of adminMenu; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[a.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="a.icon " [md]="a.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ a.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </div>
+
+      <div>
         Menu conductores
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let item of partnerMenu">
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of partnerMenu ; let i = index">
             <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
               <ion-label>{{ item.title }}</ion-label>
@@ -32,7 +44,7 @@
       <div>
         Menu estudiantes
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let item of noPartnerMenu">
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of noPartnerMenu ;let i = index">
             <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
               <ion-label>{{ item.title }}</ion-label>
