@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ChangeProfilePicPageRoutingModule } from './change-profile-pic-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { ChangeProfilePicPage } from './change-profile-pic.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ChangeProfilePicPage } from './change-profile-pic.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChangeProfilePicPageRoutingModule
+    ChangeProfilePicPageRoutingModule,
+    TranslateModule,
   ],
   declarations: [ChangeProfilePicPage]
 })

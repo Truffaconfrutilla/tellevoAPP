@@ -15,25 +15,25 @@ import Swal from 'sweetalert2';
 export class AppComponent implements OnInit{
 
   public appPages = [
-    { title: 'Inicio', url: '/home', icon: 'home' },
-    { title: 'Perfil', url: '/profile', icon: 'person' }, 
-    { title: 'Ajustes', url: '/settings', icon: 'build' },        
-    { title: 'mapa', url: '/google-maps', icon: 'build' },        
+    { title: 'Inicio', url: '/home', icon: 'home'},
+    { title: 'Perfil', url: '/profile', icon: 'person' },
+    { title: 'Ajustes', url: '/settings', icon: 'build' },
+    { title: 'mapa', url: '/google-maps', icon: 'build' },
   ];
 
-  public partnerMenu = [    
-    { title: 'Iniciar Viaje', url: '', icon: 'speedometer' },        
-    { title: 'Registro Viajes', url: '', icon: 'reader' },        
+  public partnerMenu: Array<{ title: string; url: string; icon: string}> = [
+    { title: 'Iniciar Viaje', url: '', icon: 'speedometer'},
+    { title: 'Registro Viajes', url: '', icon: 'reader'},
   ];
 
-  public noPartnerMenu = [    
-    { title: 'Pedir Viaje', url: '', icon: 'location' },        
-    { title: 'Ver mis viajes', url: '', icon: 'document-text' },        
+  public noPartnerMenu: Array<{ title: string; url: string; icon: string }> = [
+    { title: 'Pedir Viaje', url: '', icon: 'location'},
+    { title: 'Ver mis viajes', url: '', icon: 'document-text'},
   ];
 
   public profileSettings = [    
-    { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },        
-    { title: 'Cambiar mi foto', url: '/change-profile-pic', icon: 'image' },        
+    { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },
+    { title: 'Cambiar mi foto', url: '/change-profile-pic', icon: 'image' },
   ];
 
   public logoutMenu = [    
@@ -41,7 +41,8 @@ export class AppComponent implements OnInit{
   ];
 
   public showSettingsMenu = false;
-
+  public showPartnerMenu = false;
+  public showNoPartnerMenu = false;
 
   constructor(
     public router: Router,
@@ -54,7 +55,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  ngOnInit(){
+  async ngOnInit(){
     const termsAccepted = localStorage.getItem('termsAccepted');
     
     if (termsAccepted === 'true') {
@@ -62,7 +63,6 @@ export class AppComponent implements OnInit{
     } else {
       this.showTermsAlert();
     }
-
   }
   
   showTermsAlert() {
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit{
     });
   }
 
-  showMenu() {
+  async showMenu() {
     return this.router.url !== '/login' 
     && this.router.url !== '/register'
     && this.router.url !== '/change-password'
@@ -85,11 +85,22 @@ export class AppComponent implements OnInit{
     && this.router.url !== '/terms';
   }
 
-  toggleSettingsMenu(show: boolean) {
+  async toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
 
   logout() {
     this.userService.logout();
+  }
+
+  async verifyPartner(){
+    const user = await this.userService.getUserData()
+    if (user){
+      if(user.partner){
+        this.showPartnerMenu = true
+      } else {
+        this.showNoPartnerMenu = true
+      }
+    }
   }
 }
