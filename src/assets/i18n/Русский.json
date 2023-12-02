@@ -61,5 +61,10 @@
     },
     "settingsLanguage": {
         "label.header":"выберите язык"
+    },
+    "changeProfile":{
+        "label.changePicture": "Cambiar",
+        "label.changePicture2": "foto de perfil",
+        "button.submit": "Subir foto"
     }
 }
