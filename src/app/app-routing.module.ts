@@ -54,6 +54,30 @@ const routes: Routes = [
     path: 'google-maps',
     loadChildren: () => import('./pages/google-maps/google-maps.module').then( m => m.GoogleMapsPageModule)
   },
+  {
+    path: 'add',
+    loadChildren: () => import('./pages/api/add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: 'delete',
+    loadChildren: () => import('./pages/api/delete/delete.module').then( m => m.DeletePageModule)
+  },
+  {
+    path: 'detail',
+    loadChildren: () => import('./pages/api/detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./pages/api/list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./pages/api/update/update.module').then( m => m.UpdatePageModule)
+  },
+  {
+    path: 'admin-page',
+    loadChildren: () => import('./pages/api/admin-page/admin-page.module').then( m => m.AdminPagePageModule)
+  },
 
   
   

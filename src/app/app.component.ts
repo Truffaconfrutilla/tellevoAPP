@@ -30,6 +30,10 @@ export class AppComponent implements OnInit{
     { title: 'Pedir Viaje', url: '', icon: 'location'},
     { title: 'Ver mis viajes', url: '', icon: 'document-text'},
   ];
+  
+  public adminMenu = [    
+    { title: 'Opciones Administrador', url: '/admin-page', icon: 'terminal' },        
+  ];
 
   public profileSettings = [    
     { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },
