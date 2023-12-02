@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class GmapService {
 
   constructor() { }
+  
 
   loadGoogleMaps(): Promise<any> {
     const win = window as any;

@@ -30,6 +30,7 @@ export class MapComponent  implements OnInit {
     this.loadMap();
   }
 
+  
   async loadMap() {
     try {
       console.log('map');

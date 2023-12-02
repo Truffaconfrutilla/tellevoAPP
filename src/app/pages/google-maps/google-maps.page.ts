@@ -12,6 +12,7 @@ import { MapComponent } from 'src/app/components/map/map.component';
 })
 export class GoogleMapsPage {
 
+  
   constructor() { }
 
 }

@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MapComponent } from './map.component';
 
+
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
