@@ -47,6 +47,7 @@ export class AppComponent implements OnInit{
   public showSettingsMenu = false;
   public showPartnerMenu = false;
   public showNoPartnerMenu = false;
+  public showAdminMenu = false;
 
   constructor(
     public router: Router,
@@ -80,7 +81,7 @@ export class AppComponent implements OnInit{
     });
   }
 
-  async showMenu() {
+  showMenu() {
     return this.router.url !== '/login' 
     && this.router.url !== '/register'
     && this.router.url !== '/change-password'
@@ -89,7 +90,7 @@ export class AppComponent implements OnInit{
     && this.router.url !== '/terms';
   }
 
-  async toggleSettingsMenu(show: boolean) {
+  toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
 
@@ -104,6 +105,9 @@ export class AppComponent implements OnInit{
         this.showPartnerMenu = true
       } else {
         this.showNoPartnerMenu = true
+      }
+      if(user.administrator){
+        this.showAdminMenu = true
       }
     }
   }

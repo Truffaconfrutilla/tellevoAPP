@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, query, where, getDocs, DocumentSnapshot, DocumentData } from 'firebase/firestore';
 import { User } from '../models/user.model';
 import { Location } from '../models/location.model';
 import { RandomUserResponse } from '../models/randomUser.model';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail  } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updatePassword, sendPasswordResetEmail } from "firebase/auth";
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import Swal from 'sweetalert2';
@@ -279,5 +279,24 @@ async generateRandomUsers(){
 
 delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async listAllUsers(){
+    const users: User[] = [];
+
+    try {
+      const usersCollection = collection(this.firestoreDB, 'user');
+      const usersSnapshot = await getDocs(usersCollection);
+
+      usersSnapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
+        const userData = doc.data() as User;
+        users.push(userData);
+      });
+
+      return users;
+    } catch (error) {
+      console.error('Error getting documents: ', error);
+      return users;
+    }
 }
 }
