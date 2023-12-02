@@ -2,7 +2,7 @@
   <ion-split-pane contentId="main">
     <!--side menu-->
     
-    <ion-menu side="start" menuId="generalMenu" contentId="main" class="generalMenu" *ngIf="showMenu()">
+    <ion-menu side="start" menuId="generalMenu" contentId="main" class="generalMenu" *ngIf="showMenu()" (ionDidOpen)="verifyPartner()">
       <ion-header>
         <ion-toolbar color="azulduoc">
         </ion-toolbar>
@@ -17,25 +17,25 @@
         </ion-menu-toggle>
       </ion-list>
 
-      <div>
+      <div *ngIf="showPartnerMenu">
         Menu conductores
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let item of partnerMenu">
-            <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
-              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ item.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false" *ngFor="let partnerMenu of partnerMenu">
+            <ion-item routerDirection="root" [routerLink]="[partnerMenu.url]" lines="none" detail="false">
+              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="partnerMenu.icon" [md]="partnerMenu.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ partnerMenu.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>      
+        </ion-list>
       </div>
 
-      <div>
+      <div *ngIf="showNoPartnerMenu">
         Menu estudiantes
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let item of noPartnerMenu">
-            <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false">
-              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="item.icon" [md]="item.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ item.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false" *ngFor="let noPartnerMenu of partnerMenu">
+            <ion-item routerDirection="root" [routerLink]="[noPartnerMenu.url]" lines="none" detail="false">
+              <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="noPartnerMenu.icon" [md]="noPartnerMenu.icon" class="iconmenu"></ion-icon>
+              <ion-label>{{ noPartnerMenu.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>      
