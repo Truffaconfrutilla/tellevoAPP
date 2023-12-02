@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <ion-header >    
+    <ion-toolbar color="azulduoc">   
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/admin-page"></ion-back-button>
+      </ion-buttons>   
+      <ion-text>       
+        <div style="padding-left: 40px;">
+          Te<ion-text color="amarilloduoc" style="font-weight: bolder;" >Llevo</ion-text>App
+        </div>
+      </ion-text>         
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-input #name [(ngModel)]="user.name" type="text" label="Nombre" labelPlacement="floating" placeholder="Ej: Carlitos Lechuga"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input #email [(ngModel)]="user.email" type="text" label="Email" labelPlacement="floating" placeholder="Ej: ayudameviejito@pascuero.cl"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="user.location" labelPlacement="floating" placeholder="sede" cancel-text="Cancelar">
+            <div slot="label">Sede<ion-text color="danger"> Obligatorio </ion-text></div>
+            <ion-select-option *ngFor="let location of locations" [value]="location.name">sede3</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      
+      <ion-card >
+        <ion-item >
+          <ion-radio-group [(ngModel)]="user.partner">
+            <ion-radio [value]="false">No es socio conductor</ion-radio>
+            <ion-radio [value]="true">Es socio conductor</ion-radio>
+          </ion-radio-group>
+        </ion-item>
+        
+        <ng-container *ngIf="user.partner === true">        
+          <ion-item>
+            <ion-input [(ngModel)]="user.licence" type="text" label="Licencia" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="user.plate" type="text" label="Placa" placeholder="Ej: KVR-041"></ion-input>
+          </ion-item>
+        </ng-container>
+
+      </ion-card>
+
+      <ion-card color="warning">
+        <ion-item color="danger">
+          <ion-radio-group #administrator [(ngModel)]="user.administrator">
+            <ion-radio [value]="false">No es administrador</ion-radio>
+            <ion-radio [value]="true">Hacer administrador</ion-radio>
+          </ion-radio-group>
+        </ion-item>
+      </ion-card>
+
+      <ion-button class="buttonpad" color="azulduoc"(click)="addUser()" ><ion-text color="amarilloduoc">Agregar</ion-text></ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
