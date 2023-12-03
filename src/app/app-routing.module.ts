@@ -53,7 +53,7 @@ export const routes: Routes = [
   },
   {
     path: 'google-maps',
-    loadChildren: () => import('./pages/google-maps/google-maps.module').then( m => m.GoogleMapsPageModule)
+    loadChildren: () => import('./pages/maps/google-maps/google-maps.module').then( m => m.GoogleMapsPageModule)
   },
   {
     path: 'add',
@@ -78,7 +78,11 @@ export const routes: Routes = [
   {
     path: 'admin-page',
     loadChildren: () => import('./pages/api/admin-page/admin-page.module').then( m => m.AdminPagePageModule)
+  },  {
+    path: 'estudentgeomap',
+    loadChildren: () => import('./pages/maps/estudentgeomap/estudentgeomap.module').then( m => m.EstudentgeomapPageModule)
   },
+
 
   
   

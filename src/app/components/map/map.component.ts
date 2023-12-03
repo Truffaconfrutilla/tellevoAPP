@@ -1,12 +1,14 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { GmapService } from 'src/app/core/services/gmap.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-maps',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-  standalone : true, 
+  standalone : true,   
 })
+
 export class MapComponent  implements OnInit {
 
   @ViewChild('map',{static:true}) mapElementRef: ElementRef;
@@ -18,108 +20,175 @@ export class MapComponent  implements OnInit {
   directionsDisplay: any;
   source_marker: any;
   destination_marker: any;
+  userPosition: any; 
+  isPartner: boolean = false
 
   constructor(
     private maps: GmapService,
     private renderer: Renderer2,
+    private userService: UserService,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserLocation();
+    this.checkUserRole();
+  }
 
   ngAfterViewInit() {
     this.loadMap();
   }
 
+  getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.userPosition = { 
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          this.loadMap();
+        },
+        (error) => {
+          console.log('Error al obtener la ubicación del usuario:', error);
+          this.loadMap(); 
+        }
+      );
+    } else {
+      console.log('La geolocalización no es compatible con este dispositivo.');
+      this.loadMap(); 
+    }
+  }
   
   async loadMap() {
     try {
-      console.log('map');
       let googleMaps: any = await this.maps.loadGoogleMaps();
       const mapEl = this.mapElementRef.nativeElement;
+      const mapCenter = this.userPosition ? this.userPosition : this.source;
+  
       this.map = new googleMaps.Map(mapEl, {
-        center: { lat: this.source.lat, lng: this.source.lng },
+        center: { lat: mapCenter.lat, lng: mapCenter.lng },
         disableDefaultUI: true,
         zoom: 13,
       });
+  
+      if (this.userPosition) {
+        const userMarker = new googleMaps.Marker({
+          position: this.userPosition,
+          map: this.map,
+          animation: googleMaps.Animation.DROP,
+        });
+        userMarker.setMap(this.map);
+      }
+
       this.directionsService = new googleMaps.DirectionsService;
       this.directionsDisplay = new googleMaps.DirectionsRenderer;
       this.directionsDisplay = new googleMaps.DirectionsRenderer();
 
-      // const sourceIconUrl = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=O|FFFF00|000000';
-      // const destinationIconUrl = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=D|FF0000|000000';
-      const sourceIconUrl = 'assets/imgs/car.png';
-      const destinationIconUrl = 'assets/imgs/pin.png';
+      //BLOQUE DE RUTA MANUAL DESDE MALL PLAZA TOBALABA HACIA DUOC PUENTE ALTO
+      // const sourceIconUrl = 'assets/imgs/car.png';
+      // const destinationIconUrl = 'assets/imgs/pin.png';
       
-      const source_position = new googleMaps.LatLng(this.source.lat, this.source.lng);
-      const destination_position = new googleMaps.LatLng(this.dest.lat, this.dest.lng);
+      // const source_position = new googleMaps.LatLng(this.source.lat, this.source.lng);
+      // const destination_position = new googleMaps.LatLng(this.dest.lat, this.dest.lng);
 
-      const source_icon = {
-        url: sourceIconUrl,
-        scaledSize: new googleMaps.Size(50, 50), // scaled size
-        origin: new googleMaps.Point(0, 0), // origin
-        anchor: new googleMaps.Point(0, 0) // anchor
-      };
-      const destination_icon = {
-        url: destinationIconUrl,
-        scaledSize: new googleMaps.Size(50, 50), // scaled size
-        origin: new googleMaps.Point(0, 0), // origin
-        anchor: new googleMaps.Point(0, 0) // anchor
-      };
-      this.source_marker = new googleMaps.Marker({
-        map: this.map,
-        position: source_position,
-        animation: googleMaps.Animation.DROP,
-        icon: source_icon,
-      });
+      // const source_icon = {
+      //   url: sourceIconUrl,
+      //   scaledSize: new googleMaps.Size(50, 50), // scaled size
+      //   origin: new googleMaps.Point(0, 0), // origin
+      //   anchor: new googleMaps.Point(0, 0) // anchor
+      // };
+      // const destination_icon = {
+      //   url: destinationIconUrl,
+      //   scaledSize: new googleMaps.Size(50, 50), // scaled size
+      //   origin: new googleMaps.Point(0, 0), // origin
+      //   anchor: new googleMaps.Point(0, 0) // anchor
+      // };
+      // this.source_marker = new googleMaps.Marker({
+      //   map: this.map,
+      //   position: source_position,
+      //   animation: googleMaps.Animation.DROP,
+      //   icon: source_icon,
+      // });
 
-      this.destination_marker = new googleMaps.Marker({
-        map: this.map,
-        position: destination_position,
-        animation: googleMaps.Animation.DROP,
-        icon: destination_icon
-      });
+      // this.destination_marker = new googleMaps.Marker({
+      //   map: this.map,
+      //   position: destination_position,
+      //   animation: googleMaps.Animation.DROP,
+      //   icon: destination_icon
+      // });
 
-      this.source_marker.setMap(this.map);
-      this.destination_marker.setMap(this.map);
+      // this.source_marker.setMap(this.map);
+      // this.destination_marker.setMap(this.map);
 
-      this.directionsDisplay.setMap(this.map);
-      this.directionsDisplay.setOptions({
-        polylineOptions: {
-          strokeWeight: 4,
-          strokeOpacity: 1,
-          strokeColor: 'black'
-        },
-        suppressMarkers: true
-      });
+      // this.directionsDisplay.setMap(this.map);
+      // this.directionsDisplay.setOptions({
+      //   polylineOptions: {
+      //     strokeWeight: 4,
+      //     strokeOpacity: 1,
+      //     strokeColor: 'black'
+      //   },
+      //   suppressMarkers: true
+      // });
 
       await this.drawRoute();
 
-      this.map.setCenter(source_position);
-      this.renderer.addClass(mapEl, 'visible');
+      this.map.setCenter(mapCenter);
+    this.renderer.addClass(mapEl, 'visible');
     } catch(e) {
       console.log(e);
-    }
   }
+}
 
-  drawRoute() {
-    this.directionsService.route({
-      origin: this.source,
-      destination: this.dest,
-      travelMode: 'DRIVING',
-      provideRouteAlternatives: true
-    }, (response, status) => {
-      if (status === 'OK') {
-        this.directionsDisplay.setDirections(response);
-        console.log('response: ', response);
-        const directionsData = response.routes[0].legs[0];
-        console.log(directionsData);
-        const duration = directionsData.duration.text;
-        console.log(duration);
-      } else {
-        console.log(status);
-      }
+drawRoute() {
+  this.directionsService.route({
+    origin: this.source,
+    destination: this.dest,
+    travelMode: 'DRIVING',
+    provideRouteAlternatives: true
+  }, (response, status) => {
+    if (status === 'OK') {
+      this.directionsDisplay.setDirections(response);
+      console.log('response: ', response);
+      const directionsData = response.routes[0].legs[0];
+      console.log(directionsData);
+      const duration = directionsData.duration.text;
+      console.log(duration);
+    } else {
+      console.log(status);
+    }
+  });
+}
+
+  checkUserRole() {
+    this.userService.isPartnerDriver().then((isDriver) => {
+      this.isPartner = isDriver || false;
+      this.setUserRole(this.isPartner);
     });
   }
 
+  setUserRole(partner: boolean) {
+    this.isPartner = partner;
+    if (partner) {
+      // Lógica para mostrar funciones de socio conductor
+      this.showStartTripButton();
+      this.enableGoogleMapsDirectionInput();
+    } else {
+      // Lógica para mostrar funciones de estudiante
+      this.requestRideButton();
+      this.enableGoogleMapsDirectionInput();
+    }
+  }
+
+  requestRideButton() {
+    // Implementa la lógica para mostrar el botón de "Solicitar viaje" para el estudiante
+  }
+
+  showStartTripButton() {
+    // Implementa la lógica para mostrar el botón de "Iniciar viaje" para el socio conductor
+  }
+
+  enableGoogleMapsDirectionInput() {
+    // Implementa la lógica para habilitar la entrada de direcciones en Google Maps
+  }
   
 }
