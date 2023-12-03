@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { TermsPageRoutingModule } from './terms-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { TermsPage } from './terms.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { TermsPage } from './terms.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TermsPageRoutingModule
+    TermsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TermsPage]
 })

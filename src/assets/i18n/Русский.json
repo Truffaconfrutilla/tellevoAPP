@@ -66,5 +66,32 @@
         "label.changePicture": "Cambiar",
         "label.changePicture2": "foto de perfil",
         "button.submit": "Subir foto"
+    },
+    "menu":{
+        "label.home": "Inicio",
+        "label.profile": "Perfil",
+        "label.settings": "Ajustes",
+        "label.map": "Mapa",
+        "label.student": "Menú Estudiante",
+        "label.partner": "Menú Conductor",
+        "label.admin": "Menú Administrador",
+        "label.startTrip": "Iniciar Viaje",
+        "label.listPartnerTrip": "Histórico de Viajes",
+        "label.askTrip": "Pedir Viaje",
+        "label.listStudentTrip": "Ver mis Viajes",
+        "label.adminSettings": "Opciones Administrador",
+        "label.changePassword": "Cambiar mi contraseña",
+        "label.changePicture": "Cambiar mi foto",
+        "label.logout": "Logout"
+    },
+    "terms": {
+        "title": "Términos y Condiciones",
+        "text": "Эти условия были составлены измученным студентом, который, благодаря кофе и отчаянию, смог выразить некоторые слова в этом пространстве. Пожалуйста, обратите внимание на следующее:<br><br>► Это студенческий проект. Так что да, напоминаем вам, что все это скорее для обучения, хотя мы стараемся казаться профессиональными.<br><br>► Тот, кто разработал это приложение, пролил кровь (и кофе) в процессе создания. Так что да, это считается частью затрат на этот продукт.<br><br>► Мы, авторы, не несем ответственности, если вы смеетесь, плачете или чувствуете себя смущенно, читая эти условия. Вы решили их прочитать, так что столкнитесь с последствиями!<br><br>► Если по какой-то причине вы ожидали найти здесь серьезный и формальный раздел, предлагаем вам пересмотреть свои ожидания. Здесь царит сарказм и ирония; готовьтесь к незабываемому путешествию по легендарному разделу Условия и положения!<br><br>► Помните, никто все равно не читает эти условия, так что если вы дочитали до сюда, поздравляем! Вы часть небольшой, избранной группы.<br><br><br>Команда разработчиков: <br><br>► Росио \"Туподивеона\" Сануэса<br><br>Команда Хаоса и мурчания: <br><br>► Макитара [кот1]<br><br>► Джессика [кот2]<br><br>► Люсия Фернанда [кот3]<br><br>Специальное участие от команды профессионального управления стрессом: <br><br>► Диланперро [ОсобыйПес]<br><br><br><br>Ты правда всё это прочитал? ╰(▔∀▔)╯",
+        "reject.title": "¡Quiet@ ahí!",
+        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
+        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Accept",
+        "button.accept": "Aceptar",
+        "button.reject": "Rechazar"
     }
 }

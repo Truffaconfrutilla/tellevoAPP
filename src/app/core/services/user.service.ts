@@ -110,6 +110,7 @@ async logout() {
     try {
         const auth = getAuth();
         auth.signOut();
+        this.router.navigate(['login']);
         this.messageToast("Sesión cerrada (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ");
     } catch(error) {
         console.error("Error al cerrar sesión: ", error);
