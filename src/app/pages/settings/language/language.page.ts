@@ -25,6 +25,7 @@ export class LanguagePage implements OnInit {
 
   changeLang(event:any) {
     this.translateService.use(event.detail.value);
+    localStorage.setItem('languaje',event.detail.value)
   }
 
 }

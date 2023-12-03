@@ -9,45 +9,45 @@
       </ion-header>
       <ion-content >
       <ion-list>
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" >
-            <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
-            <ion-label>{{ p.title }}</ion-label>
+        <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[page.url]" lines="none" detail="false" routerLinkActive="selected" >
+            <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="page.icon " [md]="page.icon" class="iconmenu"></ion-icon>
+            <ion-label>{{ page.title | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
 
       <div *ngIf="showPartnerMenu">
-        Menu conductores
+        {{ "menu.label.partner" | translate }}
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let partnerMenu of partnerMenu">
             <ion-item routerDirection="root" [routerLink]="[partnerMenu.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="partnerMenu.icon" [md]="partnerMenu.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ partnerMenu.title }}</ion-label>
+              <ion-label>{{ partnerMenu.title | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
       </div>
 
       <div *ngIf="showNoPartnerMenu">
-        Menu estudiantes
+        {{ "menu.label.student" | translate }}
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let noPartnerMenu of partnerMenu">
             <ion-item routerDirection="root" [routerLink]="[noPartnerMenu.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="noPartnerMenu.icon" [md]="noPartnerMenu.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ noPartnerMenu.title }}</ion-label>
+              <ion-label>{{ noPartnerMenu.title | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>      
       </div>
 
       <div *ngIf="showAdminMenu">
-        Menu administrador
+        {{ "menu.label.admin" | translate }}
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let adminMenu of adminMenu">
             <ion-item routerDirection="root" [routerLink]="[adminMenu.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="adminMenu.icon" [md]="adminMenu.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ adminMenu.title }}</ion-label>
+              <ion-label>{{ adminMenu.title | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>      
@@ -55,10 +55,10 @@
 
       <div>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of logoutMenu; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" (click)="p.title === 'Cerrar Sesión' ? logout() : null">
-              <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="p.icon " [md]="p.icon" class="iconmenu"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected" (click)="logout()">
+              <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" class="iconmenu"></ion-icon>
+              <ion-label>{{ "menu.label.logout" | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
@@ -71,7 +71,7 @@
     <ion-menu side="end" menuId="menuSettings" contentId="main"  *ngIf="showMenu() && showSettingsMenu" >
       <ion-header>
         <ion-toolbar color="azulduoc">
-          <ion-title color="amarilloduoc">Ajustes</ion-title>
+          <ion-title color="amarilloduoc">{{ "menu.label.settings" | translate }}</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -79,7 +79,7 @@
         <ion-menu-toggle auto-hide="false" *ngFor="let s of profileSettings; let i = index">
           <ion-item routerDirection="root" [routerLink]="[s.url]" lines="none" detail="false" routerLinkActive="selected" >
             <ion-icon color="amarilloduoc"  aria-hidden="true" slot="start" [ios]="s.icon " [md]="s.icon" class="iconmenu"></ion-icon>
-            <ion-label>{{ s.title }}</ion-label>
+            <ion-label>{{ s.title | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>    

@@ -14,34 +14,34 @@ import Swal from 'sweetalert2';
 
 export class AppComponent implements OnInit{
 
-  public appPages = [
-    { title: 'Inicio', url: '/home', icon: 'home'},
-    { title: 'Perfil', url: '/profile', icon: 'person' },
-    { title: 'Ajustes', url: '/settings', icon: 'build' },
-    { title: 'mapa', url: '/google-maps', icon: 'build' },
+  public appPages: Array<{ title: string; url: string; icon: string}> = [
+    { title: 'menu.label.home', url: '/home', icon: 'home'},
+    { title: 'menu.label.profile', url: '/profile', icon: 'person' },
+    { title: 'menu.label.settings', url: '/settings', icon: 'build' },
+    { title: 'menu.label.map', url: '/google-maps', icon: 'build' },
   ];
 
   public partnerMenu: Array<{ title: string; url: string; icon: string}> = [
-    { title: 'Iniciar Viaje', url: '', icon: 'speedometer'},
-    { title: 'Registro Viajes', url: '', icon: 'reader'},
+    { title: 'menu.label.startTrip', url: '', icon: 'speedometer'},
+    { title: 'menu.label.listPartnerTrip', url: '', icon: 'reader'},
   ];
 
   public noPartnerMenu: Array<{ title: string; url: string; icon: string }> = [
-    { title: 'Pedir Viaje', url: '', icon: 'location'},
-    { title: 'Ver mis viajes', url: '', icon: 'document-text'},
+    { title: 'menu.label.askTrip', url: '', icon: 'location'},
+    { title: 'menu.label.listStudentTrip', url: '', icon: 'document-text'},
   ];
   
-  public adminMenu = [    
-    { title: 'Opciones Administrador', url: '/admin-page', icon: 'terminal' },        
+  public adminMenu: Array<{ title: string; url: string; icon: string}> = [  
+    { title: 'menu.label.adminSettings', url: '/admin-page', icon: 'terminal' },        
   ];
 
-  public profileSettings = [    
-    { title: 'Cambiar mi contraseña', url: '/change-password', icon: 'key' },
-    { title: 'Cambiar mi foto', url: '/change-profile-pic', icon: 'image' },
+  public profileSettings: Array<{ title: string; url: string; icon: string}> = [
+    { title: 'menu.label.changePassword', url: '/change-password', icon: 'key' },
+    { title: 'menu.label.changePicture', url: '/change-profile-pic', icon: 'image' },
   ];
 
-  public logoutMenu = [    
-    { title: 'Cerrar Sesión', url: '/login',  icon: 'log-out'},
+  public logoutMenu: Array<{ title: string; url: string; icon: string}> = [ 
+    { title: 'menu.label.logout', url: '',  icon: 'log-out'},
   ];
 
   public showSettingsMenu = false;
@@ -62,23 +62,12 @@ export class AppComponent implements OnInit{
 
   async ngOnInit(){
     const termsAccepted = localStorage.getItem('termsAccepted');
+    this.translateService.use(localStorage.getItem('languaje'))
     
     if (termsAccepted === 'true') {
-      this.router.navigate(['/terms']); 
     } else {
-      this.showTermsAlert();
+      this.router.navigate(['/terms']); 
     }
-  }
-  
-  showTermsAlert() {
-    Swal.fire({
-      title: '¡Quiet@ ahí!',
-      text: 'Debes aceptar los términos y condiciones para continuar.',
-      footer: 'Esta escrito en la constitución 	┐(￣∀￣)┌',
-      icon: 'warning',
-      confirmButtonText: 'Aceptar',
-      heightAuto: false
-    });
   }
 
   showMenu() {

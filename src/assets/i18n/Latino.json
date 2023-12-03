@@ -58,7 +58,6 @@
         "label.header2": "mi Contraseña",
         "label.email": "Ingresa el Email de tu cuenta",
         "label.requiredEmail": "La contraseña es requerida"
-        
     },
     "settingsLanguage": {
         "label.header":"Selecciona un idioma"
@@ -67,5 +66,32 @@
         "label.changePicture": "Cambiar",
         "label.changePicture2": "foto de perfil",
         "button.submit": "Subir foto"
+    },
+    "menu":{
+        "label.home": "Inicio",
+        "label.profile": "Perfil",
+        "label.settings": "Ajustes",
+        "label.map": "Mapa",
+        "label.student": "Menú Estudiante",
+        "label.partner": "Menú Conductor",
+        "label.admin": "Menú Administrador",
+        "label.startTrip": "Iniciar Viaje",
+        "label.listPartnerTrip": "Histórico de Viajes",
+        "label.askTrip": "Pedir Viaje",
+        "label.listStudentTrip": "Ver mis Viajes",
+        "label.adminSettings": "Opciones Administrador",
+        "label.changePassword": "Cambiar mi contraseña",
+        "label.changePicture": "Cambiar mi foto",
+        "label.logout": "Cerrar Sesión"
+    },
+    "terms": {
+        "title": "Términos y Condiciones",
+        "text": "Estos términos y condiciones han sido redactados por una estudiante desvelada, que a base de café y desesperación logró plasmar algunas palabras en este espacio. Por favor, ten en cuenta lo siguiente:<br><br>► Este es un proyecto de propósitos estudiantiles. Así que, sí, te recordamos que todo esto es más bien para aprender, aunque nos esforzamos por parecer profesionales.<br><br>► Quien desarrolló esta aplicación lloró sangre (y café) durante el proceso de creación. Así que, sí, eso cuenta como parte de los costos de este producto.<br><br>► Nosotros, los autores, no nos hacemos responsables si te ríes, lloras o te sientes desconcertado al leer estos términos. Tú decidiste leerlos, ¡así que afronta las consecuencias!<br><br>► Si por alguna razón llegaste hasta aquí esperando encontrar una sección seria y formal, te invitamos a reconsiderar tus expectativas. Aquí reina el sarcasmo y la ironía, ¡prepárate para un paseo inolvidable por la legendaria sección de Términos y Condiciones!<br><br>► Recuerda, nunca nadie lee estos términos de todos modos, así que si llegaste hasta aquí, ¡felicidades! Eres parte de un pequeño grupo selecto.<br><br><br>Equipo de desarrollo: <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Equipo de Caos y ronroneos: <br><br>► Makitara [gata1]<br><br>► Jessiecat [gata2]<br><br>► Lucia Fernanda [gata3]<br><br>Participación especial equipo de manejo profecional del estres: <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>¿Enserio leíste todo esto? ╰(▔∀▔)╯",
+        "reject.title": "¡Quiet@ ahí!",
+        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
+        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Aceptar",
+        "button.accept": "Aceptar",
+        "button.reject": "Rechazar"
     }
 }

@@ -1,45 +1,17 @@
 <ion-header>
   <ion-toolbar color="azulduoc">
-    <ion-title color="amarilloduoc" style="margin-left: 15%;">Términos y Condiciones</ion-title>
+    <ion-title color="amarilloduoc" style="margin-left: 15%;">{{ "terms.title" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-text>
-      Estos términos y condiciones han sido redactados por una estudiante desvelada, que a base de café y desesperación logró plasmar algunas palabras en este espacio.
-      <br><br>
-
-Por favor, ten en cuenta lo siguiente:
-<br><br>
-
-► Este es un proyecto de propósitos estudiantiles. Así que, sí, te recordamos que todo esto es más bien para aprender, aunque nos esforzamos por parecer profesionales.
-<br><br>
-► Quien desarrolló esta aplicación lloró sangre (y café) durante el proceso de creación. Así que, sí, eso cuenta como parte de los costos de este producto.
-<br><br>
-► Nosotros, los autores, no nos hacemos responsables si te ríes, lloras o te sientes desconcertado al leer estos términos. Tú decidiste leerlos, ¡así que afronta las consecuencias!
-<br><br>
-► Si por alguna razón llegaste hasta aquí esperando encontrar una sección seria y formal, te invitamos a reconsiderar tus expectativas. Aquí reina el sarcasmo y la ironía, ¡prepárate para un paseo inolvidable por la legendaria sección de Términos y Condiciones!
-<br><br>
-► Recuerda, nunca nadie lee estos términos de todos modos, así que si llegaste hasta aquí, ¡felicidades! Eres parte de un pequeño grupo selecto.
-<br><br><br>
-Equipo de desarrollo: <br><br>
-► Rocío "Tupodiweona" Sanhueza
-<br><br>
-Equipo de Caos y ronroneos: <br><br>
-► Makitara [gata1]
-<br><br>
-► Jessiecat [gata2]
-<br><br>
-► Lucia Fernanda [gata3]
-<br><br>
-Participación especial equipo de manejo profecional del estres: <br><br>
-► Dylanperro [SpecialDoggo]
-<br><br><br>
-¿Enserio leiste todo esto? ╰(▔∀▔)╯
-    </ion-text>
-  </ion-card>
-
-  <ion-button expand="full" (click)="acceptTerms()" color="success">Aceptar</ion-button>
-  <ion-button expand="full" (click)="dismiss()" color="danger">Cancelar</ion-button>
+<ion-content class="ion-padding" >
+  <ion-item>
+    <ion-note> {{"Lenguaje" | translate}} </ion-note>
+    <ion-select cancelText="Cancel" [(ngModel)]="language" placeholder="{{ 'Seleccione un idioma' | translate }}" (ionChange)="changeLang($event)">
+      <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <p [innerHTML]="'terms.text' | translate">{{ "terms.text" | translate }}</p>
+  <ion-button expand="full" (click)="acceptTerms()" color="success">{{ "terms.button.accept" | translate }}</ion-button>
+  <ion-button expand="full" (click)="dismiss()" color="danger">{{ "terms.button.reject" | translate }}</ion-button>
 </ion-content>

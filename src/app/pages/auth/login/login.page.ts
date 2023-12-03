@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
 
   changeLang(event:any) {
     this.translateService.use(event.detail.value);
+    localStorage.setItem('languaje',event.detail.value)
   }
 
   customEmailValidator(control: AbstractControl): { [key: string]: boolean } | null {

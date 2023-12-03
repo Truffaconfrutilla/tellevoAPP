@@ -66,5 +66,32 @@
         "label.changePicture": "Cambiar",
         "label.changePicture2": "foto de perfil",
         "button.submit": "Subir foto"
+    },
+    "menu":{
+        "label.home": "Inicio",
+        "label.profile": "Perfil",
+        "label.settings": "Ajustes",
+        "label.map": "Mapa",
+        "label.student": "Menú Estudiante",
+        "label.partner": "Menú Conductor",
+        "label.admin": "Menú Administrador",
+        "label.startTrip": "Iniciar Viaje",
+        "label.listPartnerTrip": "Histórico de Viajes",
+        "label.askTrip": "Pedir Viaje",
+        "label.listStudentTrip": "Ver mis Viajes",
+        "label.adminSettings": "Opciones Administrador",
+        "label.changePassword": "Cambiar mi contraseña",
+        "label.changePicture": "Cambiar mi foto",
+        "label.logout": "Logout"
+    },
+    "terms": {
+        "title": "Términos y Condiciones",
+        "text": "Ces termes et conditions ont été rédigés par une étudiante épuisée qui, à force de café et de désespoir, a réussi à exprimer quelques mots dans cet espace. Veuillez prendre note des éléments suivants :<br><br>► Il s'agit d'un projet orienté étudiant. Donc, oui, nous vous rappelons que tout cela vise davantage l'apprentissage, même si nous nous efforçons de paraître professionnels.<br><br>► La personne qui a développé cette application a versé du sang (et du café) au cours du processus de création. Donc, oui, cela compte comme faisant partie des coûts de ce produit.<br><br>► Nous, les auteurs, ne sommes pas responsables si vous riez, pleurez ou vous sentez perplexe en lisant ces termes. Vous avez décidé de les lire, alors assumez les conséquences !<br><br>► Si, pour une raison quelconque, vous êtes arrivé ici en vous attendant à trouver une section sérieuse et formelle, nous vous invitons à reconsidérer vos attentes. Ici, le sarcasme et l'ironie règnent ; préparez-vous à un voyage inoubliable à travers la légendaire section des Termes et Conditions !<br><br>► Rappelez-vous, personne ne lit jamais vraiment ces termes de toute façon, donc si vous êtes arrivé jusqu'ici, félicitations ! Vous faites partie d'un petit groupe sélect.<br><br><br>Équipe de développement : <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Équipe du Chaos et des Ronronnements : <br><br>► Makitara [chat1]<br><br>► Jessiecat [chat2]<br><br>► Lucia Fernanda [chat3]<br><br>Participation spéciale de l'équipe de gestion professionnelle du stress : <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>As-tu vraiment lu tout cela? ╰(▔∀▔)╯",
+        "reject.title": "¡Quiet@ ahí!",
+        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
+        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Wi",
+        "button.accept": "Aceptar",
+        "button.reject": "Rechazar"
     }
 }

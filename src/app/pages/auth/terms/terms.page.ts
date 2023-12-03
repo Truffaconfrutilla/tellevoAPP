@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-terms',
@@ -12,23 +12,37 @@ import Swal from 'sweetalert2';
 
 export class TermsPage {
   termsAccepted = false;
-
-  constructor(private router: Router) {}
+  langs: string[] = [];
+  language!: string;
+  
+  constructor(
+    private router: Router,
+    private translateService: TranslateService,
+    ) {
+      this.langs = this.translateService.getLangs();
+    }
 
   acceptTerms() {
     this.termsAccepted = true;
-  this.router.navigate(['/loading'], { replaceUrl: true });  
+    localStorage.setItem('termsAccepted', "true")
+    this.router.navigate(['/loading'], { replaceUrl: true });  
   }
 
   dismiss() {
+    localStorage.setItem('termsAccepted', "false")
     Swal.fire({
-      title: '¡Quiet@ ahí!',
-      text: 'Debes aceptar los términos y condiciones para continuar.',
-      footer: 'Esta escrito en la constitución ┐(￣∀￣)┌',
+      title: this.translateService.instant("terms.reject.title"),
+      text: this.translateService.instant("terms.reject.text"),
+      footer: this.translateService.instant("terms.reject.footer"),
       icon: 'warning',
-      confirmButtonText: 'Aceptar',
+      confirmButtonText: this.translateService.instant("terms.reject.confirmButtonText"),
       heightAuto: false
     });
+  }
+
+  changeLang(event:any) {
+    this.translateService.use(event.detail.value);
+    localStorage.setItem('languaje',event.detail.value)
   }
 }
 

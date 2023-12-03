@@ -66,5 +66,32 @@
         "label.changePicture": "Cambiar",
         "label.changePicture2": "foto de perfil",
         "button.submit": "Subir foto"
+    },
+    "menu":{
+        "label.home": "Inicio",
+        "label.profile": "Perfil",
+        "label.settings": "Ajustes",
+        "label.map": "Mapa",
+        "label.student": "Menú Estudiante",
+        "label.partner": "Menú Conductor",
+        "label.admin": "Menú Administrador",
+        "label.startTrip": "Iniciar Viaje",
+        "label.listPartnerTrip": "Histórico de Viajes",
+        "label.askTrip": "Pedir Viaje",
+        "label.listStudentTrip": "Ver mis Viajes",
+        "label.adminSettings": "Opciones Administrador",
+        "label.changePassword": "Cambiar mi contraseña",
+        "label.changePicture": "Cambiar mi foto",
+        "label.logout": "Logout"
+    },
+    "terms": {
+        "title": "Terms and Conditions",
+        "text": "These terms and conditions have been drafted by a sleep-deprived student, who, through coffee and desperation, managed to put some words together in this space. Please, take note of the following:<br><br>► This is a student-oriented project. So, yes, we remind you that all of this is more for learning, although we strive to appear professional.<br><br>► The person who developed this application shed blood (and coffee) during the creation process. So, yes, that counts as part of the costs of this product.<br><br>► We, the authors, do not take responsibility if you laugh, cry, or feel puzzled while reading these terms. You decided to read them, so face the consequences!<br><br>► If for any reason you came here expecting to find a serious and formal section, we invite you to reconsider your expectations. Sarcasm and irony reign here; get ready for an unforgettable journey through the legendary Terms and Conditions section!<br><br>► Remember, no one ever reads these terms anyway, so if you made it this far, congratulations! You are part of a small, select group.<br><br><br>Development Team: <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Chaos and Purring Team: <br><br>► Makitara [cat1]<br><br>► Jessiecat [cat2]<br><br>► Lucia Fernanda [cat3]<br><br>Special Participation from the Stress Management Team: <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>Did you really read all of this? ╰(▔∀▔)╯",
+        "reject.title": "¡Quiet@ ahí!",
+        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
+        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Accept",
+        "button.accept": "Accept",
+        "button.reject": "Reject"
     }
 }
