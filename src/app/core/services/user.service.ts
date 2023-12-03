@@ -286,18 +286,18 @@ async listAllUsers(){
     const users: User[] = [];
 
     try {
-      const usersCollection = collection(this.firestoreDB, 'user');
-      const usersSnapshot = await getDocs(usersCollection);
-
-      usersSnapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
+        const usersCollection = collection(this.firestoreDB, 'user');
+        const usersSnapshot = await getDocs(usersCollection);
+    
+        usersSnapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
         const userData = doc.data() as User;
         users.push(userData);
-      });
-
-      return users;
+        });
+    
+    return users;
     } catch (error) {
-      console.error('Error getting documents: ', error);
-      return users;
+        console.error('Error getting documents: ', error);
+        return users;
     }
 }
 }

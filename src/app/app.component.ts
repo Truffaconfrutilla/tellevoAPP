@@ -60,7 +60,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  async ngOnInit(){
+  ngOnInit(){
     const termsAccepted = localStorage.getItem('termsAccepted');
     this.translateService.use(localStorage.getItem('languaje'))
     
