@@ -11,8 +11,8 @@ export class MapComponent  implements OnInit {
 
   @ViewChild('map',{static:true}) mapElementRef: ElementRef;
   googleMaps: any;
-  source: any = {lat: 28.651798, lng: 77.183022};
-  dest: any = {lat: 28.5167287, lng: 77.3187642};
+  source: any = {lat: -33.56808, lng: -70.55470};
+  dest: any = {lat: -33.59829, lng: -70.57841};
   map: any;
   directionsService: any;
   directionsDisplay: any;
