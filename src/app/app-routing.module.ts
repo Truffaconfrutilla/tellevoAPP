@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'terms',
@@ -50,7 +50,8 @@ const routes: Routes = [
   {
     path: 'language',
     loadChildren: () => import('./pages/settings/language/language.module').then( m => m.LanguagePageModule)
-  },  {
+  },
+  {
     path: 'google-maps',
     loadChildren: () => import('./pages/google-maps/google-maps.module').then( m => m.GoogleMapsPageModule)
   },

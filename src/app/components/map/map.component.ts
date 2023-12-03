@@ -1,5 +1,7 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GmapService } from 'src/app/core/services/gmap.service';
+import { TrackService } from 'src/app/core/services/track.service';
 
 @Component({
   selector: 'app-maps',
@@ -7,28 +9,45 @@ import { GmapService } from 'src/app/core/services/gmap.service';
   styleUrls: ['./map.component.scss'],
   standalone : true, 
 })
-export class MapComponent  implements OnInit {
+export class MapComponent  implements OnInit, OnDestroy {
 
   @ViewChild('map',{static:true}) mapElementRef: ElementRef;
   googleMaps: any;
-  source: any = {lat: -33.56808, lng: -70.55470};
-  dest: any = {lat: -33.59829, lng: -70.57841};
+  source: any = {};
+  dest: any = {};
   map: any;
   directionsService: any;
   directionsDisplay: any;
   source_marker: any;
   destination_marker: any;
+  trackSub: Subscription;
 
   constructor(
     private maps: GmapService,
     private renderer: Renderer2,
+    private track: TrackService,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.trackSub = this.track.getLocation().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.source = data?.source;
+        if(!this.dest?.lat) {
+          this.dest = data?.destination;
+          this.loadMap();
+        } else {
+          // update marker & route
+          this.changeMarkerPosition(this.source);
+        }
 
-  ngAfterViewInit() {
-    this.loadMap();
+      }
+    });
   }
+
+//  ngAfterViewInit() {
+//    this.loadMap();
+//  }
 
   
   async loadMap() {
@@ -120,4 +139,20 @@ export class MapComponent  implements OnInit {
       }
     });
   }
+
+
+  changeMarkerPosition(data) {
+    const newPosition = { lat: data?.lat, lng: data?.lng }; // Set the new marker position coordinates
+    this.source_marker.setPosition(newPosition);
+    this.map.panTo(newPosition); // Pan the map to the new marker position
+    //this.drawRoute();
+  }
+
+
+  ngOnDestroy(): void {
+    if(this.trackSub) this.trackSub.unsubscribe();
+}
+
+
+
 }

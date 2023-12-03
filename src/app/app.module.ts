@@ -10,6 +10,8 @@ import { firebaseConfig } from './config/firebase.config';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 
@@ -29,6 +31,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         deps: [HttpClient]
       }
     }),
+    provideFirebaseApp(() => initializeApp({"projectId":"tellevoapp-671ae","appId":"1:967121726020:web:5d08bc66db5c999576ea11","databaseURL":"https://tellevoapp-671ae-default-rtdb.firebaseio.com","storageBucket":"tellevoapp-671ae.appspot.com","apiKey":"AIzaSyC1I428ES7kmHV7PuxBxMf4KY7JlgHguvo","authDomain":"tellevoapp-671ae.firebaseapp.com","messagingSenderId":"967121726020","measurementId":"G-EP7VG1BXEJ"})),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
