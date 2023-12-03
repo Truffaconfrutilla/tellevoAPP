@@ -78,16 +78,7 @@ export const routes: Routes = [
   {
     path: 'admin-page',
     loadChildren: () => import('./pages/api/admin-page/admin-page.module').then( m => m.AdminPagePageModule)
-  },  {
-    path: 'estudentgeomap',
-    loadChildren: () => import('./pages/maps/estudentgeomap/estudentgeomap.module').then( m => m.EstudentgeomapPageModule)
   },
-
-
-  
-  
-
-
 
 ];
 
