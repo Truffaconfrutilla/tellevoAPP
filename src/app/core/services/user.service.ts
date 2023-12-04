@@ -112,10 +112,17 @@ async messageToast(screenMessage: string) {
 async login(email: string, password: string) {    
     const auth = getAuth();
     auth.signOut();
+    const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+        const querySnapshot = await getDocs(q);
+        const id = querySnapshot.docs[0].id;
+        const ref = doc(this.firestoreDB, "user", id)
     signInWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
         const user = userCredential.user;
         if (user) {
+            await updateDoc(ref, {
+                password: password
+            })
             const userData = await this.getUserData();
             localStorage.setItem('name', userData.name);
             localStorage.setItem('location', userData.location);
