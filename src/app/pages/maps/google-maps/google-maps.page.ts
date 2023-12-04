@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, ViewChild } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { MapComponent } from 'src/app/components/map/map.component';
 
@@ -11,9 +11,20 @@ import { MapComponent } from 'src/app/components/map/map.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GoogleMapsPage {
-
+  @ViewChild('mapComponent') mapComponent: MapComponent;
   
   constructor() { }
   
+  getUserLocation() {
+    if (this.mapComponent) {
+      this.mapComponent.getUserLocation();
+    }
+  }
+
+  showRoute() {
+    if (this.mapComponent) {
+      this.mapComponent.drawRoute();
+    }
+  }
 
 }
