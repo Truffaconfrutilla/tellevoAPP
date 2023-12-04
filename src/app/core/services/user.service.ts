@@ -259,6 +259,21 @@ async getUserData(){
     return null
 }
 
+async getUserDetail(email: string){
+    if (email !== null){
+        try {
+        const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+        const querySnapshot = await getDocs(q);
+        const snapshot = querySnapshot.docs[0];
+        const data = <User>snapshot.data();
+        return data
+        } catch (error) {
+            return null
+        }
+    }
+    return null
+}
+
 async getUserName(){
     const user = await this.getUserData()
     if (user){
@@ -413,4 +428,25 @@ async deleteUser(email: string){
         this.router.navigate(['login']);
     }
     }
+
+async updateUser(user: User){
+    try {
+        const q = query(collection(this.firestoreDB, "user"), where("email", "==", user.email));
+        const querySnapshot = await getDocs(q);
+        const id = querySnapshot.docs[0].id;
+        const ref = doc(this.firestoreDB, "user", id)
+        await updateDoc(ref, {
+        name: user.name,
+        location: user.location,
+        partner: user.partner,
+        licence: user.licence,
+        plate: user.plate,
+        administrator: user.administrator,
+    })
+        this.messageToast(`Usuario Actualizado: ${user.email}`);
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
 }

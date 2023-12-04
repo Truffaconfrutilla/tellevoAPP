@@ -1,13 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>update</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">update</ion-title>
+  <ion-header>
+    <ion-toolbar color="azulduoc">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/admin-page"></ion-back-button>
+      </ion-buttons>   
+      <ion-title color="amarilloduoc" style="font-weight: bolder;" >{{ "update.title" | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="detailForm">
+        <ion-item>
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="{{'register.placeholder.email' | translate}}">
+            <div slot="label">{{"register.label.email" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <br>
+        <ion-button class="buttonpad" color="azulduoc"(click)="detailUser()" ><ion-text color="amarilloduoc">{{"detail.button.detail" | translate}}</ion-text></ion-button>
+      </form>
+      <form [formGroup]="updateForm">
+        <ion-item>
+          <ion-input formControlName="name" labelPlacement="floating" placeholder="{{'register.placeholder.name' | translate}}">
+            <div slot="label">{{"register.label.name" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+
+        <ion-list>
+          <ion-item>
+            <ion-select formControlName="location" labelPlacement="floating" placeholder="{{'register.placeholder.location' | translate}}" cancel-text="Cancelar">
+              <div slot="label">{{"add.label.location" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
+              <ion-select-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      
+      <ion-card [disabled]="updateForm.disabled">
+        <ion-item >
+          <ion-radio-group formControlName="partner" [allowEmptySelection]=true>
+            <ion-radio value=false>{{"add.radio.partnerFalse" | translate}}</ion-radio>
+            <ion-radio value=true>{{"add.radio.partnerTrue" | translate}}</ion-radio>
+          </ion-radio-group>
+        </ion-item>
+        
+        <ng-container *ngIf="updateForm.get('partner')?.value === 'true'">
+          <ion-item>
+            <ion-input formControlName="licence" required="false" type="text" color="azulduoc" label="{{'register.label.licence' | translate}}" labelPlacement="floating" placeholder="Ej: https://prnt.sc/9wCZWZEKfYNC"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="plate" required="false" type="text" color="azulduoc" label="{{'register.label.plate' | translate}}" labelPlacement="floating" placeholder="Ej: KVR-041"></ion-input>
+          </ion-item>
+      </ng-container>
+
+      </ion-card>
+
+      <ion-card color="warning" [disabled]="updateForm.disabled">
+        <ion-item color="danger">
+          <ion-radio-group formControlName="admin" [allowEmptySelection]=true>
+            <ion-radio value="false">{{"add.radio.adminFalse" | translate}}</ion-radio>
+            <ion-radio value="true">{{"add.radio.adminTrue" | translate}}</ion-radio>
+          </ion-radio-group>
+        </ion-item>
+      </ion-card>
+
+      <ion-button class="buttonpad" color="azulduoc"(click)="updateUser()" [disabled]="updateForm.disabled"><ion-text color="amarilloduoc">{{"update.button.update" | translate}}</ion-text></ion-button>
+      <ion-button class="buttonpad" color="azulduoc"(click)="cancelUpdate()" [disabled]="updateForm.disabled"><ion-text color="amarilloduoc">{{"update.button.cancel" | translate}}</ion-text></ion-button>
+    </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -8,16 +8,16 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-card>
-  <ion-card-content>
-    <form [formGroup]="deleteForm">
-      <ion-item>
-        <ion-input formControlName="email" labelPlacement="floating" placeholder="{{'register.placeholder.email' | translate}}">
-          <div slot="label">{{"register.label.email" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
-        </ion-input>
-      </ion-item>
-      <ion-button class="buttonpad" color="azulduoc"(click)="deleteUser()" ><ion-text color="amarilloduoc">{{"delete.button.delete" | translate}}</ion-text></ion-button>
-    </form>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="deleteForm">
+        <ion-item>
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="{{'register.placeholder.email' | translate}}">
+            <div slot="label">{{"register.label.email" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <ion-button class="buttonpad" color="azulduoc"(click)="deleteUser()" ><ion-text color="amarilloduoc">{{"delete.button.delete" | translate}}</ion-text></ion-button>
+      </form>
     </ion-card-content>
   </ion-card>
 </ion-content>

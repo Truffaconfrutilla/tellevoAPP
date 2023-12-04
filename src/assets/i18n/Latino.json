@@ -123,5 +123,14 @@
     "delete": {
         "title": "Borrar Usuario",
         "button.delete": "Eliminar"
+    },
+    "detail": {
+        "title": "Detallar Usuario",
+        "button.detail": "Detallar"
+    },
+    "update": {
+        "title": "Actualizar Usuario",
+        "button.update": "Actualizar",
+        "button.cancel": "Cancelar"
     }
 }

@@ -1,13 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detail</ion-title>
+  <ion-header>
+    <ion-toolbar color="azulduoc">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/admin-page"></ion-back-button>
+      </ion-buttons>   
+      <ion-title color="amarilloduoc" style="font-weight: bolder;" >{{ "detail.title" | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="detailForm">
+        <ion-item>
+          <ion-input formControlName="email" labelPlacement="floating" placeholder="{{'register.placeholder.email' | translate}}">
+            <div slot="label">{{"register.label.email" | translate}}<ion-text color="danger"> ({{ "register.label.required" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <ion-button class="buttonpad" color="azulduoc"(click)="detailUser()" ><ion-text color="amarilloduoc">{{"detail.button.detail" | translate}}</ion-text></ion-button>
+      </form>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row class="user-row" *ngIf="user">
+        <ion-col size="10">{{ "list.label.name" | translate }} {{ user.name }}</ion-col>
+        <ion-col size="10">{{ "list.label.email" | translate }} {{ user.email }}</ion-col>
+        <ion-col size="10">{{ "list.label.location" | translate }} {{ user.location }}</ion-col>
+        <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.partnerTrue" | translate }}</ion-col>
+        <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.plate" | translate }} {{ user.plate }}</ion-col>
+        <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.licence" | translate }} {{ user.licence }}</ion-col>
+        <ion-col size="10" *ngIf="user.administrator === true">{{ "list.label.adminTrue" | translate }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
