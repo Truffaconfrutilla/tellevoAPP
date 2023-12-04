@@ -21,6 +21,13 @@ export class ListPage implements OnInit {
   }
 
   async list() {
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    if (email !== "" && password !== ""){
+      this.userService.reLogin(email,password)
+      localStorage.setItem('email', "");
+      localStorage.setItem('password', "");
+    }
     try {
       this.users = await this.userService.listAllUsers();
     } catch (error) {

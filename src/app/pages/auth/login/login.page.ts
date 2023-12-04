@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
 
 login() {     
   if (this.loginForm.get('email')?.value && this.loginForm.get('password')?.value) {
-      this.userService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);         
+      this.userService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);
   }
 }
 

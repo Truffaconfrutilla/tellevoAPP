@@ -70,7 +70,7 @@ export class AppComponent implements OnInit{
     }
   }
 
-  async showMenu() {
+  showMenu() {
     return this.router.url !== '/login' 
     && this.router.url !== '/register'
     && this.router.url !== '/change-password'
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit{
     && this.router.url !== '/terms';
   }
 
-  async toggleSettingsMenu(show: boolean) {
+  toggleSettingsMenu(show: boolean) {
     this.showSettingsMenu = show;
   }
 

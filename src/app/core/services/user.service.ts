@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, where, getDocs, DocumentSnapshot, DocumentData, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, query, where, getDocs, DocumentSnapshot, DocumentData, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { User } from '../models/user.model';
 import { Location } from '../models/location.model';
 import { RandomUserResponse } from '../models/randomUser.model';
@@ -69,31 +69,35 @@ async registerUser(userData: User) {
 }
 
 async addUser(userData: User) {
+    const auth = getAuth();
     const currentUser = await this.getUserData()
-    if (currentUser.administrator === true){
-        const auth = getAuth();
+    if (currentUser.administrator && currentUser.administrator === true){
+        const docRef = collection(this.firestoreDB, "user");
+        const doc = addDoc(docRef, userData);
         await createUserWithEmailAndPassword(auth, userData.email, userData.password)
         .then((userCredential) => {
         const user = userCredential.user;
-        try {
-            const docRef = collection(this.firestoreDB, "user");
-            const doc = addDoc(docRef, userData);
-            this.message.messageToast('success', 'Usuario ' + userData.name + ' agregado correctamente!', 2000, 'bottom');
-            signInWithEmailAndPassword(auth, currentUser.email, currentUser.password)
-            .then(async (userCredential) => {
-                const user = userCredential.user;
-            })
-            this.router.navigate(['/list']);
-            } catch (error) {
-            console.error('Error adding document: ', error);
-            }
+        localStorage.setItem('email', currentUser.email);
+        localStorage.setItem('password', currentUser.password);
+        this.message.messageToast('success', 'Usuario ' + userData.name + ' agregado correctamente!', 2000, 'bottom');
+        this.router.navigate(['/list']);
         })
-        .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        
-        });
+    } else {
+        const auth = getAuth();
+        auth.signOut()
+        this.router.navigate(['login']);
     }
+}
+
+reLogin(email: string, password: string){
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+        const user = userCredential.user;
+    })
+    .catch((error) => {        
+        console.error("Error:", error);
+    });
 }
 
 async messageToast(screenMessage: string) {
@@ -115,6 +119,19 @@ async login(email: string, password: string) {
             const userData = await this.getUserData();
             localStorage.setItem('name', userData.name);
             localStorage.setItem('location', userData.location);
+            const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+            const querySnapshot = await getDocs(q);
+            const id = querySnapshot.docs[0].id;
+            try {
+                const ref = doc(this.firestoreDB, "user", id);
+                await updateDoc(ref, {
+                    password: password
+                })
+                this.messageToast(`Usuario eliminado ${email}`);
+
+            } catch (error) {
+                console.error('Error deleting documents: ', error);
+            }
             this.router.navigate(['home']);
             this.messageToast(`Bienvenido a TellevoAPP, ${localStorage.getItem('name')} ଘ(੭˃ᴗ˂)੭`);
         }
