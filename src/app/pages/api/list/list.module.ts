@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ListPageRoutingModule } from './list-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { ListPage } from './list.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ListPage } from './list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListPageRoutingModule
+    ListPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ListPage]
 })

@@ -16,7 +16,6 @@ import { RegisterPage } from './register.page';
     FormsModule,
     IonicModule,
     RegisterPageRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     TranslateModule
   ],

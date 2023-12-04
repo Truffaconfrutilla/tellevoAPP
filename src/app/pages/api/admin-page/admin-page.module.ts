@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminPagePageRoutingModule } from './admin-page-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { AdminPagePage } from './admin-page.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { AdminPagePage } from './admin-page.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPagePageRoutingModule
+    AdminPagePageRoutingModule,
+    TranslateModule
   ],
   declarations: [AdminPagePage]
 })

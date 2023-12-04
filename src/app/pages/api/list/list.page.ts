@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class ListPage implements OnInit {
 
-  userList!: User[];
+  users: User[];
 
   constructor(
     private router: Router,
@@ -20,8 +20,12 @@ export class ListPage implements OnInit {
   ngOnInit() {
   }
 
-  list() {
-    const users = this.userService.listAllUsers()
+  async list() {
+    try {
+      this.users = await this.userService.listAllUsers();
+    } catch (error) {
+      console.error('Error loading locations: ', error);
+    }
   }
 
   handleRefresh(event: any) {
@@ -35,8 +39,12 @@ export class ListPage implements OnInit {
     this.list()
   }
 
-  addJugador() {
+  addUser() {
     this.router.navigate(['/apiadd']);
+  }
+
+  deleteUser(email: string){
+    this.userService.deleteUser(email)
   }
 
 }
