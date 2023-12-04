@@ -109,7 +109,7 @@
         "radio.adminFalse": "No hacer Administrador",
         "button.add": "Agregar"
     },
-    "list":{
+    "list": {
         "title": "Lista de Usuarios",
         "label.name": "Nombre:",
         "label.email": "Correo:",
@@ -118,6 +118,10 @@
         "label.plate": "Patente:",
         "label.licence": "Licencia:",
         "label.adminTrue": "Administrador: Si",
+        "button.delete": "Eliminar"
+    },
+    "delete": {
+        "title": "Borrar Usuario",
         "button.delete": "Eliminar"
     }
 }
