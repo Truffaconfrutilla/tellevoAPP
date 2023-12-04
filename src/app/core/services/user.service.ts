@@ -119,19 +119,6 @@ async login(email: string, password: string) {
             const userData = await this.getUserData();
             localStorage.setItem('name', userData.name);
             localStorage.setItem('location', userData.location);
-            const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
-            const querySnapshot = await getDocs(q);
-            const id = querySnapshot.docs[0].id;
-            try {
-                const ref = doc(this.firestoreDB, "user", id);
-                await updateDoc(ref, {
-                    password: password
-                })
-                this.messageToast(`Usuario eliminado ${email}`);
-
-            } catch (error) {
-                console.error('Error deleting documents: ', error);
-            }
             this.router.navigate(['home']);
             this.messageToast(`Bienvenido a TellevoAPP, ${localStorage.getItem('name')} ଘ(੭˃ᴗ˂)੭`);
         }
@@ -174,34 +161,48 @@ async logout() {
 
 async changePassword(currentPassword: string, newPassword: string){
     const auth = getAuth();
-    onAuthStateChanged(auth,(user)=> {
-        if (user?.email) {
-            signInWithEmailAndPassword(auth, user.email, currentPassword)
-            .then(async (userCredential) => {
-                const user = userCredential.user;
-                if (user) {
-                    updatePassword(user, newPassword).then(() => {
-                        this.router.navigate(['login']);
-                    }).catch((error) => {
-                        console.error("Error al actualizar contraseña: ", error);
-                    });
-                }
-            })
-            .catch((error) => {        
-                console.error("Usuario o correo inválido", error);{
-                    Swal.fire({
-                        icon: 'question',        
-                        title: 'Oops...',
-                        text: 'Contraseña actúal no es correcta.',
-                        heightAuto: false
-                    });
-                }
-            });
-        }else{
-            this.router.navigate(['login']);
-            console.error("Error al actualizar contraseña: el usuario no está autenticado");
-        }
-    })
+    const user = auth.currentUser
+    if (user?.email){
+        const q = query(collection(this.firestoreDB, "user"), where("email", "==", user.email));
+        const querySnapshot = await getDocs(q);
+        const id = querySnapshot.docs[0].id;
+        const ref = doc(this.firestoreDB, "user", id);
+    
+        signInWithEmailAndPassword(auth, user.email, currentPassword)
+        .then(async (userCredential) => {
+            const user = userCredential.user;
+            if (user) {
+                await updateDoc(ref, {
+                    password: newPassword
+                })
+                updatePassword(user, newPassword)
+                .then(() => {
+                    localStorage.setItem('name', "");
+                    localStorage.setItem('location', "");
+                    const auth = getAuth();
+                    auth.signOut();
+                    this.router.navigate(['login']);
+                })
+                .catch((error) => {
+                    console.error("Error al actualizar contraseña: ", error);
+                });
+            }
+        })
+        .catch((error) => {        
+            console.error("Usuario o correo inválido", error);{
+                Swal.fire({
+                    icon: 'question',        
+                    title: 'Oops...',
+                    text: 'Contraseña actúal no es correcta.',
+                    heightAuto: false
+                });
+            }
+        });
+    
+    } else {
+        this.router.navigate(['login']);
+        console.error("Error al actualizar contraseña: el usuario no está autenticado");
+    }
 }
 
 async resetPassword(email: string) {
