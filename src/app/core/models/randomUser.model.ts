@@ -6,7 +6,7 @@ export interface RandomUser {
     },
     email: string,
     login: {
-        password: "",
+        password: string,
     }
 }
 

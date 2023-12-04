@@ -93,5 +93,23 @@
         "reject.confirmButtonText": "Accept",
         "button.accept": "Accept",
         "button.reject": "Reject"
+    },
+    "add": {
+        "label.location": "Selecciona la Sede",
+        "radio.partnerTrue": "Es Socio conductor",
+        "radio.partnerFalse": "No es Socio conductor",
+        "radio.adminTrue": "Hacer Administrador",
+        "radio.adminFalse": "No hacer Administrador",
+        "button.add": "Add"
+    },
+    "list":{
+        "title": "Lista de Usuarios",
+        "label.name": "Nombre:",
+        "label.email": "Correo:",
+        "label.location": "Sede:",
+        "label.partnerTrue": "Socio Conductor: Si",
+        "label.plate": "Patente:",
+        "label.licence": "Licencia:",
+        "label.adminTrue": "Administrador: Si"
     }
 }

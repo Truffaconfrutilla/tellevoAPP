@@ -67,7 +67,7 @@ export class RegisterPage implements OnInit {
   async register() {
     if (this.validateData()){
       var partner = false
-      if (this.registerForm.get('partner')?.value){
+      if (this.registerForm.get('partner')?.value === "true"){
         partner = true
       }
       const user: User = {
@@ -78,8 +78,9 @@ export class RegisterPage implements OnInit {
         location: this.registerForm.get('location')?.value,
         partner: partner,
         plate: this.registerForm.get('plate')?.value,
+        password: this.registerForm.get('password')?.value,
       }
-      this.userService.registerUser(user, this.registerForm.get('password')?.value,)
+      this.userService.registerUser(user)
     }
   }
 

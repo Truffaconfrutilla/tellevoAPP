@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>list</ion-title>
+    <ion-title>{{ "list.title" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,11 +9,18 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list>
-    <ion-item *ngFor="let aux of userList" [routerLink]="['/detail/', aux.id]">
-      {{ aux.name }}
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row *ngFor="let user of users" class="user-row">
+      <ion-col size="10">{{ "list.label.name" | translate }} {{ user.name }}</ion-col>
+      <ion-col size="10">{{ "list.label.email" | translate }} {{ user.email }}</ion-col>
+      <ion-col size="10">{{ "list.label.location" | translate }} {{ user.location }}</ion-col>
+      <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.partnerTrue" | translate }}</ion-col>
+      <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.plate" | translate }} {{ user.plate }}</ion-col>
+      <ion-col size="10" *ngIf="user.partner === true">{{ "list.label.licence" | translate }} {{ user.licence }}</ion-col>
+      <ion-col size="10" *ngIf="user.administrator === true">{{ "list.label.adminTrue" | translate }}</ion-col>
+      <ion-col size="10"><ion-button class="buttonpad" color="azulduoc"(click)="deleteUser(user.email)" ><ion-text color="amarilloduoc">{{"list.button.delete" | translate}}</ion-text></ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
-import { FirecrudService } from 'src/app/core/services/firecrud.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { LocationService } from '../../../core/services/location.service'
 import { Location } from '../../../core/models/location.model'
-import { MessageService } from 'src/app/core/services/message.service';
 import { AlertController } from '@ionic/angular';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add',
@@ -14,24 +15,28 @@ import { AlertController } from '@ionic/angular';
 })
 export class AddPage implements OnInit {
   locations: Location[] = [];
-
-  user: User = {
-    name: '',
-    email: '',
-    location: '',
-    partner: false,
-    plate: '',
-    licence: '',
-    administrator: false
-  }
+  registerForm: FormGroup;
+  langs: string[] = [];
 
   constructor(
-    private router: Router,
-    private fireservices: FirecrudService,
-    private message: MessageService,
+    private userService: UserService,
     private locationService: LocationService,
-    private alertController: AlertController
-  ) { }
+    private alertController: AlertController,
+    private formBuilder: FormBuilder,
+    private translateService: TranslateService,
+  ) {
+    this.registerForm = this.formBuilder.group({
+      name: ['',[Validators.required]],
+      email: ['',[Validators.required, Validators.email]],
+      location: ['',[Validators.required]],
+      partner: ['false'],
+      plate: [''],
+      licence: [''],
+      admin: ['false'],
+    }
+    );
+    this.langs = this.translateService.getLangs();
+  }
 
   ngOnInit() {
     this.loadLocations();
@@ -45,21 +50,50 @@ export class AddPage implements OnInit {
     }
   }
 
+  validateData(){    
+      if (this.registerForm.invalid) {
+        Swal.fire({
+          icon: 'warning',
+          iconColor: 'red',
+          title: 'Oops...',
+          text: 'Debes llenar todos los datos!',
+          heightAuto: false,
+        });
+        return false; // Detener el registro si el formulario es inválido.
+      }
+      return true
+  }
+
   async addUser() {
-    const { name, email, location, partner, licence, plate, administrator } = this.user;
-    if (!name || !email || !location || (partner && (!licence || !plate))) {
-      this.presentMissingFieldsAlert();
-      return; 
+    if (this.validateData()){
+      var partner = false
+      var administrator = false
+      if (this.registerForm.get('partner')?.value === "true"){
+        partner = true
+      }
+      if (this.registerForm.get('admin')?.value === "true"){
+        administrator = true
+      }
+      const user: User = {
+        name: this.registerForm.get('name')?.value,
+        email: this.registerForm.get('email')?.value,
+        administrator: administrator,
+        licence: this.registerForm.get('licence')?.value,
+        location: this.registerForm.get('location')?.value,
+        partner: partner,
+        plate: this.registerForm.get('plate')?.value,
+        password: "Hola123",
+      }
+      if (user.administrator === true) {
+        await this.confirmAdministrator(user);
+      } else {
+        await this.userService.addUser(user);
+      }
     }
-    if (!this.user.administrator) {
-      await this.createUserAndNavigate();
-      return;
-    }
-    await this.confirmAdministrator();
+    
   }
   
-  
-  async confirmAdministrator() {
+  async confirmAdministrator(user: User) {
     const alert = await this.alertController.create({
       header: 'Confirmar acción',
       message: '¿Está seguro de hacer a este usuario administrador?',
@@ -68,38 +102,25 @@ export class AddPage implements OnInit {
           text: 'No',
           role: 'cancel',
           handler: () => {
-            this.user.administrator = false;
-            this.createUserAndNavigate(); 
+            Swal.fire({
+              icon: 'warning',
+              iconColor: 'red',
+              title: 'Oops...',
+              text: 'El usuario no se ha registrado!',
+              heightAuto: false,
+            });
           }
         },
         {
           text: 'Sí',
           handler: () => {
-            this.user.administrator = true;
-            this.createUserAndNavigate(); 
+            user.administrator = true;
+            this.userService.addUser(user); 
           }
         }
       ]
     });
   
     await alert.present();
-  }
-  
-  
-  async createUserAndNavigate() {
-    await this.fireservices.createUser('pruebacrudadmin', this.user);
-    this.message.messageToast('success', 'Usuario ' + this.user.name + ' agregado correctamente!', 2000, 'bottom');
-    this.router.navigate(['/list']);
-  }
-  
-  async presentMissingFieldsAlert() {
-    const alert = await this.alertController.create({
-      header: 'Campos faltantes',
-      message: 'Se deben llenar todos los campos.',
-      buttons: ['OK']
-    });
-  
-    await alert.present();
-  }
-  
+  }  
 }

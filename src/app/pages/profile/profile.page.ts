@@ -18,7 +18,6 @@ export class ProfilePage implements OnInit {
   langs: string[] = [];
   
   constructor(
-    private userService: UserService,
     private menuCtrl: MenuController,
     private appComponent: AppComponent,
     private translateService: TranslateService,
@@ -26,20 +25,14 @@ export class ProfilePage implements OnInit {
     this.langs = this.translateService.getLangs();
   }
 
-  async ngOnInit() {
-    await this.getUserData();
+   ngOnInit() {
+    this.getUserData();
   }
 
 
-  async getUserData() {
-    const user = await this.userService.getUserData();
-    if (user) {
-      this.userName = user.name || "";
-      this.userLocation = user.location || "";
-      this.isPartner = user.partner || null;
-      this.userPlate = user.plate || "";
-      this.userLicence = user.licence || "";
-    }
+  getUserData() {
+      this.userName = localStorage.getItem('name');
+      this.userLocation = localStorage.getItem('location');
   }
   
   openSettingsMenu() {
