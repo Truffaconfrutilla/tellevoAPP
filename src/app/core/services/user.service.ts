@@ -369,35 +369,44 @@ async deleteUser(email: string){
     const auth = getAuth();
     const currentUser = await this.getUserData()
     if (currentUser.administrator && currentUser.administrator === true){
-    const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
-    const querySnapshot = await getDocs(q);
-    const snapshot = querySnapshot.docs[0];
-    const data = <User>snapshot.data();
-    const id = querySnapshot.docs[0].id;
-    try {
-        await deleteDoc(doc(this.firestoreDB, "user", id));
-        this.messageToast(`Usuario eliminado ${email}`);
+        const q = query(collection(this.firestoreDB, "user"), where("email", "==", email));
+        const querySnapshot = await getDocs(q);
+        const snapshot = querySnapshot.docs[0];
+        const data = <User>snapshot.data();
+        const id = querySnapshot.docs[0].id;
+        if (currentUser.email !== email){
+            try {
+                await deleteDoc(doc(this.firestoreDB, "user", id));
+                this.messageToast(`Usuario eliminado ${email}`);
 
-    } catch (error) {
-        console.error('Error deleting documents: ', error);
-    }
-    localStorage.setItem('email', currentUser.email);
-    localStorage.setItem('password', currentUser.password);
-    signInWithEmailAndPassword(auth, data.email, data.password)
-    .then(async (userCredential) => {
-        const user = userCredential.user;
-        if (user) {
-            deleteUser(user)
-            .then(() => {
-                this.router.navigate(['/list']);
-            }).catch((error) => {
-                console.log("Error:", error)
+            } catch (error) {
+                console.error('Error deleting documents: ', error);
+            }
+            localStorage.setItem('email', currentUser.email);
+            localStorage.setItem('password', currentUser.password);
+            signInWithEmailAndPassword(auth, data.email, data.password)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                if (user) {
+                    deleteUser(user)
+                    .then(() => {
+                        this.router.navigate(['/list']);
+                    }).catch((error) => {
+                        console.log("Error:", error)
+                    });
+                }
+            })
+            .catch((error) => {        
+                console.error("Error:", error);
+            });
+        } else {
+            Swal.fire({
+                icon: 'question',        
+                title: 'Oops...',
+                text: 'No te puedes borrar a ti mismo.',
+                heightAuto: false
             });
         }
-    })
-    .catch((error) => {        
-        console.error("Error:", error);
-    });
     } else {
         const auth = getAuth();
         auth.signOut()
