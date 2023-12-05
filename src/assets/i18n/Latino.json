@@ -156,5 +156,13 @@
     },
     "startTrip": {
         "title": "Iniciar Viaje"
+    },
+    "trip": {
+        "label.studentName": "Nombre Estudiante:",
+        "label.studentEmail": "Correo Estudiante:",
+        "label.origin": "Origen:",
+        "label.destination": "Destino:",
+        "label.partnerName": "Nombre Socio:",
+        "label.partnerEmail": "Correo Socio:"
     }
 }
