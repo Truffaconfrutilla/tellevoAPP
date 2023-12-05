@@ -61,8 +61,8 @@ async getAllPartnerTrips(email: string): Promise<Trip[]> {
 
 async startTrip(originAddress: string, originLat: number, originLng: number, destinationAddress: string, destinationLat: number, destinationLng: number, studentEmail: string, studentName: string){
     const tripData: Trip ={
-      partnerEmail: "carlitoslechuga@duocuc.cl",
-      partnerName: "Carlitos Lechuga",
+      partnerEmail: localStorage.getItem('email'),
+      partnerName: localStorage.getItem('name'),
       studentName: studentName,
       studentEmail: studentEmail,
       origin: {

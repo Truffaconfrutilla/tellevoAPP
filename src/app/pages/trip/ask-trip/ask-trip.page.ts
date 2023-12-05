@@ -32,6 +32,8 @@ export class AskTripPage implements OnInit {
     console.log(origin)
     const destination = await this.getAddressCoordinates(this.askTripForm.get('destination')?.value).toPromise();
     const payload = {
+      studentName: localStorage.getItem('name'),
+      studentEmail: localStorage.getItem('email'),
       origin: { address: this.askTripForm.get('origin')?.value, lat: origin.lat, lng: origin.lng },
       destination: { address: this.askTripForm.get('destination')?.value, lat: destination.lat, lng: destination.lng },
     };
