@@ -10,8 +10,8 @@
     <ion-row *ngFor="let trip of trips" class="user-row">
       <ion-col size="10">{{ "trip.label.partnerName" | translate }} {{ trip.partnerName }}</ion-col>
       <ion-col size="10">{{ "trip.label.partnerEmail" | translate }} {{ trip.partnerEmail }}</ion-col>
-      <ion-col size="10">{{ "trip.label.origin" | translate }} {{ trip.origin }}</ion-col>
-      <ion-col size="10">{{ "trip.label.destiny" | translate }} {{ trip.destiny }}</ion-col>
+      <ion-col size="10">{{ "trip.label.origin" | translate }} {{ trip.origin.address }}</ion-col>
+      <ion-col size="10">{{ "trip.label.destination" | translate }} {{ trip.destination.address }}</ion-col>
       <ion-col size="10">{{ "trip.label.studentName" | translate }} {{ trip.studentName }}</ion-col>
       <ion-col size="10">{{ "trip.label.studentEmail" | translate }} {{ trip.studentEmail }}</ion-col>
     </ion-row>

@@ -5,4 +5,24 @@
         <ion-title color="amarilloduoc" style="font-weight: bolder;" >{{ "askTrip.title" | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="askTripForm">
+        <ion-item>
+          <ion-input formControlName="origin" labelPlacement="floating" placeholder="{{'askTrip.placeholder.origin' | translate}}">
+            <div slot="label">{{"askTrip.label.origin" | translate}}<ion-text color="danger"> ({{ "askTrip.label.origin" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="destination" labelPlacement="floating" placeholder="{{'askTrip.placeholder.destination' | translate}}">
+            <div slot="label">{{"askTrip.label.destination" | translate}}<ion-text color="danger"> ({{ "askTrip.label.destination" | translate }})</ion-text></div>
+          </ion-input>
+        </ion-item>
+        <br>
+        <ion-button class="buttonpad" color="azulduoc"(click)="generateQRCode()" ><ion-text color="amarilloduoc">{{ "askTrip.button.qr" | translate}}</ion-text></ion-button>
+      </form>
+      <img *ngIf="qrCodeImg" [src]="qrCodeImg" alt="QR Code">
+    </ion-card-content>
+  </ion-card>
 </ion-content>

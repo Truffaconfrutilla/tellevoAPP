@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -14,6 +14,7 @@ import { AskTripPage } from './ask-trip.page';
     FormsModule,
     IonicModule,
     AskTripPageRoutingModule,
+    ReactiveFormsModule,
     TranslateModule
   ],
   declarations: [AskTripPage]

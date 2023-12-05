@@ -141,7 +141,12 @@
         "lastUpdate": "Última actualización:"
     },
     "askTrip": {
-        "title": "Pedir Viaje"
+        "title": "Pedir Viaje",
+        "label.origin": "Origen",
+        "label.destination": "Destino",
+        "placeholder.origin": "Avenida siempre viva 742, Springfield",
+        "placeholder.destination": "Avenida siempre viva 742, Springfield",
+        "button.qr": "Generar QR"
     },
     "partnerTrip": {
         "title": "Histórico de Viajes"
