@@ -80,11 +80,16 @@ export class StartTripPage implements OnInit {
           // Handle individual scan errors (e.g., timeout, decoding errors)
           console.error('Error scanning QR code:', scanError);
         }
+        await this.delay(200);
       }
     } catch (error) {
       // Handle critical errors that may occur during scanning
       console.error('Critical error during QR code scanning:', error);
     }
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise<void>((resolve) => setTimeout(resolve, ms));
   }
 
   ngOnDestroy() {
