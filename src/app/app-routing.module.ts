@@ -82,7 +82,19 @@ export const routes: Routes = [
   {
     path: 'list-student-trip',
     loadChildren: () => import('./pages/trip/list-student-trip/list-student-trip.module').then( m => m.ListStudentTripPageModule)
+  },  {
+    path: 'list-partner-trip',
+    loadChildren: () => import('./pages/trip/list-partner-trip/list-partner-trip.module').then( m => m.ListPartnerTripPageModule)
   },
+  {
+    path: 'ask-trip',
+    loadChildren: () => import('./pages/trip/ask-trip/ask-trip.module').then( m => m.AskTripPageModule)
+  },
+  {
+    path: 'start-trip',
+    loadChildren: () => import('./pages/trip/start-trip/start-trip.module').then( m => m.StartTripPageModule)
+  },
+
 
 
 ];

@@ -32,7 +32,7 @@
       <div *ngIf="showNoPartnerMenu">
         {{ "menu.label.student" | translate }}
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let noPartnerMenu of partnerMenu">
+          <ion-menu-toggle auto-hide="false" *ngFor="let noPartnerMenu of noPartnerMenu">
             <ion-item routerDirection="root" [routerLink]="[noPartnerMenu.url]" lines="none" detail="false">
               <ion-icon color="amarilloduoc" aria-hidden="true" slot="start" [ios]="noPartnerMenu.icon" [md]="noPartnerMenu.icon" class="iconmenu"></ion-icon>
               <ion-label>{{ noPartnerMenu.title | translate }}</ion-label>

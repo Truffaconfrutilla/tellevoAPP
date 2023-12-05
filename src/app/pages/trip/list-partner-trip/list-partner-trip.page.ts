@@ -5,12 +5,11 @@ import { Trip } from 'src/app/core/models/trip.model';
 import { TripService } from 'src/app/core/services/trip.service';
 
 @Component({
-  selector: 'app-list-student-trip',
-  templateUrl: './list-student-trip.page.html',
-  styleUrls: ['./list-student-trip.page.scss'],
+  selector: 'app-list-partner-trip',
+  templateUrl: './list-partner-trip.page.html',
+  styleUrls: ['./list-partner-trip.page.scss'],
 })
-
-export class ListStudentTripPage implements OnInit {
+export class ListPartnerTripPage implements OnInit {
   trips: Trip[];
 
   constructor(
@@ -22,7 +21,7 @@ export class ListStudentTripPage implements OnInit {
   async ngOnInit() {
     try {
       const email = localStorage.getItem('email');
-      this.trips = await this.tripService.getAllStundetTrips(email)
+      this.trips = await this.tripService.getAllPartnerTrips(email)
     } catch (error) {
       console.error('Error loading locations: ', error);
     }
@@ -40,4 +39,5 @@ export class ListStudentTripPage implements OnInit {
   ionViewWillLeave() {
     this.appComponent.toggleSettingsMenu(false);
   }
+
 }

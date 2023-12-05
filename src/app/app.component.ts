@@ -20,8 +20,8 @@ export class AppComponent implements OnInit{
   ];
 
   public partnerMenu: Array<{ title: string; url: string; icon: string}> = [
-    { title: 'menu.label.startTrip', url: '', icon: 'speedometer'},
-    { title: 'menu.label.listPartnerTrip', url: '', icon: 'reader'},
+    { title: 'menu.label.startTrip', url: '/start-trip', icon: 'speedometer'},
+    { title: 'menu.label.listPartnerTrip', url: '/list-partner-trip', icon: 'reader'},
   ];
 
   public noPartnerMenu: Array<{ title: string; url: string; icon: string }> = [

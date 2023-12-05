@@ -139,5 +139,17 @@
         "wind": "Velocidad del viento:",
         "humidity": "Humedad:",
         "lastUpdate": "Última actualización:"
+    },
+    "askTrip": {
+        "title": "Pedir Viaje"
+    },
+    "partnerTrip": {
+        "title": "Histórico de Viajes"
+    },
+    "studentTrip": {
+        "title": "Mis Viajes"
+    },
+    "startTrip": {
+        "title": "Iniciar Viaje"
     }
 }

@@ -20,10 +20,27 @@ constructor() {
     this.firestoreDB = getFirestore(app);
 }
 
-async getAllTrips(email: string): Promise<Trip[]> {
+async getAllStundetTrips(email: string): Promise<Trip[]> {
     const trips: Trip[] = [];
     try {
-        const q = query(collection(this.firestoreDB, "trips"), where("email", "==", email));
+        const q = query(collection(this.firestoreDB, "trips"), where("studentEmail", "==", email));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
+        const tripData = doc.data() as Trip;
+        trips.push(tripData);
+        });
+
+        return trips;
+    } catch (error) {
+        console.error('Error getting documents: ', error);
+        return trips;
+    }
+}
+
+async getAllPartnerTrips(email: string): Promise<Trip[]> {
+    const trips: Trip[] = [];
+    try {
+        const q = query(collection(this.firestoreDB, "trips"), where("partnerEmail", "==", email));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
         const tripData = doc.data() as Trip;
