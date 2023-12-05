@@ -1,2 +1,28 @@
+<div>
+    <ion-searchbar
+        search-icon="search-circle" 
+        animated="true" 
+        show-clear-button="focus" 
+        clear-icon="trash-bin"
+        debounce="800" 
+        placeholder="¿A donde vamos?"
+        (ionInput)="onSearchChange($event)">
+    </ion-searchbar>
+
+    <ion-list *ngIf="places?.length >0">
+        <ion-item *ngFor="let place of places">
+            <ion-icon name="location-outline" slot="start"></ion-icon>
+            <ion-label>
+                {{place?.title}}
+                <p>
+                    <ion-text>
+                        {{place?.address}}
+                    </ion-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</div>
+
 <div class="map" #map id="map"></div>
-<div id="route"></div>
+<div id="route"></div>  
