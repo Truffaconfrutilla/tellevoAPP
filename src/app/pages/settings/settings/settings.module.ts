@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SettingsPageRoutingModule } from './settings-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { SettingsPage } from './settings.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { SettingsPage } from './settings.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingsPageRoutingModule
+    SettingsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [SettingsPage]
 })

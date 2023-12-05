@@ -1,52 +1,52 @@
 {
-    "bienvenido" : "Bienvenue",
-    "Seleccione un idioma" : "Sélectionnez une langue",
+    "bienvenido": "Bienvenue",
+    "Seleccione un idioma": "Sélectionnez une langue",
     "Lenguaje": "Langue",
     "login": {
-        "label.header": "Login",
+        "label.header": "Connexion",
         "button.singIn": "Se connecter",
-        "button.singUp": "Chantez",
-        "label.email": "Entrez l'adresse e-mail de l'utilisateur",
-        "label.password": "Entrer le mot de passe",
+        "button.singUp": "S'inscrire",
+        "label.email": "Entrez l'e-mail de l'utilisateur",
+        "label.password": "Entrez le mot de passe",
         "label.forgotPassword": "Mot de passe oublié",
-        "link.recoverPassword": "Récupérer mot de passe",
+        "link.recoverPassword": "Récupérer le mot de passe",
         "label.requiredEmail": "L'e-mail est requis",
         "label.invalidEmail": "L'e-mail n'est pas valide",
-        "label.requiredPassword": "Mot de passe requis",
-        "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères",
-        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
-        "placeholder.password": "Ex: Quierodormir123"
+        "label.requiredPassword": "Le mot de passe est requis",
+        "label.minLengthPassword": "Le mot de passe doit comporter au moins 6 caractères",
+        "placeholder.email": "Par exemple, johndoe@example.com",
+        "placeholder.password": "Par exemple, MotDePasse123"
     },
     "register": {
-        "label.header": "Chanter!",
+        "label.header": "Inscrivez-vous!",
         "label.required": "Requis",
         "label.name": "Nom",
         "label.email": "E-mail",
         "label.password": "Mot de passe",
-        "label.password2": "Confirmez le mot de passe",
+        "label.password2": "Confirmer le mot de passe",
         "label.minLengthPassword": "Le mot de passe doit comporter au moins 6 caractères.",
         "label.matchPassword": "Les mots de passe doivent correspondre.",
-        "label.location": "Sélectionnez votre campus",
-        "label.partner": "Partenaire Chauffeur",
+        "label.location": "Sélectionnez votre lieu",
+        "label.partner": "Chauffeur partenaire",
         "label.licence": "Entrez la licence",
-        "label.plate": "Entrez dans la plaque",
-        "button.singUp": "Chanter",
-        "label.alreadySingedUp": "Avez-vous déjà un compte?",
+        "label.plate": "Entrez la plaque",
+        "button.singUp": "S'inscrire",
+        "label.alreadySingedUp": "Vous avez déjà un compte?",
         "link.singIn": "Se connecter",
-        "placeholder.name": "Ex: Carlitos Lechuga",
-        "placeholder.email": "Ex: nosequehago@ayuda.cl",
-        "placeholder.password": "Ex: Quierodormir123",
-        "placeholder.location": "Campus"
+        "placeholder.name": "Par exemple, Jean Dupont",
+        "placeholder.email": "Par exemple, jean.dupont@example.com",
+        "placeholder.password": "Par exemple, MotDePasse123",
+        "placeholder.location": "Lieu"
     },
     "profile": {
-        "label.myProfile": "Mon profil",
-        "label.name": "Nom:",
-        "label.location": "Campus:"
+        "label.myProfile": "Mon Profil",
+        "label.name": "Nom :",
+        "label.location": "Emplacement :"
     },
     "changePassword":{
         "button.submit": "Changer mon mot de passe",
         "label.header": "Récupérer",
-        "label.currentPassword": "Entrer votre mot de passe actuel",
+        "label.currentPassword": "Entrez votre mot de passe actuel",
         "label.newPassword": "Entrez votre nouveau mot de passe",
         "label.newPassword2": "Confirmez le nouveau mot de passe",
         "label.minLengthPassword":"Le mot de passe doit comporter au moins 6 caractères",
@@ -57,59 +57,114 @@
         "label.header": "Récupérer",
         "label.header2": "mon mot de passe",
         "label.email": "Entrez l'e-mail de votre compte",
-        "label.requiredEmail": "Mot de passe requis"        
+        "label.requiredEmail": "L'e-mail est requis"
     },
     "settingsLanguage": {
-        "label.header":"sélectionnez une langue"
+        "label.support": "Vous n'avez pas besoin d'ajustements ; vous êtes déjà magnifique :C",
+        "label.change": "Changer de langue",
+        "label.header": "Sélectionnez une langue"
     },
     "changeProfile":{
-        "label.changePicture": "Cambiar",
-        "label.changePicture2": "foto de perfil",
-        "button.submit": "Subir foto"
+        "label.changePicture": "Changer",
+        "label.changePicture2": "photo de profil",
+        "button.submit": "Télécharger la photo"
     },
     "menu":{
-        "label.home": "Inicio",
-        "label.profile": "Perfil",
-        "label.settings": "Ajustes",
-        "label.map": "Mapa",
-        "label.student": "Menú Estudiante",
-        "label.partner": "Menú Conductor",
-        "label.admin": "Menú Administrador",
-        "label.startTrip": "Iniciar Viaje",
-        "label.listPartnerTrip": "Histórico de Viajes",
-        "label.askTrip": "Pedir Viaje",
-        "label.listStudentTrip": "Ver mis Viajes",
-        "label.adminSettings": "Opciones Administrador",
-        "label.changePassword": "Cambiar mi contraseña",
-        "label.changePicture": "Cambiar mi foto",
-        "label.logout": "Logout"
+        "label.home": "Accueil",
+        "label.profile": "Profil",
+        "label.settings": "Paramètres",
+        "label.map": "Carte",
+        "label.student": "Menu Étudiant",
+        "label.partner": "Menu Conducteur",
+        "label.admin": "Menu Administrateur",
+        "label.startTrip": "Démarrer le voyage",
+        "label.listPartnerTrip": "Historique des voyages",
+        "label.askTrip": "Demander un voyage",
+        "label.listStudentTrip": "Voir mes voyages",
+        "label.adminSettings": "Options d'administrateur",
+        "label.changePassword": "Changer le mot de passe",
+        "label.changePicture": "Changer la photo",
+        "label.logout": "Déconnexion"
     },
     "terms": {
-        "title": "Términos y Condiciones",
-        "text": "Ces termes et conditions ont été rédigés par une étudiante épuisée qui, à force de café et de désespoir, a réussi à exprimer quelques mots dans cet espace. Veuillez prendre note des éléments suivants :<br><br>► Il s'agit d'un projet orienté étudiant. Donc, oui, nous vous rappelons que tout cela vise davantage l'apprentissage, même si nous nous efforçons de paraître professionnels.<br><br>► La personne qui a développé cette application a versé du sang (et du café) au cours du processus de création. Donc, oui, cela compte comme faisant partie des coûts de ce produit.<br><br>► Nous, les auteurs, ne sommes pas responsables si vous riez, pleurez ou vous sentez perplexe en lisant ces termes. Vous avez décidé de les lire, alors assumez les conséquences !<br><br>► Si, pour une raison quelconque, vous êtes arrivé ici en vous attendant à trouver une section sérieuse et formelle, nous vous invitons à reconsidérer vos attentes. Ici, le sarcasme et l'ironie règnent ; préparez-vous à un voyage inoubliable à travers la légendaire section des Termes et Conditions !<br><br>► Rappelez-vous, personne ne lit jamais vraiment ces termes de toute façon, donc si vous êtes arrivé jusqu'ici, félicitations ! Vous faites partie d'un petit groupe sélect.<br><br><br>Équipe de développement : <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Équipe du Chaos et des Ronronnements : <br><br>► Makitara [chat1]<br><br>► Jessiecat [chat2]<br><br>► Lucia Fernanda [chat3]<br><br>Participation spéciale de l'équipe de gestion professionnelle du stress : <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>As-tu vraiment lu tout cela? ╰(▔∀▔)╯",
-        "reject.title": "¡Quiet@ ahí!",
-        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
-        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
-        "reject.confirmButtonText": "Wi",
-        "button.accept": "Aceptar",
-        "button.reject": "Rechazar"
+        "title": "Termes et conditions",
+        "text": "Ces termes et conditions ont été rédigés par un étudiant privé de sommeil qui, alimenté par le café et la désespoir, a réussi à assembler quelques mots dans cet espace. Veuillez noter ce qui suit :<br><br>► Il s'agit d'un projet à des fins éducatives. Donc oui, nous vous rappelons que tout cela est plus pour apprendre, bien que nous nous efforcions de paraître professionnels.<br><br>► La personne qui a développé cette application a pleuré du sang (et du café) pendant le processus de création. Donc oui, cela compte comme une partie des coûts de ce produit.<br><br>► Nous, les auteurs, ne sommes pas responsables si vous riez, pleurez ou vous sentez confus en lisant ces termes. Vous avez choisi de les lire, alors affrontez les conséquences !<br><br>► Si, pour une raison quelconque, vous êtes arrivé jusqu'ici en espérant trouver une section sérieuse et formelle, nous vous invitons à reconsidérer vos attentes. Ici, le sarcasme et l'ironie règnent, préparez-vous à un voyage inoubliable à travers la légendaire section des Termes et Conditions !<br><br>► Rappelez-vous, personne ne lit jamais ces termes de toute façon, alors si vous êtes arrivé jusqu'ici, félicitations ! Vous faites partie d'un petit groupe select.<br><br><br>Équipe de développement : <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Équipe Chaos et Ronronnements : <br><br>► Makitara [chat1]<br><br>► Jessiecat [chat2]<br><br>► Lucia Fernanda [chat3]<br><br>Équipe spéciale de gestion du stress : <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>Avez-vous vraiment tout lu ? ╰(▔∀▔)╯",
+        "reject.title": "Attends !",
+        "reject.text": "Vous devez accepter les termes et conditions pour continuer.",
+        "reject.footer": "C'est écrit dans la constitution ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Accepter",
+        "button.accept": "Accepter",
+        "button.reject": "Rejeter"
+    },
+    "admin": {
+        "label.add": "Ajouter des utilisateurs",
+        "label.delete": "Supprimer des utilisateurs",
+        "label.list": "Lister les utilisateurs",
+        "label.update": "Mettre à jour les utilisateurs",
+        "label.detail": "Détails des utilisateurs"
     },
     "add": {
-        "label.location": "Selecciona la Sede",
-        "radio.partnerTrue": "Es Socio conductor",
-        "radio.partnerFalse": "No es Socio conductor",
-        "radio.adminTrue": "Hacer Administrador",
-        "radio.adminFalse": "No hacer Administrador",
-        "button.add": "Agregar"
+        "label.location": "Sélectionnez un emplacement",
+        "radio.partnerTrue": "Est chauffeur partenaire",
+        "radio.partnerFalse": "N'est pas chauffeur partenaire",
+        "radio.adminTrue": "Rendre administrateur",
+        "radio.adminFalse": "Ne pas rendre administrateur",
+        "button.add": "Ajouter"
     },
-    "list":{
-        "title": "Lista de Usuarios",
-        "label.name": "Nombre:",
-        "label.email": "Correo:",
-        "label.location": "Sede:",
-        "label.partnerTrue": "Socio Conductor: Si",
-        "label.plate": "Patente:",
-        "label.licence": "Licencia:",
-        "label.adminTrue": "Administrador: Si"
+    "list": {
+        "title": "Liste des utilisateurs",
+        "label.name": "Nom :",
+        "label.email": "E-mail :",
+        "label.location": "Emplacement :",
+        "label.partnerTrue": "Chauffeur partenaire : Oui",
+        "label.plate": "Plaque :",
+        "label.licence": "Licence :",
+        "label.adminTrue": "Administrateur : Oui",
+        "button.delete": "Supprimer"
+    },
+    "delete": {
+        "title": "Supprimer l'utilisateur",
+        "button.delete": "Supprimer"
+    },
+    "detail": {
+        "title": "Détails de l'utilisateur",
+        "button.detail": "Détails"
+    },
+    "update": {
+        "title": "Mettre à jour l'utilisateur",
+        "button.update": "Mettre à jour",
+        "button.cancel": "Annuler"
+    },
+    "weather": {
+        "title": "Météo actuelle",
+        "temperature": "Température :",
+        "wind": "Vitesse du vent :",
+        "humidity": "Humidité :",
+        "lastUpdate": "Dernière mise à jour :"
+    },
+    "askTrip": {
+        "title": "Demander un voyage",
+        "label.origin": "Origine",
+        "label.destination": "Destination",
+        "placeholder.origin": "742 Evergreen Terrace, Springfield",
+        "placeholder.destination": "742 Evergreen Terrace, Springfield",
+        "button.qr": "Générer un QR"
+    },
+    "partnerTrip": {
+        "title": "Historique des voyages"
+    },
+    "studentTrip": {
+        "title": "Mes voyages"
+    },
+    "startTrip": {
+        "title": "Démarrer le voyage"
+    },
+    "trip": {
+        "label.studentName": "Nom de l'étudiant :",
+        "label.studentEmail": "Email de l'étudiant :",
+        "label.origin": "Origine :",
+        "label.destination": "Destination :",
+        "label.partnerName": "Nom du partenaire :",
+        "label.partnerEmail": "Email du partenaire :"
     }
 }

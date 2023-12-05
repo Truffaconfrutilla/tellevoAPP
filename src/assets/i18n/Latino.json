@@ -60,6 +60,8 @@
         "label.requiredEmail": "La contraseña es requerida"
     },
     "settingsLanguage": {
+        "label.support": "No necesitas ajustes, estas hermoso asi como eres :C ",
+        "label.change": "Cambia Idioma",
         "label.header":"Selecciona un idioma"
     },
     "changeProfile":{

@@ -1,115 +1,170 @@
 {
-    "bienvenido" : "Добро пожаловать",
-    "Seleccione un idioma" : "Выберите язык",
+    "bienvenido": "Добро пожаловать",
+    "Seleccione un idioma": "Выберите язык",
     "Lenguaje": "Язык",
     "login": {
-        "label.header": "Login",
+        "label.header": "Вход",
         "button.singIn": "Войти",
-        "button.singUp": "Пойте",
+        "button.singUp": "Зарегистрироваться",
         "label.email": "Введите адрес электронной почты",
         "label.password": "Введите пароль",
         "label.forgotPassword": "Забыли пароль",
         "link.recoverPassword": "Восстановить пароль",
-        "label.requiredEmail": "Требуется электронная почта",
-        "label.invalidEmail": "Электронная почта недействительна",
-        "label.requiredPassword": "Необходим пароль",
-        "label.minLengthPassword":"Пароль должен быть не менее 6 символов",
-        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
-        "placeholder.password": "Ex: Quierodormir123"
+        "label.requiredEmail": "Требуется адрес электронной почты",
+        "label.invalidEmail": "Недопустимый адрес электронной почты",
+        "label.requiredPassword": "Требуется пароль",
+        "label.minLengthPassword": "Пароль должен содержать не менее 6 символов",
+        "placeholder.email": "Например, johndoe@example.com",
+        "placeholder.password": "Например, Пароль123"
     },
     "register": {
-        "label.header": "Sing Up!",
-        "label.required": "Необходимый",
-        "label.name": "имя",
+        "label.header": "Зарегистрируйтесь!",
+        "label.required": "Обязательно",
+        "label.name": "Имя",
         "label.email": "Электронная почта",
         "label.password": "Пароль",
         "label.password2": "Подтвердите пароль",
-        "label.minLengthPassword": "Пароль должен быть не менее 6 символов.",
+        "label.minLengthPassword": "Пароль должен содержать не менее 6 символов.",
         "label.matchPassword": "Пароли должны совпадать.",
-        "label.location": "Выберите свой кампус",
-        "label.partner": "Водитель-партнер",
+        "label.location": "Выберите ваше местоположение",
+        "label.partner": "Партнер-водитель",
         "label.licence": "Введите лицензию",
         "label.plate": "Введите номер",
-        "button.singUp": "Пойте",
+        "button.singUp": "Зарегистрироваться",
         "label.alreadySingedUp": "У вас уже есть аккаунт?",
         "link.singIn": "Войти",
-        "placeholder.name": "Ex: Carlitos Lechuga",
-        "placeholder.email": "Ex: nosequehago@ayuda.cl",
-        "placeholder.password": "Ex: Quierodormir123",
-        "placeholder.location": "Кампус"
+        "placeholder.name": "Например, Иван Иванов",
+        "placeholder.email": "Например, ivan.ivanov@example.com",
+        "placeholder.password": "Например, Пароль123",
+        "placeholder.location": "Местоположение"
     },
     "profile": {
-        "label.myProfile": "Мой профайл",
+        "label.myProfile": "Мой профиль",
         "label.name": "Имя:",
-        "label.location": "Кампус:"
+        "label.location": "Местоположение:"
     },
     "changePassword":{
-        "button.submit": "Изменить пароль",
-        "label.header": "Восстанавливаться",
-        "label.currentPassword": "Введите ваш текущий пароль",
+        "button.submit": "Изменить мой пароль",
+        "label.header": "Восстановление",
+        "label.currentPassword": "Введите текущий пароль",
         "label.newPassword": "Введите новый пароль",
         "label.newPassword2": "Подтвердите новый пароль",
-        "label.minLengthPassword":"Пароль должен быть не менее 6 символов",
+        "label.minLengthPassword":"Пароль должен содержать не менее 6 символов",
         "label.matchPassword": "Пароли не совпадают."
     },
     "forgotPassword": {
         "button.submit": "Изменить пароль",
-        "label.header": "Recover",
-        "label.header2": "my Password",
-        "label.email": "Адрес электронной почты",
-        "label.requiredEmail": "Необходим пароль"        
+        "label.header": "Восстановление",
+        "label.header2": "моего пароля",
+        "label.email": "Введите Email вашей учетной записи",
+        "label.requiredEmail": "Требуется адрес электронной почты"
     },
     "settingsLanguage": {
-        "label.header":"выберите язык"
+        "label.support": "Вам не нужны настройки; вы уже прекрасны таким, какой вы есть :C",
+        "label.change": "Изменить язык",
+        "label.header": "Выберите язык"
     },
     "changeProfile":{
-        "label.changePicture": "Cambiar",
-        "label.changePicture2": "foto de perfil",
-        "button.submit": "Subir foto"
+        "label.changePicture": "Изменить",
+        "label.changePicture2": "фотографию профиля",
+        "button.submit": "Загрузить фото"
     },
     "menu":{
-        "label.home": "Inicio",
-        "label.profile": "Perfil",
-        "label.settings": "Ajustes",
-        "label.map": "Mapa",
-        "label.student": "Menú Estudiante",
-        "label.partner": "Menú Conductor",
-        "label.admin": "Menú Administrador",
-        "label.startTrip": "Iniciar Viaje",
-        "label.listPartnerTrip": "Histórico de Viajes",
-        "label.askTrip": "Pedir Viaje",
-        "label.listStudentTrip": "Ver mis Viajes",
-        "label.adminSettings": "Opciones Administrador",
-        "label.changePassword": "Cambiar mi contraseña",
-        "label.changePicture": "Cambiar mi foto",
-        "label.logout": "Logout"
+        "label.home": "Главная",
+        "label.profile": "Профиль",
+        "label.settings": "Настройки",
+        "label.map": "Карта",
+        "label.student": "Меню студента",
+        "label.partner": "Меню водителя",
+        "label.admin": "Меню администратора",
+        "label.startTrip": "Начать поездку",
+        "label.listPartnerTrip": "История поездок",
+        "label.askTrip": "Запросить поездку",
+        "label.listStudentTrip": "Просмотреть мои поездки",
+        "label.adminSettings": "Опции администратора",
+        "label.changePassword": "Изменить пароль",
+        "label.changePicture": "Изменить фото",
+        "label.logout": "Выйти"
     },
     "terms": {
-        "title": "Términos y Condiciones",
-        "text": "Эти условия были составлены измученным студентом, который, благодаря кофе и отчаянию, смог выразить некоторые слова в этом пространстве. Пожалуйста, обратите внимание на следующее:<br><br>► Это студенческий проект. Так что да, напоминаем вам, что все это скорее для обучения, хотя мы стараемся казаться профессиональными.<br><br>► Тот, кто разработал это приложение, пролил кровь (и кофе) в процессе создания. Так что да, это считается частью затрат на этот продукт.<br><br>► Мы, авторы, не несем ответственности, если вы смеетесь, плачете или чувствуете себя смущенно, читая эти условия. Вы решили их прочитать, так что столкнитесь с последствиями!<br><br>► Если по какой-то причине вы ожидали найти здесь серьезный и формальный раздел, предлагаем вам пересмотреть свои ожидания. Здесь царит сарказм и ирония; готовьтесь к незабываемому путешествию по легендарному разделу Условия и положения!<br><br>► Помните, никто все равно не читает эти условия, так что если вы дочитали до сюда, поздравляем! Вы часть небольшой, избранной группы.<br><br><br>Команда разработчиков: <br><br>► Росио \"Туподивеона\" Сануэса<br><br>Команда Хаоса и мурчания: <br><br>► Макитара [кот1]<br><br>► Джессика [кот2]<br><br>► Люсия Фернанда [кот3]<br><br>Специальное участие от команды профессионального управления стрессом: <br><br>► Диланперро [ОсобыйПес]<br><br><br><br>Ты правда всё это прочитал? ╰(▔∀▔)╯",
-        "reject.title": "¡Quiet@ ahí!",
-        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
-        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
-        "reject.confirmButtonText": "Accept",
-        "button.accept": "Aceptar",
-        "button.reject": "Rechazar"
+        "title": "Условия и положения",
+        "text": "Эти условия и положения были написаны студентом, лишенным сна, который, напоенный кофе и отчаянием, смог собрать несколько слов в этом пространстве. Обратите внимание на следующее:<br><br>► Это проект в образовательных целях. Так что да, мы напоминаем вам, что все это больше для обучения, хотя мы стараемся выглядеть профессионально.<br><br>► Человек, разработавший эту программу, плакал кровью (и кофе) в процессе создания. Так что да, это считается частью затрат на этот продукт.<br><br>► Мы, авторы, не несем ответственности, если вы смеетесь, плачете или чувствуете себя сбитым с толку, читая эти условия. Вы решили их прочитать, так что смиритесь с последствиями!<br><br>► Если по какой-то причине вы добрались до этого момента, надеясь найти серьезный и формальный раздел, мы приглашаем вас пересмотреть свои ожидания. Здесь царит сарказм и ирония, готовьтесь к незабываемому путешествию через легендарный раздел Условий и Положений!<br><br>► Помните, вообще никто не читает эти условия, так что если вы добрались до этого момента, поздравляю! Вы часть маленькой выборочной группы.<br><br><br>Команда разработки: <br><br>► Росио \"Туподивеона\" Сануэса<br><br>Команда Хаоса и Мурчания: <br><br>► Макитара [кот1]<br><br>► Джессика [кот2]<br><br>► Люсия Фернанда [кот3]<br><br>Специальная команда по управлению стрессом: <br><br>► Диланперро [SpecialDoggo]<br><br><br><br>Вы действительно всё это прочитали? ╰(▔∀▔)╯",
+        "reject.title": "Подожди!",
+        "reject.text": "Вы должны принять условия и положения, чтобы продолжить.",
+        "reject.footer": "Это написано в конституции ┐(￣∀￣)┌",
+        "reject.confirmButtonText": "Принять",
+        "button.accept": "Принять",
+        "button.reject": "Отклонить"
+    },
+    "admin": {
+        "label.add": "Добавить пользователей",
+        "label.delete": "Удалить пользователей",
+        "label.list": "Список пользователей",
+        "label.update": "Обновить пользователей",
+        "label.detail": "Детали пользователей"
     },
     "add": {
-        "label.location": "Selecciona la Sede",
-        "radio.partnerTrue": "Es Socio conductor",
-        "radio.partnerFalse": "No es Socio conductor",
-        "radio.adminTrue": "Hacer Administrador",
-        "radio.adminFalse": "No hacer Administrador",
-        "button.add": "Agregar"
+        "label.location": "Выберите местоположение",
+        "radio.partnerTrue": "Является водителем-партнером",
+        "radio.partnerFalse": "Не является водителем-партнером",
+        "radio.adminTrue": "Сделать администратором",
+        "radio.adminFalse": "Не делать администратором",
+        "button.add": "Добавить"
     },
-    "list":{
-        "title": "Lista de Usuarios",
-        "label.name": "Nombre:",
-        "label.email": "Correo:",
-        "label.location": "Sede:",
-        "label.partnerTrue": "Socio Conductor: Si",
-        "label.plate": "Patente:",
-        "label.licence": "Licencia:",
-        "label.adminTrue": "Administrador: Si"
+    "list": {
+        "title": "Список пользователей",
+        "label.name": "Имя:",
+        "label.email": "Электронная почта:",
+        "label.location": "Местоположение:",
+        "label.partnerTrue": "Водитель-партнер: Да",
+        "label.plate": "Номер:",
+        "label.licence": "Лицензия:",
+        "label.adminTrue": "Администратор: Да",
+        "button.delete": "Удалить"
+    },
+    "delete": {
+        "title": "Удалить пользователя",
+        "button.delete": "Удалить"
+    },
+    "detail": {
+        "title": "Детали пользователя",
+        "button.detail": "Детали"
+    },
+    "update": {
+        "title": "Обновить пользователя",
+        "button.update": "Обновить",
+        "button.cancel": "Отмена"
+    },
+    "weather": {
+        "title": "Текущая погода",
+        "temperature": "Температура:",
+        "wind": "Скорость ветра:",
+        "humidity": "Влажность:",
+        "lastUpdate": "Последнее обновление:"
+    },
+    "askTrip": {
+        "title": "Запросить поездку",
+        "label.origin": "Откуда",
+        "label.destination": "Куда",
+        "placeholder.origin": "742 Evergreen Terrace, Springfield",
+        "placeholder.destination": "742 Evergreen Terrace, Springfield",
+        "button.qr": "Сгенерировать QR"
+    },
+    "partnerTrip": {
+        "title": "История поездок"
+    },
+    "studentTrip": {
+        "title": "Мои поездки"
+    },
+    "startTrip": {
+        "title": "Начать поездку"
+    },
+    "trip": {
+        "label.studentName": "Имя студента:",
+        "label.studentEmail": "Email студента:",
+        "label.origin": "Откуда:",
+        "label.destination": "Куда:",
+        "label.partnerName": "Имя партнера:",
+        "label.partnerEmail": "Email партнера:"
     }
 }

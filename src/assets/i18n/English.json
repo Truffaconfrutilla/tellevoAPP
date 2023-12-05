@@ -1,47 +1,47 @@
 {
-    "bienvenido" : "Welcome",
-    "Seleccione un idioma" : "Select a language",
+    "bienvenido": "Welcome",
+    "Seleccione un idioma": "Select a language",
     "Lenguaje": "Language",
     "login": {
         "label.header": "Login",
-        "button.singIn": "Sing In",
-        "button.singUp": "Sing Up",
-        "label.email": "Enter user email",
-        "label.password": "Enter password",
-        "label.forgotPassword": "Forgot your password",
-        "link.recoverPassword": "Recover password",
+        "button.singIn": "Sign In",
+        "button.singUp": "Sign Up",
+        "label.email": "Enter User Email",
+        "label.password": "Enter Password",
+        "label.forgotPassword": "Forgot Password",
+        "link.recoverPassword": "Recover Password",
         "label.requiredEmail": "Email is required",
-        "label.invalidEmail": "The email is invalid",
+        "label.invalidEmail": "Invalid email",
         "label.requiredPassword": "Password is required",
-        "label.minLengthPassword":"The password must be at least 6 characters",
-        "placeholder.email": "Ex: jefeyapague@porfavor@porfis.aaa",
-        "placeholder.password": "Ex: Quierodormir123"
+        "label.minLengthPassword": "Password must be at least 6 characters",
+        "placeholder.email": "E.g., johndoe@example.com",
+        "placeholder.password": "E.g., Password123"
     },
     "register": {
-        "label.header": "Sing Up!",
+        "label.header": "Sign Up!",
         "label.required": "Required",
         "label.name": "Name",
         "label.email": "Email",
         "label.password": "Password",
         "label.password2": "Confirm Password",
-        "label.minLengthPassword": "The password must be at least 6 characters.",
+        "label.minLengthPassword": "Password must have at least 6 characters.",
         "label.matchPassword": "Passwords must match.",
-        "label.location": "Select your Campus",
-        "label.partner": "Driver Partner",
+        "label.location": "Select your Location",
+        "label.partner": "Partner Driver",
         "label.licence": "Enter License",
         "label.plate": "Enter Plate",
-        "button.singUp": "Sing Up",
-        "label.alreadySingedUp": "Do you already have an account?",
-        "link.singIn": "Sign In",
-        "placeholder.name": "Ex: Carlitos Lechuga",
-        "placeholder.email": "Ex: nosequehago@ayuda.cl",
-        "placeholder.password": "Ex: Quierodormir123",
-        "placeholder.location": "Campus"
+        "button.singUp": "Sign Up",
+        "label.alreadySingedUp": "Already have an account?",
+        "link.singIn": "Sign in",
+        "placeholder.name": "E.g., John Doe",
+        "placeholder.email": "E.g., john.doe@example.com",
+        "placeholder.password": "E.g., Password123",
+        "placeholder.location": "Location"
     },
     "profile": {
         "label.myProfile": "My Profile",
         "label.name": "Name:",
-        "label.location": "Campus:"
+        "label.location": "Location:"
     },
     "changePassword":{
         "button.submit": "Change my password",
@@ -49,67 +49,122 @@
         "label.currentPassword": "Enter your current password",
         "label.newPassword": "Enter your new password",
         "label.newPassword2": "Confirm the new password",
-        "label.minLengthPassword":"The password must be at least 6 characters",
+        "label.minLengthPassword":"Password must have at least 6 characters",
         "label.matchPassword": "Passwords do not match."
     },
     "forgotPassword": {
         "button.submit": "Change Password",
         "label.header": "Recover",
         "label.header2": "my Password",
-        "label.email": "Enter your account email",
-        "label.requiredEmail": "Password is required"        
+        "label.email": "Enter your account Email",
+        "label.requiredEmail": "Email is required"
     },
     "settingsLanguage": {
-        "label.header":"Select a language"
+        "label.support": "You don't need adjustments; you're beautiful just the way you are :C",
+        "label.change": "Change Language",
+        "label.header": "Select a language"
     },
     "changeProfile":{
-        "label.changePicture": "Cambiar",
-        "label.changePicture2": "foto de perfil",
-        "button.submit": "Subir foto"
+        "label.changePicture": "Change",
+        "label.changePicture2": "profile picture",
+        "button.submit": "Upload photo"
     },
     "menu":{
-        "label.home": "Inicio",
-        "label.profile": "Perfil",
-        "label.settings": "Ajustes",
-        "label.map": "Mapa",
-        "label.student": "Menú Estudiante",
-        "label.partner": "Menú Conductor",
-        "label.admin": "Menú Administrador",
-        "label.startTrip": "Iniciar Viaje",
-        "label.listPartnerTrip": "Histórico de Viajes",
-        "label.askTrip": "Pedir Viaje",
-        "label.listStudentTrip": "Ver mis Viajes",
-        "label.adminSettings": "Opciones Administrador",
-        "label.changePassword": "Cambiar mi contraseña",
-        "label.changePicture": "Cambiar mi foto",
+        "label.home": "Home",
+        "label.profile": "Profile",
+        "label.settings": "Settings",
+        "label.map": "Map",
+        "label.student": "Student Menu",
+        "label.partner": "Driver Menu",
+        "label.admin": "Administrator Menu",
+        "label.startTrip": "Start Trip",
+        "label.listPartnerTrip": "Trip History",
+        "label.askTrip": "Request Trip",
+        "label.listStudentTrip": "View My Trips",
+        "label.adminSettings": "Administrator Options",
+        "label.changePassword": "Change Password",
+        "label.changePicture": "Change Photo",
         "label.logout": "Logout"
     },
     "terms": {
         "title": "Terms and Conditions",
-        "text": "These terms and conditions have been drafted by a sleep-deprived student, who, through coffee and desperation, managed to put some words together in this space. Please, take note of the following:<br><br>► This is a student-oriented project. So, yes, we remind you that all of this is more for learning, although we strive to appear professional.<br><br>► The person who developed this application shed blood (and coffee) during the creation process. So, yes, that counts as part of the costs of this product.<br><br>► We, the authors, do not take responsibility if you laugh, cry, or feel puzzled while reading these terms. You decided to read them, so face the consequences!<br><br>► If for any reason you came here expecting to find a serious and formal section, we invite you to reconsider your expectations. Sarcasm and irony reign here; get ready for an unforgettable journey through the legendary Terms and Conditions section!<br><br>► Remember, no one ever reads these terms anyway, so if you made it this far, congratulations! You are part of a small, select group.<br><br><br>Development Team: <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Chaos and Purring Team: <br><br>► Makitara [cat1]<br><br>► Jessiecat [cat2]<br><br>► Lucia Fernanda [cat3]<br><br>Special Participation from the Stress Management Team: <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>Did you really read all of this? ╰(▔∀▔)╯",
-        "reject.title": "¡Quiet@ ahí!",
-        "reject.text": "Debes aceptar los términos y condiciones para continuar.",
-        "reject.footer": "Esta escrito en la constitución ┐(￣∀￣)┌",
+        "text": "These terms and conditions have been written by a sleep-deprived student who, fueled by coffee and desperation, managed to put some words together in this space. Please note the following:<br><br>► This is a project for educational purposes. So yes, we remind you that all this is more for learning, although we strive to appear professional.<br><br>► The person who developed this application cried blood (and coffee) during the creation process. So yes, that counts as part of the costs of this product.<br><br>► We, the authors, are not responsible if you laugh, cry, or feel confused while reading these terms. You chose to read them, so face the consequences!<br><br>► If for some reason you reached this point expecting to find a serious and formal section, we invite you to reconsider your expectations. Here, sarcasm and irony reign, get ready for an unforgettable journey through the legendary Terms and Conditions section!<br><br>► Remember, no one ever reads these terms anyway, so if you made it this far, congratulations! You are part of a small select group.<br><br><br>Development Team: <br><br>► Rocío \"Tupodiweona\" Sanhueza<br><br>Chaos and Purring Team: <br><br>► Makitara [cat1]<br><br>► Jessiecat [cat2]<br><br>► Lucia Fernanda [cat3]<br><br>Special Stress Management Team: <br><br>► Dylanperro [SpecialDoggo]<br><br><br><br>Did you really read all of this? ╰(▔∀▔)╯",
+        "reject.title": "Hold on!",
+        "reject.text": "You must accept the terms and conditions to continue.",
+        "reject.footer": "It's written in the constitution ┐(￣∀￣)┌",
         "reject.confirmButtonText": "Accept",
         "button.accept": "Accept",
         "button.reject": "Reject"
     },
+    "admin": {
+        "label.add": "Add Users",
+        "label.delete": "Delete Users",
+        "label.list": "List Users",
+        "label.update": "Update Users",
+        "label.detail": "Detail Users"
+    },
     "add": {
-        "label.location": "Selecciona la Sede",
-        "radio.partnerTrue": "Es Socio conductor",
-        "radio.partnerFalse": "No es Socio conductor",
-        "radio.adminTrue": "Hacer Administrador",
-        "radio.adminFalse": "No hacer Administrador",
+        "label.location": "Select Location",
+        "radio.partnerTrue": "Is Partner Driver",
+        "radio.partnerFalse": "Is Not Partner Driver",
+        "radio.adminTrue": "Make Administrator",
+        "radio.adminFalse": "Do Not Make Administrator",
         "button.add": "Add"
     },
-    "list":{
-        "title": "Lista de Usuarios",
-        "label.name": "Nombre:",
-        "label.email": "Correo:",
-        "label.location": "Sede:",
-        "label.partnerTrue": "Socio Conductor: Si",
-        "label.plate": "Patente:",
-        "label.licence": "Licencia:",
-        "label.adminTrue": "Administrador: Si"
+    "list": {
+        "title": "User List",
+        "label.name": "Name:",
+        "label.email": "Email:",
+        "label.location": "Location:",
+        "label.partnerTrue": "Partner Driver: Yes",
+        "label.plate": "Plate:",
+        "label.licence": "Licence:",
+        "label.adminTrue": "Administrator: Yes",
+        "button.delete": "Delete"
+    },
+    "delete": {
+        "title": "Delete User",
+        "button.delete": "Delete"
+    },
+    "detail": {
+        "title": "User Details",
+        "button.detail": "Details"
+    },
+    "update": {
+        "title": "Update User",
+        "button.update": "Update",
+        "button.cancel": "Cancel"
+    },
+    "weather": {
+        "title": "Current Weather",
+        "temperature": "Temperature:",
+        "wind": "Wind Speed:",
+        "humidity": "Humidity:",
+        "lastUpdate": "Last Update:"
+    },
+    "askTrip": {
+        "title": "Request Trip",
+        "label.origin": "Origin",
+        "label.destination": "Destination",
+        "placeholder.origin": "742 Evergreen Terrace, Springfield",
+        "placeholder.destination": "742 Evergreen Terrace, Springfield",
+        "button.qr": "Generate QR"
+    },
+    "partnerTrip": {
+        "title": "Trip History"
+    },
+    "studentTrip": {
+        "title": "My Trips"
+    },
+    "startTrip": {
+        "title": "Start Trip"
+    },
+    "trip": {
+        "label.studentName": "Student Name:",
+        "label.studentEmail": "Student Email:",
+        "label.origin": "Origin:",
+        "label.destination": "Destination:",
+        "label.partnerName": "Partner Name:",
+        "label.partnerEmail": "Partner Email:"
     }
 }
