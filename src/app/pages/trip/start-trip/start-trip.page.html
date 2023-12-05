@@ -5,4 +5,14 @@
         <ion-title color="amarilloduoc" style="font-weight: bolder;" >{{ "startTrip.title" | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div *ngIf="!hasPermission">
+    <p *ngIf="!permissionDenied">Please grant camera permission to scan QR codes.</p>
+    <p *ngIf="permissionDenied">Camera permission denied. Please grant permission and reload the page.</p>
+    <button *ngIf="!permissionDenied" (click)="requestCameraPermission()">Grant Permission</button>
+  </div>
+  <div *ngIf="hasPermission">
+    <video #videoElement style="width: 100%; height: auto;"></video>
+    <button (click)="initiateQrCodeScanning()">Start Scanning</button>
+  </div>
 </ion-content>

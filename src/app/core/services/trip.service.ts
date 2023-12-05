@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, DocumentSnapshot, DocumentData, query, where } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, DocumentSnapshot, DocumentData, query, where, addDoc } from 'firebase/firestore';
 import { Trip } from '../models/trip.model';
+import { Router } from '@angular/router';
 
 // Initialize Firebase with the configuration
 const app = initializeApp(firebaseConfig);
@@ -14,10 +15,12 @@ const app = initializeApp(firebaseConfig);
 export class TripService {
 private firestoreDB;
 
-constructor() {
+
+constructor(public router: Router,) {
     // Initialize Firebase with your configuration
     const app = initializeApp(firebaseConfig);
     this.firestoreDB = getFirestore(app);
+    
 }
 
 async getAllStundetTrips(email: string): Promise<Trip[]> {
@@ -53,4 +56,35 @@ async getAllPartnerTrips(email: string): Promise<Trip[]> {
         return trips;
     }
 }
+
+
+
+async startTrip(originAddress: string, originLat: number, originLng: number, destinationAddress: string, destinationLat: number, destinationLng: number, studentEmail: string, studentName: string){
+    const tripData: Trip ={
+      partnerEmail: localStorage.getItem('email'),
+      partnerName: localStorage.getItem('name'),
+      studentName: studentName,
+      studentEmail: studentEmail,
+      origin: {
+          address: originAddress,
+          lat: originLat,
+          long: originLng,
+      },
+      destination: {
+          address: destinationAddress,
+          lat: destinationLat,
+          long: destinationLng,
+      }
+    }
+    
+    console.log(tripData)
+    try {
+      const docRef = collection(this.firestoreDB, "trips");
+      const doc =  await addDoc(docRef, tripData);
+      this.router.navigate(['/google-maps']);
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 }

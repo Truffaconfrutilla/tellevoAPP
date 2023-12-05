@@ -12,8 +12,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <app-maps></app-maps>
-  
-  
+
+  <app-maps #mapComponent></app-maps>
+  <!-- Nuevo botón -->
+  <ion-button class="geobutton" (click)="getUserLocation()" color="azulduoc">
+      Centrar en mi
+  </ion-button>
+
 </ion-content>
