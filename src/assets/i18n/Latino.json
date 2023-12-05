@@ -132,5 +132,12 @@
         "title": "Actualizar Usuario",
         "button.update": "Actualizar",
         "button.cancel": "Cancelar"
+    },
+    "weather": {
+        "title": "Clima Actual",
+        "temperature": "Temperatura:",
+        "wind": "Velocidad del viento:",
+        "humidity": "Humedad:",
+        "lastUpdate": "Última actualización:"
     }
 }
