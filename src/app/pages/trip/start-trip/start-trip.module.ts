@@ -8,13 +8,14 @@ import { StartTripPageRoutingModule } from './start-trip-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { StartTripPage } from './start-trip.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     StartTripPageRoutingModule,
-    TranslateModule
+    TranslateModule,
   ],
   declarations: [StartTripPage]
 })
