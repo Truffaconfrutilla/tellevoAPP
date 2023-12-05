@@ -82,7 +82,14 @@ export class StartTripPage implements OnInit {
           };
           console.log('Payload:', payload);
           this.scanning = false;
-          this.getDirections(payload.origin.address, payload.destination.address)
+          this.getDirections(payload.origin.address, payload.destination.address).subscribe(
+            (directionsResult) => {
+              console.log(directionsResult);
+            },
+            (error) => {
+              console.error('Error getting directions:', error);
+            }
+          );
         } catch (scanError) {
         }
         await this.delay(200);
