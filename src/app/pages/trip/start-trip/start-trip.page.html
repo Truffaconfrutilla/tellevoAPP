@@ -13,5 +13,6 @@
   </div>
   <div *ngIf="hasPermission">
     <video #videoElement style="width: 100%; height: auto;"></video>
+    <button (click)="initiateQrCodeScanning()">Start Scanning</button>
   </div>
 </ion-content>
