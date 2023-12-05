@@ -56,28 +56,34 @@ export class StartTripPage implements OnInit {
     try {
       const video = this.videoElement.nativeElement;
       while (this.scanning) {
-        const qrCodeResult = await this.scanQrCode(video);
-        
-        console.log('QR Code Result:', qrCodeResult);
+        try {
+          const qrCodeResult = await this.scanQrCode(video);
+          console.log('QR Code Result:', qrCodeResult);
 
-        // Parse the QR code result as needed
-        const parsedPayload = JSON.parse(qrCodeResult);
-        const payload = {
-          origin: {
-            address: parsedPayload.origin.address,
-            lat: parsedPayload.origin.lat,
-            lng: parsedPayload.origin.lng,
-          },
-          destination: {
-            address: parsedPayload.destination.address,
-            lat: parsedPayload.destination.lat,
-            lng: parsedPayload.destination.lng,
-          },
-        };
-        console.log('Parsed Payload:', parsedPayload);
+          // Parse the QR code result as needed
+          const parsedPayload = JSON.parse(qrCodeResult);
+          console.log('Parsed Payload:', parsedPayload);
+          const payload = {
+            origin: {
+              address: parsedPayload.origin.address,
+              lat: parsedPayload.origin.lat,
+              lng: parsedPayload.origin.lng,
+            },
+            destination: {
+              address: parsedPayload.destination.address,
+              lat: parsedPayload.destination.lat,
+              lng: parsedPayload.destination.lng,
+            },
+          };
+          console.log('Payload:', payload);
+        } catch (scanError) {
+          // Handle individual scan errors (e.g., timeout, decoding errors)
+          console.error('Error scanning QR code:', scanError);
+        }
       }
     } catch (error) {
-      console.error('Error scanning QR code:', error);
+      // Handle critical errors that may occur during scanning
+      console.error('Critical error during QR code scanning:', error);
     }
   }
 
