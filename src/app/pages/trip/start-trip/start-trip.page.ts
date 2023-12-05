@@ -12,6 +12,7 @@ export class StartTripPage implements OnInit {
   private codeReader: BrowserMultiFormatReader;
   public hasPermission = false;
   public permissionDenied = false;
+  private scanning = false;
 
   constructor() { 
     this.codeReader = new BrowserMultiFormatReader();
@@ -44,34 +45,46 @@ export class StartTripPage implements OnInit {
   }
 
   async initiateQrCodeScanning() {
-    if (!this.hasPermission) {
+    if (!this.hasPermission || this.permissionDenied || this.scanning) {
+      // Prompt the user to grant camera permission
       this.requestCameraPermission();
       return;
     }
+
+    this.scanning = true;
+
     try {
       const video = this.videoElement.nativeElement;
-      const qrCodeResult = await this.scanQrCode(video);
-      console.log('QR Code Result:', qrCodeResult);
-      
-      const parsedPayload = JSON.parse(qrCodeResult);
-      const payload = {
-        origin: {
-          address: parsedPayload.origin.address,
-          lat: parsedPayload.origin.lat,
-          lng: parsedPayload.origin.lng,
-        },
-        destination: {
-          address: parsedPayload.destination.address,
-          lat: parsedPayload.destination.lat,
-          lng: parsedPayload.destination.lng,
-        },
-      };
-      console.log('Parsed Payload:', payload);
+      while (this.scanning) {
+        const qrCodeResult = await this.scanQrCode(video);
+        
+        console.log('QR Code Result:', qrCodeResult);
+
+        // Parse the QR code result as needed
+        const parsedPayload = JSON.parse(qrCodeResult);
+        const payload = {
+          origin: {
+            address: parsedPayload.origin.address,
+            lat: parsedPayload.origin.lat,
+            lng: parsedPayload.origin.lng,
+          },
+          destination: {
+            address: parsedPayload.destination.address,
+            lat: parsedPayload.destination.lat,
+            lng: parsedPayload.destination.lng,
+          },
+        };
+        console.log('Parsed Payload:', parsedPayload);
+      }
     } catch (error) {
       console.error('Error scanning QR code:', error);
     }
   }
 
+  ngOnDestroy() {
+    this.scanning = false;
+  }
+  
   scanQrCode(videoElement: HTMLVideoElement): Promise<string> {
     return new Promise((resolve, reject) => {
       this.codeReader
