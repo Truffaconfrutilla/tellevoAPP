@@ -1,5 +1,8 @@
 import { Component, ElementRef, ViewChild, OnInit  } from '@angular/core';
 import { BrowserMultiFormatReader } from '@zxing/library';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { googleConfig } from 'src/app/config/google.config';
 
 @Component({
   selector: 'app-start-trip',
@@ -13,8 +16,9 @@ export class StartTripPage implements OnInit {
   public hasPermission = false;
   public permissionDenied = false;
   private scanning = false;
+  private apiUrl = 'https://maps.googleapis.com/maps/api/directions/json';
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
     this.codeReader = new BrowserMultiFormatReader();
   }
 
@@ -78,6 +82,7 @@ export class StartTripPage implements OnInit {
           };
           console.log('Payload:', payload);
           this.scanning = false;
+          this.getDirections(payload.origin.address, payload.destination.address)
         } catch (scanError) {
         }
         await this.delay(200);
@@ -106,6 +111,17 @@ export class StartTripPage implements OnInit {
           }
         });
     });
+  }
+
+  getDirections(origin: string, destination: string): Observable<any> {
+    const params = {
+      origin: origin,
+      destination: destination,
+      mode: 'driving',
+      key: googleConfig.apiKey
+    };
+
+    return this.http.get(this.apiUrl, { params: params });
   }
 
 }
