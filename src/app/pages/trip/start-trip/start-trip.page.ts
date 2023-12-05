@@ -55,6 +55,7 @@ export class StartTripPage implements OnInit {
 
     try {
       const video = this.videoElement.nativeElement;
+      if (video.paused) {
       while (this.scanning) {
         try {
           const qrCodeResult = await this.scanQrCode(video);
@@ -76,12 +77,14 @@ export class StartTripPage implements OnInit {
             },
           };
           console.log('Payload:', payload);
+          this.scanning = false;
         } catch (scanError) {
           // Handle individual scan errors (e.g., timeout, decoding errors)
           console.error('Error scanning QR code:', scanError);
         }
         await this.delay(200);
       }
+    }
     } catch (error) {
       // Handle critical errors that may occur during scanning
       console.error('Critical error during QR code scanning:', error);
