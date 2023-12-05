@@ -6,5 +6,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <video #videoElement></video>
+  <div *ngIf="!hasPermission">
+    <p *ngIf="!permissionDenied">Please grant camera permission to scan QR codes.</p>
+    <p *ngIf="permissionDenied">Camera permission denied. Please grant permission and reload the page.</p>
+    <button *ngIf="!permissionDenied" (click)="requestCameraPermission()">Grant Permission</button>
+  </div>
+  <div *ngIf="hasPermission">
+    <video #videoElement></video>
+  </div>
 </ion-content>

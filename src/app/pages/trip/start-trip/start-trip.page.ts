@@ -5,21 +5,13 @@ import { BrowserMultiFormatReader } from '@zxing/library';
   selector: 'app-start-trip',
   templateUrl: './start-trip.page.html',
   styleUrls: ['./start-trip.page.scss'],
-  template: `
-  <div *ngIf="!hasPermission">
-    <p>Please grant camera permission to scan QR codes.</p>
-    <button (click)="requestCameraPermission()">Grant Permission</button>
-  </div>
-  <div *ngIf="hasPermission">
-    <video #videoElement></video>
-  </div>
-`,
 })
 
 export class StartTripPage implements OnInit {
   @ViewChild('videoElement') videoElement: ElementRef<HTMLVideoElement>;
   private codeReader: BrowserMultiFormatReader;
-  private hasPermission = false;
+  public hasPermission = false;
+  public permissionDenied = false;
 
   constructor() { 
     this.codeReader = new BrowserMultiFormatReader();
