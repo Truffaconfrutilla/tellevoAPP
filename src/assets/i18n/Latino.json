@@ -60,6 +60,8 @@
         "label.requiredEmail": "La contraseña es requerida"
     },
     "settingsLanguage": {
+        "label.support": "No necesitas ajustes, estas hermoso asi como eres :C ",
+        "label.change": "Cambia Idioma",
         "label.header":"Selecciona un idioma"
     },
     "changeProfile":{
@@ -156,5 +158,13 @@
     },
     "startTrip": {
         "title": "Iniciar Viaje"
+    },
+    "trip": {
+        "label.studentName": "Nombre Estudiante:",
+        "label.studentEmail": "Correo Estudiante:",
+        "label.origin": "Origen:",
+        "label.destination": "Destino:",
+        "label.partnerName": "Nombre Socio:",
+        "label.partnerEmail": "Correo Socio:"
     }
 }
