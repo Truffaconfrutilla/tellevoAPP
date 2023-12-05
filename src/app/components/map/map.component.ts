@@ -23,6 +23,11 @@ export class MapComponent  implements OnInit {
   
   loadmap(){
     var map: HTMLElement = document.getElementById('map')
+
+    this.map = new google.maps.Map(map, {
+      center: this.ubication,
+      zoom: 18,
+    })
   }
   
 }
