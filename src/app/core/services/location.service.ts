@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../config/firebase.config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query ,DocumentSnapshot, DocumentData} from 'firebase/firestore';
+import { getFirestore, collection, getDocs, DocumentSnapshot, DocumentData} from 'firebase/firestore';
 import { Location } from '../models/location.model';
 
 // Initialize Firebase with the configuration

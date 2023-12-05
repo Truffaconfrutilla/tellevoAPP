@@ -29,7 +29,6 @@ export class ProfilePage implements OnInit {
     this.getUserData();
   }
 
-
   getUserData() {
       this.userName = localStorage.getItem('name');
       this.userLocation = localStorage.getItem('location');

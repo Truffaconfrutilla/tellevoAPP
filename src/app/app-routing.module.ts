@@ -57,28 +57,33 @@ export const routes: Routes = [
   },
   {
     path: 'add',
-    loadChildren: () => import('./pages/api/add/add.module').then( m => m.AddPageModule)
+    loadChildren: () => import('./pages/admin/add/add.module').then( m => m.AddPageModule)
   },
   {
     path: 'delete',
-    loadChildren: () => import('./pages/api/delete/delete.module').then( m => m.DeletePageModule)
+    loadChildren: () => import('./pages/admin/delete/delete.module').then( m => m.DeletePageModule)
   },
   {
     path: 'detail',
-    loadChildren: () => import('./pages/api/detail/detail.module').then( m => m.DetailPageModule)
+    loadChildren: () => import('./pages/admin/detail/detail.module').then( m => m.DetailPageModule)
   },
   {
     path: 'list',
-    loadChildren: () => import('./pages/api/list/list.module').then( m => m.ListPageModule)
+    loadChildren: () => import('./pages/admin/list/list.module').then( m => m.ListPageModule)
   },
   {
     path: 'update',
-    loadChildren: () => import('./pages/api/update/update.module').then( m => m.UpdatePageModule)
+    loadChildren: () => import('./pages/admin/update/update.module').then( m => m.UpdatePageModule)
   },
   {
     path: 'admin-page',
-    loadChildren: () => import('./pages/api/admin-page/admin-page.module').then( m => m.AdminPagePageModule)
+    loadChildren: () => import('./pages/admin/admin-page/admin-page.module').then( m => m.AdminPagePageModule)
   },
+  {
+    path: 'list-student-trip',
+    loadChildren: () => import('./pages/trip/list-student-trip/list-student-trip.module').then( m => m.ListStudentTripPageModule)
+  },
+
 
 ];
 

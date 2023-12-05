@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './core/services/user.service';
-import { TranslateService } from '@ngx-translate/core';
-import Swal from 'sweetalert2';
-  
+import { TranslateService } from '@ngx-translate/core';  
 
 @Component({
   selector: 'app-root',
@@ -27,8 +25,8 @@ export class AppComponent implements OnInit{
   ];
 
   public noPartnerMenu: Array<{ title: string; url: string; icon: string }> = [
-    { title: 'menu.label.askTrip', url: '', icon: 'location'},
-    { title: 'menu.label.listStudentTrip', url: '', icon: 'document-text'},
+    { title: 'menu.label.askTrip', url: '/ask-trip', icon: 'location'},
+    { title: 'menu.label.listStudentTrip', url: '/list-student-trip', icon: 'document-text'},
   ];
   
   public adminMenu: Array<{ title: string; url: string; icon: string}> = [  

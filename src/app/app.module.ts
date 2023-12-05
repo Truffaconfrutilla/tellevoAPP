@@ -14,9 +14,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
