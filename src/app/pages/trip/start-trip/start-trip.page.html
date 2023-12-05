@@ -12,6 +12,6 @@
     <button *ngIf="!permissionDenied" (click)="requestCameraPermission()">Grant Permission</button>
   </div>
   <div *ngIf="hasPermission">
-    <video #videoElement></video>
+    <video #videoElement style="width: 100%; height: auto;"></video>
   </div>
 </ion-content>

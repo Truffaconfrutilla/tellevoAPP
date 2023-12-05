@@ -21,6 +21,10 @@ export class StartTripPage implements OnInit {
     this.checkCameraPermission();
   }
 
+  ngAfterViewInit() {
+    this.initiateQrCodeScanning();
+  }
+
   async checkCameraPermission() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
