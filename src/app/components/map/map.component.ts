@@ -229,6 +229,7 @@ getPlaces(query: string) {
   }
 }
 
+
 geoCode(address){
   let latlng = {lat: '' , lng: ''};
   return new Promise ((resolve,reject) => {
