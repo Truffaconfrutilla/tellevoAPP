@@ -1,18 +1,24 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA,Component, ElementRef, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { GmapService } from 'src/app/core/services/gmap.service';
 import { UserService } from 'src/app/core/services/user.service';
 
-declare var google: any;
+declare var google;
 
 @Component({
   selector: 'app-maps',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
   standalone : true,   
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [IonicModule, CommonModule]
+
 })
 
-export class MapComponent  implements OnInit {
+export class MapComponent  implements OnInit , OnDestroy {
 
+  places: any[] = [];
   @ViewChild('map',{static:true}) mapElementRef: ElementRef;
   googleMaps: any;
   source: any = {lat: -33.56808, lng: -70.55470};
@@ -20,57 +26,28 @@ export class MapComponent  implements OnInit {
   map: any;
   directionsService: any;
   directionsDisplay: any;
-  source_marker: any;
-  destination_marker: any;
+  // source_marker: any;
+  // destination_marker: any;
   userPosition: any; 
-  isPartner: boolean = false;
-  originAddress: string = ''; // Variable para la dirección de origen
-  destinationAddress: string = ''; // Variable para la dirección de destino
+  query: string;
 
 
   constructor(
     private maps: GmapService,
     private renderer: Renderer2,
     private userService: UserService,
+    private zone: NgZone,
   ) { }
 
   ngOnInit() {
     this.getUserLocation();
-    this.checkUserRole();
-    this.initMap();
   }
 
   ngAfterViewInit() {
     this.loadMap();
   }
 
-  initMap() {
-    this.maps.loadGoogleMaps().then(() => {
-      this.map = new google.maps.Map(this.mapElementRef.nativeElement, {
-        center: { lat: -33.45, lng: -70.6667 }, // Coordenadas por defecto
-        zoom: 12,
-      });
-    });
-  }
-
-  calculateAndDisplayRoute() {
-    const directionsService = new google.maps.DirectionsService();
-    const directionsDisplay = new google.maps.DirectionsRenderer({ map: this.map });
-
-    directionsService.route(
-      {
-        origin: this.originAddress,
-        destination: this.destinationAddress,
-        travelMode: 'DRIVING',
-      },
-      (response: any, status: any) => {
-        if (status === 'OK') {
-          directionsDisplay.setDirections(response);
-        } else {
-          window.alert('No se encontró una ruta.');
-        }
-      }
-    );
+  ngOnDestroy(): void {
   }
 
   getUserLocation() {
@@ -103,7 +80,7 @@ export class MapComponent  implements OnInit {
       this.map = new googleMaps.Map(mapEl, {
         center: { lat: mapCenter.lat, lng: mapCenter.lng },
         disableDefaultUI: true,
-        zoom: 13,
+        zoom: 15,
       });
   
       if (this.userPosition) {
@@ -119,51 +96,51 @@ export class MapComponent  implements OnInit {
       this.directionsDisplay = new googleMaps.DirectionsRenderer;
       this.directionsDisplay = new googleMaps.DirectionsRenderer();
 
-      //BLOQUE DE RUTA MANUAL DESDE MALL PLAZA TOBALABA HACIA DUOC PUENTE ALTO
-      const sourceIconUrl = 'assets/imgs/car.png';
-      const destinationIconUrl = 'assets/imgs/pin.png';
+      // //BLOQUE DE RUTA MANUAL DESDE MALL PLAZA TOBALABA HACIA DUOC PUENTE ALTO
+      // const sourceIconUrl = 'assets/imgs/car.png';
+      // const destinationIconUrl = 'assets/imgs/pin.png';
       
-      const source_position = new googleMaps.LatLng(this.source.lat, this.source.lng);
-      const destination_position = new googleMaps.LatLng(this.dest.lat, this.dest.lng);
+      // const source_position = new googleMaps.LatLng(this.source.lat, this.source.lng);
+      // const destination_position = new googleMaps.LatLng(this.dest.lat, this.dest.lng);
 
-      const source_icon = {
-        url: sourceIconUrl,
-        scaledSize: new googleMaps.Size(50, 50), // scaled size
-        origin: new googleMaps.Point(0, 0), // origin
-        anchor: new googleMaps.Point(0, 0) // anchor
-      };
-      const destination_icon = {
-        url: destinationIconUrl,
-        scaledSize: new googleMaps.Size(50, 50), // scaled size
-        origin: new googleMaps.Point(0, 0), // origin
-        anchor: new googleMaps.Point(0, 0) // anchor
-      };
-      this.source_marker = new googleMaps.Marker({
-        map: this.map,
-        position: source_position,
-        animation: googleMaps.Animation.DROP,
-        icon: source_icon,
-      });
+      // const source_icon = {
+      //   url: sourceIconUrl,
+      //   scaledSize: new googleMaps.Size(50, 50), // scaled size
+      //   origin: new googleMaps.Point(0, 0), // origin
+      //   anchor: new googleMaps.Point(0, 0) // anchor
+      // };
+      // const destination_icon = {
+      //   url: destinationIconUrl,
+      //   scaledSize: new googleMaps.Size(50, 50), // scaled size
+      //   origin: new googleMaps.Point(0, 0), // origin
+      //   anchor: new googleMaps.Point(0, 0) // anchor
+      // };
+      // this.source_marker = new googleMaps.Marker({
+      //   map: this.map,
+      //   position: source_position,
+      //   animation: googleMaps.Animation.DROP,
+      //   icon: source_icon,
+      // });
 
-      this.destination_marker = new googleMaps.Marker({
-        map: this.map,
-        position: destination_position,
-        animation: googleMaps.Animation.DROP,
-        icon: destination_icon
-      });
+      // this.destination_marker = new googleMaps.Marker({
+      //   map: this.map,
+      //   position: destination_position,
+      //   animation: googleMaps.Animation.DROP,
+      //   icon: destination_icon
+      // });
 
-      this.source_marker.setMap(this.map);
-      this.destination_marker.setMap(this.map);
+      // this.source_marker.setMap(this.map);
+      // this.destination_marker.setMap(this.map);
 
-      this.directionsDisplay.setMap(this.map);
-      this.directionsDisplay.setOptions({
-        polylineOptions: {
-          strokeWeight: 4,
-          strokeOpacity: 1,
-          strokeColor: 'black'
-        },
-        suppressMarkers: true
-      });
+      // this.directionsDisplay.setMap(this.map);
+      // this.directionsDisplay.setOptions({
+      //   polylineOptions: {
+      //     strokeWeight: 4,
+      //     strokeOpacity: 1,
+      //     strokeColor: 'black'
+      //   },
+      //   suppressMarkers: true
+      // });
 
       await this.drawRoute();
 
@@ -174,56 +151,75 @@ export class MapComponent  implements OnInit {
   }
 }
 
-drawRoute() {
-  this.directionsService.route({
-    origin: this.source,
-    destination: this.dest,
-    travelMode: 'DRIVING',
-    provideRouteAlternatives: true
-  }, (response, status) => {
-    if (status === 'OK') {
-      this.directionsDisplay.setDirections(response);
-      console.log('response: ', response);
-      const directionsData = response.routes[0].legs[0];
-      console.log(directionsData);
-      const duration = directionsData.duration.text;
-      console.log(duration);
-    } else {
-      console.log(status);
-    }
+  drawRoute() {
+    this.directionsService.route({
+      origin: this.source,
+      destination: this.dest,
+      travelMode: 'DRIVING',
+      provideRouteAlternatives: true
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+        console.log('response: ', response);
+        const directionsData = response.routes[0].legs[0];
+        console.log(directionsData);
+        const duration = directionsData.duration.text;
+        console.log(duration);
+      } else {
+        console.log(status);
+      }
+    });
+}
+
+async onSearchChange(event: any){
+  console.log(event);
+  this.query = event.detail.value;
+  if(
+    this.query.length >0
+  ) await this.getPlaces(this.query);
+}
+
+getPlaces(query: string) {
+  try{
+    let service = new google.maps.places.AutocompleteService();
+    service.getPlacePredictions({
+      input: this.query,
+    }, (predictions) => {
+      let autoCompleteItems = [];
+      this.zone.run(()=>{
+        if(predictions != null){
+          predictions.forEach(async(prediction)=>{
+            console.log('prediction:',prediction);
+            let latLng: any = await this.geoCode(prediction.description);
+            const places = {
+              title: prediction.structured_formatting.main_text,
+              addres: prediction.description,
+              lat: latLng.lat,
+              lng: latLng.lng
+            };
+            console.log('places:',places);
+            autoCompleteItems.push(places);
+          });
+          this.places = autoCompleteItems;
+        }
+      });
+    })
+  }catch(e){
+    console.log(e);
+  }
+}
+
+geoCode(address){
+  let latlng = {lat: '' , lng: ''};
+  return new Promise ((resolve,reject) => {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': address},(results) => {
+      console.log('results', results);
+      latlng.lat = results[0].geometry.location.lat();
+      latlng.lng = results[0].geometry.location.lng();
+      resolve(latlng);
+    });
   });
 }
 
-  checkUserRole() {
-    this.userService.isPartnerDriver().then((isDriver) => {
-      this.isPartner = isDriver || false;
-      this.setUserRole(this.isPartner);
-    });
-  }
-
-  setUserRole(partner: boolean) {
-    this.isPartner = partner;
-    if (partner) {
-      // Lógica para mostrar funciones de socio conductor
-      this.showStartTripButton();
-      this.enableGoogleMapsDirectionInput();
-    } else {
-      // Lógica para mostrar funciones de estudiante
-      this.requestRideButton();
-      this.enableGoogleMapsDirectionInput();
-    }
-  }
-
-  requestRideButton() {
-    // Implementa la lógica para mostrar el botón de "Solicitar viaje" para el estudiante
-  }
-
-  showStartTripButton() {
-    // Implementa la lógica para mostrar el botón de "Iniciar viaje" para el socio conductor
-  }
-
-  enableGoogleMapsDirectionInput() {
-    // Implementa la lógica para habilitar la entrada de direcciones en Google Maps
-  }
-  
 }

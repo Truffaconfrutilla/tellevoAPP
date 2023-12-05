@@ -7,16 +7,16 @@
       <div style="padding-left: 80px;">
         Te<ion-text color="amarilloduoc" style="font-weight: bolder;" >Llevo</ion-text>App
       </div>
-    </ion-text>         
+    </ion-text>    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <app-maps #mapComponent></app-maps>
   <!-- Nuevo botón -->
   <ion-button class="geobutton" (click)="getUserLocation()" color="azulduoc">
-      Obtener Ubicación
+      Centrar en mi
   </ion-button>
-
 
 </ion-content>
