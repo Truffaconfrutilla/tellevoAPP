@@ -1,8 +1,9 @@
 import { Component, ElementRef, ViewChild, OnInit  } from '@angular/core';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { googleConfig } from 'src/app/config/google.config';
+import { collection, addDoc} from 'firebase/firestore';
+import { Trip } from 'src/app/core/models/trip.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-trip',
@@ -17,8 +18,11 @@ export class StartTripPage implements OnInit {
   public permissionDenied = false;
   private scanning = false;
   private apiUrl = 'https://maps.googleapis.com/maps/api/directions/json';
+  private firestoreDB;
 
-  constructor(private http: HttpClient) { 
+  constructor(
+    public router: Router,
+  ) { 
     this.codeReader = new BrowserMultiFormatReader();
   }
 
@@ -82,14 +86,9 @@ export class StartTripPage implements OnInit {
           };
           console.log('Payload:', payload);
           this.scanning = false;
-          this.getDirections(payload.origin.address, payload.destination.address).subscribe(
-            (directionsResult) => {
-              console.log(directionsResult);
-            },
-            (error) => {
-              console.error('Error getting directions:', error);
-            }
-          );
+
+          this.startTrip(payload.origin.address, payload.origin.lat, payload.origin.lng, payload.destination.address, payload.destination.lat, payload.destination.lng, "ro.sanhueza@duocuc.cl", "Rocio Sanhueza")
+          
         } catch (scanError) {
         }
         await this.delay(200);
@@ -120,15 +119,27 @@ export class StartTripPage implements OnInit {
     });
   }
 
-  getDirections(origin: string, destination: string): Observable<any> {
-    const params = {
-      origin: origin,
-      destination: destination,
-      mode: 'driving',
-      key: googleConfig.apiKey
-    };
-
-    return this.http.get(this.apiUrl, { params: params });
+  startTrip(originAddress: string, originLat: number, originLng: number, destinationAddress: string, destinationLat: number, destinationLng: number, studentEmail: string, studentName: string){
+    const tripData: Trip ={
+      partnerEmail: "carlitoslechuga@duocuc.cl",
+      partnerName: "Carlitos Lechuga",
+      studentName: studentName,
+      studentEmail: studentEmail,
+      origin: {
+          address: originAddress,
+          lat: originLat,
+          long: originLng,
+      },
+      destination: {
+          address: destinationAddress,
+          lat: destinationLat,
+          long: destinationLng,
+      }
+    }
+    const docRef = collection(this.firestoreDB, "user");
+    const doc =  addDoc(docRef, tripData);
+    
+    this.router.navigate(['/list']);
   }
 
 }
