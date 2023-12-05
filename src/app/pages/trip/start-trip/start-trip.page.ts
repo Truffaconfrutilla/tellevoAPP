@@ -1,9 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit  } from '@angular/core';
 import { BrowserMultiFormatReader } from '@zxing/library';
-import { HttpClient } from '@angular/common/http';
-import { collection, addDoc} from 'firebase/firestore';
-import { Trip } from 'src/app/core/models/trip.model';
-import { Router } from '@angular/router';
+import { TripService } from 'src/app/core/services/trip.service';
 
 @Component({
   selector: 'app-start-trip',
@@ -17,11 +14,9 @@ export class StartTripPage implements OnInit {
   public hasPermission = false;
   public permissionDenied = false;
   private scanning = false;
-  private apiUrl = 'https://maps.googleapis.com/maps/api/directions/json';
-  private firestoreDB;
 
   constructor(
-    public router: Router,
+    private tripService: TripService
   ) { 
     this.codeReader = new BrowserMultiFormatReader();
   }
@@ -87,7 +82,7 @@ export class StartTripPage implements OnInit {
           console.log('Payload:', payload);
           this.scanning = false;
 
-          this.startTrip(payload.origin.address, payload.origin.lat, payload.origin.lng, payload.destination.address, payload.destination.lat, payload.destination.lng, "ro.sanhueza@duocuc.cl", "Rocio Sanhueza")
+          this.tripService.startTrip(payload.origin.address, payload.origin.lat, payload.origin.lng, payload.destination.address, payload.destination.lat, payload.destination.lng, "ro.sanhueza@duocuc.cl", "Rocio Sanhueza")
           
         } catch (scanError) {
         }
@@ -117,29 +112,6 @@ export class StartTripPage implements OnInit {
           }
         });
     });
-  }
-
-  startTrip(originAddress: string, originLat: number, originLng: number, destinationAddress: string, destinationLat: number, destinationLng: number, studentEmail: string, studentName: string){
-    const tripData: Trip ={
-      partnerEmail: "carlitoslechuga@duocuc.cl",
-      partnerName: "Carlitos Lechuga",
-      studentName: studentName,
-      studentEmail: studentEmail,
-      origin: {
-          address: originAddress,
-          lat: originLat,
-          long: originLng,
-      },
-      destination: {
-          address: destinationAddress,
-          lat: destinationLat,
-          long: destinationLng,
-      }
-    }
-    const docRef = collection(this.firestoreDB, "user");
-    const doc =  addDoc(docRef, tripData);
-    
-    this.router.navigate(['/list']);
   }
 
 }

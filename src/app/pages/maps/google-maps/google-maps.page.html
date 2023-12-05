@@ -12,19 +12,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <div>
-    <label for="origin">Origen:</label>
-    <input type="text" id="origin"  placeholder="Dirección de origen">
-  </div>
-  <div>
-    <label for="destination">Destino:</label>
-    <input type="text" id="destination" placeholder="Dirección de destino">
-  </div>
-  <ion-button (click)="showRoute()" color="azulduoc">
-    Hacer ruta
-  </ion-button>
-
   <app-maps #mapComponent></app-maps>
   <!-- Nuevo botón -->
   <ion-button class="geobutton" (click)="getUserLocation()" color="azulduoc">

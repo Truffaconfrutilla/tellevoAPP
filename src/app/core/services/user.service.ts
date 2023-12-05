@@ -125,6 +125,7 @@ async login(email: string, password: string) {
             })
             const userData = await this.getUserData();
             localStorage.setItem('name', userData.name);
+            localStorage.setItem('email', userData.email);
             localStorage.setItem('location', userData.location);
             this.router.navigate(['home']);
             this.messageToast(`Bienvenido a TellevoAPP, ${localStorage.getItem('name')} ଘ(੭˃ᴗ˂)੭`);
