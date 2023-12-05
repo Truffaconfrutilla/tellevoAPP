@@ -10,7 +10,7 @@
     </ion-searchbar>
 
     <ion-list *ngIf="places?.length >0">
-        <ion-item *ngFor="let place of places">
+        <ion-item *ngFor="let place of places" class="ion-margin-top">
             <ion-icon name="location-outline" slot="start"></ion-icon>
             <ion-label>
                 {{place?.title}}

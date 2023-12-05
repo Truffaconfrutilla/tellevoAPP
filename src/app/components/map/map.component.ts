@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA,Component, ElementRef, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { GmapService } from 'src/app/core/services/gmap.service';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -26,10 +27,16 @@ export class MapComponent  implements OnInit , OnDestroy {
   map: any;
   directionsService: any;
   directionsDisplay: any;
-  // source_marker: any;
-  // destination_marker: any;
+  source_marker: any;
+  destination_marker: any;
   userPosition: any; 
   query: string;
+  placesSub: Subscription;
+  private _places = new BehaviorSubject<any[]>([]);
+
+  get search_places() {
+    return this._places.asObservable();
+  }
 
 
   constructor(
@@ -41,13 +48,20 @@ export class MapComponent  implements OnInit , OnDestroy {
 
   ngOnInit() {
     this.getUserLocation();
-  }
 
-  ngAfterViewInit() {
-    this.loadMap();
+    this.placesSub = this.search_places.subscribe({
+      next: (places) => {
+        this.places = places;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
+    
   }
 
   ngOnDestroy(): void {
+    if(this.placesSub) this.placesSub.unsubscribe();
   }
 
   getUserLocation() {
@@ -145,7 +159,7 @@ export class MapComponent  implements OnInit , OnDestroy {
       await this.drawRoute();
 
       this.map.setCenter(mapCenter);
-    this.renderer.addClass(mapEl, 'visible');
+      this.renderer.addClass(mapEl, 'visible');
     } catch(e) {
       console.log(e);
   }
@@ -184,6 +198,9 @@ getPlaces(query: string) {
     let service = new google.maps.places.AutocompleteService();
     service.getPlacePredictions({
       input: this.query,
+      componentRestrictions: {
+        country: 'CL'
+          }
     }, (predictions) => {
       let autoCompleteItems = [];
       this.zone.run(()=>{
@@ -200,7 +217,10 @@ getPlaces(query: string) {
             console.log('places:',places);
             autoCompleteItems.push(places);
           });
-          this.places = autoCompleteItems;
+           // this.places = autoCompleteItems;
+            // console.log('final places', this.places);
+            // rxjs behaviorSubject
+            this._places.next(autoCompleteItems);
         }
       });
     })
