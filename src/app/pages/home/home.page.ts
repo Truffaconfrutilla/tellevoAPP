@@ -29,6 +29,7 @@ export class HomePage {
   ngOnInit() {
     this.userService.checkLogin()
     this.checkGPSPermission()
+    this.askToTurnOnGPS()
     this.weatherService.getWeather().subscribe(
       (data) => {
         this.weather = data
@@ -62,7 +63,7 @@ export class HomePage {
 
   async checkGPSPermission(): Promise<boolean> {
     return await new Promise((resolve, reject) => {
-        if (Capacitor.isNative) {
+        if (Capacitor.isNativePlatform) {
             AndroidPermissions.checkPermission(AndroidPermissions.PERMISSION.ACCESS_FINE_LOCATION).then(
                 result => {
                     if (result.hasPermission) {
