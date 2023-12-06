@@ -3,6 +3,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from 'src/app/core/services/weather.service';
 import { Weather } from 'src/app/core/models/wheater.model';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomePage {
 
   ngOnInit() {
     this.userService.checkLogin()
+    this.requestLocationPermission()
     this.weatherService.getWeather().subscribe(
       (data) => {
         this.weather = data
@@ -33,6 +35,14 @@ export class HomePage {
         console.error(error);
       }
     );
+  }
+
+  async requestLocationPermission() {
+    const permission = await Geolocation.requestPermissions();
+    if (permission && permission.location === 'granted') {
+    } else {
+      console.warn('Location permission denied.');
+    }
   }
 
 
