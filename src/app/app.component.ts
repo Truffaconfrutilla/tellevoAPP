@@ -16,15 +16,17 @@ export class AppComponent implements OnInit{
     { title: 'menu.label.home', url: '/home', icon: 'home'},
     { title: 'menu.label.profile', url: '/profile', icon: 'person' },
     { title: 'menu.label.settings', url: '/settings', icon: 'build' },
-    { title: 'menu.label.map', url: '/google-maps', icon: 'build' },
+    
   ];
 
   public partnerMenu: Array<{ title: string; url: string; icon: string}> = [
+    { title: 'menu.label.map', url: '/google-maps', icon: 'earth' },
     { title: 'menu.label.startTrip', url: '/start-trip', icon: 'speedometer'},
     { title: 'menu.label.listPartnerTrip', url: '/list-partner-trip', icon: 'reader'},
   ];
 
   public noPartnerMenu: Array<{ title: string; url: string; icon: string }> = [
+    { title: 'menu.label.map', url: '/google-maps', icon: 'earth' },
     { title: 'menu.label.askTrip', url: '/ask-trip', icon: 'location'},
     { title: 'menu.label.listStudentTrip', url: '/list-student-trip', icon: 'document-text'},
   ];
